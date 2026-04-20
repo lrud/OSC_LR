@@ -58,6 +58,22 @@ https://www.bls.gov/sae/additional-resources/naics-supersectors-for-ces-program.
 
 ---
 
+## Cross-Reference Values
+
+| Metric | Value | Source |
+|--------|-------|--------|
+| NYC Total Nonfarm (Feb 2026) | 4,791,000 | NYS DOL ces.csv |
+| NYC Total Nonfarm (Feb 2025) | 4,830,400 | NYS DOL ces.csv |
+| NYC Total Nonfarm YoY | -39,400 (-0.82%) | Computed |
+| NYC Private Sector (Feb 2026) | 4,179,700 | Total Nonfarm - Government |
+| NYC Private Sector YoY | -48,900 | Computed |
+| Health Care YoY spot-check | -24,200 (-2.32%) | Hand-verified: 1,017,700 - 1,041,900 |
+| Health Care 5yr spot-check | +234,500 (+29.94%) | Hand-verified: 1,017,700 - 783,200 |
+
+Note: Data downloaded April 20, 2026, includes March 2025 benchmark revisions. NYC Comptroller projects further downward revisions.
+
+---
+
 ## Verdict
 
 **Phase 2: PASS — all checks clear.**
