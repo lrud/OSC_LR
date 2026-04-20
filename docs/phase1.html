@@ -13113,8 +13113,6 @@ div#notebook {
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s1">'../data'</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Data directory: </span><span class="si">{</span><span class="n">DATA_DIR</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Files in data directory: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Notebook run time: </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S"</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -13125,9 +13123,7 @@ div#notebook {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Data directory: ../data
-Files in data directory: ['ces_minor.csv', 'ces_hours.csv', 'CES_Readme.txt', 'ces.csv', 'ces_earnings.csv', '311_complaints.csv', 'ces.zip', 'ces_hourearn.csv']
-Notebook run time: 2026-04-20 16:11:53
+<pre>Notebook run time: 2026-04-20 16:44:40
 </pre>
 </div>
 </div>
@@ -13148,11 +13144,9 @@ Notebook run time: 2026-04-20 16:11:53
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ces</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">DATA_DIR</span><span class="si">}</span><span class="s1">/ces.csv'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'ces.csv shape: </span><span class="si">{</span><span class="n">ces</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Columns: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">ces</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Data types:'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ces</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">First 3 rows:'</span><span class="p">)</span>
+<span class="n">ces</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">ces</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'ces.csv: </span><span class="si">{</span><span class="n">ces</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> rows × </span><span class="si">{</span><span class="n">ces</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Columns: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">ces</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">ces</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -13163,33 +13157,8 @@ Notebook run time: 2026-04-20 16:11:53
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ces.csv shape: (23810, 19)
-
-Columns: ['SERIESCODE', 'INDUSTRY_TITLE', 'AREATYPE', 'AREA', 'AREANAME', 'YEAR', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'ANNUAL  ']
-
-Data types:
-SERIESCODE          int64
-INDUSTRY_TITLE        str
-AREATYPE            int64
-AREA                int64
-AREANAME              str
-YEAR                int64
-JAN                 int64
-FEB                 int64
-MAR               float64
-APR               float64
-MAY               float64
-JUN               float64
-JUL               float64
-AUG               float64
-SEP               float64
-OCT               float64
-NOV               float64
-DEC               float64
-ANNUAL                str
-dtype: object
-
-First 3 rows:
+<pre>ces.csv: 23,810 rows × 19 columns
+Columns: ['SERIESCODE', 'INDUSTRY_TITLE', 'AREATYPE', 'AREA', 'AREANAME', 'YEAR', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'ANNUAL']
 </pre>
 </div>
 </div>
@@ -13335,91 +13304,6 @@ First 3 rows:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [3]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'=== ALL UNIQUE AREANAMES ==='</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ces</span><span class="p">[</span><span class="s1">'AREANAME'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">=== ANSWER: "New York City" is a direct AREANAME entry ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'This is NOT the broader MSA (which would include NJ/PA suburbs).'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'This resolves Gotcha G1: we can filter AREANAME == "New York City" directly.'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== ALL UNIQUE AREANAMES ===
-  Albany-Schenectady-Troy Metro Area
-  Binghamton Metro Area
-  Buffalo-Cheektowaga Metro Area
-  Elmira Metro Area
-  Glens Falls Metro Area
-  Ithaca Metro Area
-  Kingston Metro Area
-  Kiryas Joel-Poughkeepsie-Newburgh NY
-  Nassau-Suffolk Metropolitan Division
-  New York City
-  New York State
-  Rochester Metro Area
-  Syracuse Metro Area
-  Utica-Rome Metro Area
-  Watertown-Fort Drum Metro Area
-
-=== ANSWER: "New York City" is a direct AREANAME entry ===
-This is NOT the broader MSA (which would include NJ/PA suburbs).
-This resolves Gotcha G1: we can filter AREANAME == "New York City" directly.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [4]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sanity check: NYC total nonfarm employment</span>
-<span class="n">nyc_latest</span> <span class="o">=</span> <span class="n">ces</span><span class="p">[(</span><span class="n">ces</span><span class="p">[</span><span class="s1">'AREANAME'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'New York City'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ces</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span> <span class="o">==</span> <span class="n">ces</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
-<span class="n">total_nf</span> <span class="o">=</span> <span class="n">nyc_latest</span><span class="p">[</span><span class="n">nyc_latest</span><span class="p">[</span><span class="s1">'INDUSTRY_TITLE'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Total Nonfarm'</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== NYC Total Nonfarm Employment (latest year) ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">total_nf</span><span class="p">[[</span><span class="s1">'YEAR'</span><span class="p">,</span> <span class="s1">'JAN'</span><span class="p">,</span> <span class="s1">'FEB'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Jan 2026: </span><span class="si">{</span><span class="n">total_nf</span><span class="p">[</span><span class="s2">"JAN"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Feb 2026: </span><span class="si">{</span><span class="n">total_nf</span><span class="p">[</span><span class="s2">"FEB"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Sanity check: NYC total nonfarm ~4.5-4.8M is plausible for the 5 boroughs.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'The broader MSA would be ~10M. Our figure is clearly NYC proper.'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== NYC Total Nonfarm Employment (latest year) ===
- YEAR     JAN     FEB
- 2026 4775100 4791000
-
-Jan 2026: 4,775,100
-Feb 2026: 4,791,000
-
-Sanity check: NYC total nonfarm ~4.5-4.8M is plausible for the 5 boroughs.
-The broader MSA would be ~10M. Our figure is clearly NYC proper.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13430,7 +13314,7 @@ The broader MSA would be ~10M. Our figure is clearly NYC proper.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Max year in data: </span><span class="si">{</span><span class="n">ces</span><span class="p">[</span><span class="s2">"YEAR"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
@@ -13503,7 +13387,7 @@ This means:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define the 2-digit NAICS to BLS CES industry mapping for NYC</span>
@@ -13583,123 +13467,6 @@ Note: Education (61) and Health Care (62) are PRIVATE SECTOR only.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [7]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Verify: extract Feb 2026 and Feb 2025 employment for each mapped industry</span>
-<span class="n">nyc</span> <span class="o">=</span> <span class="n">ces</span><span class="p">[</span><span class="n">ces</span><span class="p">[</span><span class="s1">'AREANAME'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'New York City'</span><span class="p">]</span>
-
-<span class="n">latest</span> <span class="o">=</span> <span class="n">nyc</span><span class="p">[</span><span class="n">nyc</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2026</span><span class="p">]</span>
-<span class="n">prior</span> <span class="o">=</span> <span class="n">nyc</span><span class="p">[</span><span class="n">nyc</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2025</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== SPOT CHECK: Feb 2026 vs Feb 2025 for each 2-digit NAICS sector ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="s2">"NAICS"</span><span class="si">:</span><span class="s1">&lt;8</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"Industry"</span><span class="si">:</span><span class="s1">&lt;65</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"Feb 2026"</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"Feb 2025"</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">95</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">naics</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">naics_2digit_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">feb26</span> <span class="o">=</span> <span class="n">latest</span><span class="p">[</span><span class="n">latest</span><span class="p">[</span><span class="s1">'INDUSTRY_TITLE'</span><span class="p">]</span> <span class="o">==</span> <span class="n">title</span><span class="p">][</span><span class="s1">'FEB'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">feb25</span> <span class="o">=</span> <span class="n">prior</span><span class="p">[</span><span class="n">prior</span><span class="p">[</span><span class="s1">'INDUSTRY_TITLE'</span><span class="p">]</span> <span class="o">==</span> <span class="n">title</span><span class="p">][</span><span class="s1">'FEB'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">v26</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">feb26</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">'</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">feb26</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">feb26</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">else</span> <span class="s1">'N/A'</span>
-    <span class="n">v25</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">feb25</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">'</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">feb25</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">feb25</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">else</span> <span class="s1">'N/A'</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">naics</span><span class="si">:</span><span class="s1">&lt;8</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">title</span><span class="si">:</span><span class="s1">&lt;65</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">v26</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">v25</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== SPOT CHECK: Feb 2026 vs Feb 2025 for each 2-digit NAICS sector ===
-NAICS    Industry                                                            Feb 2026   Feb 2025
------------------------------------------------------------------------------------------------
-21+23    Mining, Logging and Construction                                     130,400    137,000
-31-33    Manufacturing                                                         50,200     53,300
-42       Wholesale Trade                                                      129,700    132,700
-44-45    Retail Trade                                                         294,100    296,800
-48-49    Transportation and Warehousing                                       132,500    134,100
-22       Utilities                                                             17,000     16,800
-51       Information                                                          221,300    217,100
-52       Finance and Insurance                                                383,900    377,800
-53       Real Estate and Rental and Leasing                                   133,000    132,600
-54       Professional, Scientific, and Technical Services                     452,500    455,900
-55       Management of Companies and Enterprises                               79,800     80,000
-56       Administrative and Support and Waste Management and Remediation Services    256,500    259,400
-61       Private Educational Services                                         279,700    276,900
-62       Health Care and Social Assistance                                  1,017,700  1,041,900
-71       Arts, Entertainment, and Recreation                                   83,300     88,000
-72       Accommodation and Food Services                                      346,200    351,500
-81       Other Services                                                       171,900    176,800
-92       Government                                                           611,300    601,800
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [8]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Also check 5-year lookback: Feb 2021</span>
-<span class="n">five_yr</span> <span class="o">=</span> <span class="n">nyc</span><span class="p">[</span><span class="n">nyc</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2021</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== SPOT CHECK: Feb 2021 (5-year lookback baseline) ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="s2">"NAICS"</span><span class="si">:</span><span class="s1">&lt;8</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"Industry"</span><span class="si">:</span><span class="s1">&lt;65</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"Feb 2026"</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"Feb 2021"</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">95</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">naics</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">naics_2digit_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">feb26</span> <span class="o">=</span> <span class="n">latest</span><span class="p">[</span><span class="n">latest</span><span class="p">[</span><span class="s1">'INDUSTRY_TITLE'</span><span class="p">]</span> <span class="o">==</span> <span class="n">title</span><span class="p">][</span><span class="s1">'FEB'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">feb21</span> <span class="o">=</span> <span class="n">five_yr</span><span class="p">[</span><span class="n">five_yr</span><span class="p">[</span><span class="s1">'INDUSTRY_TITLE'</span><span class="p">]</span> <span class="o">==</span> <span class="n">title</span><span class="p">][</span><span class="s1">'FEB'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">v26</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">feb26</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">'</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">feb26</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">feb26</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">else</span> <span class="s1">'N/A'</span>
-    <span class="n">v21</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">feb21</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">'</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">feb21</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">feb21</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">else</span> <span class="s1">'N/A'</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">naics</span><span class="si">:</span><span class="s1">&lt;8</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">title</span><span class="si">:</span><span class="s1">&lt;65</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">v26</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">v21</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">CRITICAL CONTEXT: Feb 2021 was still in COVID disruption.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'This means the 5-year comparison captures the FULL post-COVID recovery arc.'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== SPOT CHECK: Feb 2021 (5-year lookback baseline) ===
-NAICS    Industry                                                            Feb 2026   Feb 2021
------------------------------------------------------------------------------------------------
-21+23    Mining, Logging and Construction                                     130,400    135,700
-31-33    Manufacturing                                                         50,200     52,100
-42       Wholesale Trade                                                      129,700    119,600
-44-45    Retail Trade                                                         294,100    283,100
-48-49    Transportation and Warehousing                                       132,500    114,500
-22       Utilities                                                             17,000     14,300
-51       Information                                                          221,300    210,300
-52       Finance and Insurance                                                383,900    336,300
-53       Real Estate and Rental and Leasing                                   133,000    124,700
-54       Professional, Scientific, and Technical Services                     452,500    414,400
-55       Management of Companies and Enterprises                               79,800     64,200
-56       Administrative and Support and Waste Management and Remediation Services    256,500    221,000
-61       Private Educational Services                                         279,700    254,100
-62       Health Care and Social Assistance                                  1,017,700    783,200
-71       Arts, Entertainment, and Recreation                                   83,300     47,000
-72       Accommodation and Food Services                                      346,200    185,100
-81       Other Services                                                       171,900    161,600
-92       Government                                                           611,300    579,600
-
-CRITICAL CONTEXT: Feb 2021 was still in COVID disruption.
-This means the 5-year comparison captures the FULL post-COVID recovery arc.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13710,77 +13477,10 @@ This means the 5-year comparison captures the FULL post-COVID recovery arc.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">API_BASE</span> <span class="o">=</span> <span class="s1">'https://data.cityofnewyork.us/resource/erm2-nwe9.json'</span>
-
-<span class="c1"># Step 1.6: Verify exact agency_name values</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'$select'</span><span class="p">:</span> <span class="s1">'agency_name'</span><span class="p">,</span>
-    <span class="s1">'$where'</span><span class="p">:</span> <span class="s2">"created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59'"</span><span class="p">,</span>
-    <span class="s1">'$group'</span><span class="p">:</span> <span class="s1">'agency_name'</span><span class="p">,</span>
-    <span class="s1">'$limit'</span><span class="p">:</span> <span class="mi">100</span>
-<span class="p">}</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="n">agencies</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">'agency_name'</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== ALL agency_name values in date range ==='</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">agencies</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">=== VERIFICATION ==='</span><span class="p">)</span>
-<span class="n">target_agencies</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">'New York City Police Department'</span><span class="p">,</span>
-    <span class="s1">'Department of Housing Preservation and Development'</span>
-<span class="p">]</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">target_agencies</span><span class="p">:</span>
-    <span class="n">match</span> <span class="o">=</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">agencies</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  "</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">" found in API: </span><span class="si">{</span><span class="n">match</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== ALL agency_name values in date range ===
-  Department for the Aging
-  Department of Buildings
-  Department of Consumer and Worker Protection
-  Department of Education
-  Department of Environmental Protection
-  Department of Health and Mental Hygiene
-  Department of Homeless Services
-  Department of Housing Preservation and Development
-  Department of Information Technology and Telecommunications
-  Department of Parks and Recreation
-  Department of Sanitation
-  Department of Transportation
-  Economic Development Corporation
-  Mayor's Office of Special Enforcement
-  New York City Police Department
-  Office of Technology and Innovation
-  Operations Unit - Department of Homeless Services
-  Taxi and Limousine Commission
-
-=== VERIFICATION ===
-  "New York City Police Department" found in API: True
-  "Department of Housing Preservation and Development" found in API: True
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [10]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Step 1.7: Explore complaint_type values for noise and illegal parking</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'$select'</span><span class="p">:</span> <span class="s1">'complaint_type, count(*) as cnt'</span><span class="p">,</span>
     <span class="s1">'$where'</span><span class="p">:</span> <span class="s2">"created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' AND (complaint_type like '%Noise%' OR complaint_type like '%Illegal Parking%')"</span><span class="p">,</span>
@@ -13791,30 +13491,15 @@ This means the 5-year comparison captures the FULL post-COVID recovery arc.
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 <span class="n">complaints</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== NOISE &amp; PARKING complaint_type values in date range ==='</span><span class="p">)</span>
-<span class="n">total_noise</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">exact_noise</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">parking</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="s2">"complaint_type"</span><span class="si">:</span><span class="s1">&lt;55</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"count"</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">67</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">complaints</span><span class="p">:</span>
-    <span class="n">ct</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'complaint_type'</span><span class="p">]</span>
-    <span class="n">cnt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">ct</span><span class="si">:</span><span class="s1">&lt;55</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">cnt</span><span class="si">:</span><span class="s1">&gt;10,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s1">'Noise'</span> <span class="ow">in</span> <span class="n">ct</span><span class="p">:</span>
-        <span class="n">total_noise</span> <span class="o">+=</span> <span class="n">cnt</span>
-        <span class="k">if</span> <span class="n">ct</span> <span class="o">==</span> <span class="s1">'Noise'</span><span class="p">:</span>
-            <span class="n">exact_noise</span> <span class="o">=</span> <span class="n">cnt</span>
-    <span class="k">if</span> <span class="n">ct</span> <span class="o">==</span> <span class="s1">'Illegal Parking'</span><span class="p">:</span>
-        <span class="n">parking</span> <span class="o">=</span> <span class="n">cnt</span>
+<span class="n">noise_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">complaints</span><span class="p">)</span>
+<span class="n">noise_df</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span> <span class="o">=</span> <span class="n">noise_df</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">noise_df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'index'</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="si">{</span><span class="s2">"TOTAL (all Noise subcategories)"</span><span class="si">:</span><span class="s1">&lt;55</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">total_noise</span><span class="si">:</span><span class="s1">&gt;10,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">=== CRITICAL FINDING ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Exact match "Noise":           </span><span class="si">{</span><span class="n">exact_noise</span><span class="si">:</span><span class="s1">&gt;10,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'All noise subcategories:        </span><span class="si">{</span><span class="n">total_noise</span><span class="si">:</span><span class="s1">&gt;10,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Difference:                     </span><span class="si">{</span><span class="n">total_noise</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">exact_noise</span><span class="si">:</span><span class="s1">&gt;10,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">An exact match for "Noise" captures only </span><span class="si">{</span><span class="n">exact_noise</span><span class="o">/</span><span class="n">total_noise</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">% of noise complaints.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'This is the trap: most noise complaints are in subcategories like "Noise - Residential".'</span><span class="p">)</span>
+<span class="n">total_noise</span> <span class="o">=</span> <span class="n">noise_df</span><span class="p">[</span><span class="n">noise_df</span><span class="p">[</span><span class="s1">'complaint_type'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">'Noise'</span><span class="p">)][</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">exact_noise</span> <span class="o">=</span> <span class="n">noise_df</span><span class="p">[</span><span class="n">noise_df</span><span class="p">[</span><span class="s1">'complaint_type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Noise'</span><span class="p">][</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">All noise subcategories: </span><span class="si">{</span><span class="n">total_noise</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Exact "Noise" only:      </span><span class="si">{</span><span class="n">exact_noise</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Using starts_with captures </span><span class="si">{</span><span class="n">total_noise</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> vs exact match </span><span class="si">{</span><span class="n">exact_noise</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> — a </span><span class="si">{</span><span class="n">total_noise</span><span class="o">/</span><span class="n">exact_noise</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">x difference.'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13823,29 +13508,63 @@ This means the 5-year comparison captures the FULL post-COVID recovery arc.
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
+<div class="output_html rendered_html output_subarea"><style type="text/css">
+</style>
+<table id="T_67e55">
+<thead>
+<tr>
+<th class="col_heading level0 col0" id="T_67e55_level0_col0">complaint_type</th>
+<th class="col_heading level0 col1" id="T_67e55_level0_col1">cnt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data row0 col0" id="T_67e55_row0_col0">Illegal Parking</td>
+<td class="data row0 col1" id="T_67e55_row0_col1">86493</td>
+</tr>
+<tr>
+<td class="data row1 col0" id="T_67e55_row1_col0">Noise - Residential</td>
+<td class="data row1 col1" id="T_67e55_row1_col1">75543</td>
+</tr>
+<tr>
+<td class="data row2 col0" id="T_67e55_row2_col0">Noise - Street/Sidewalk</td>
+<td class="data row2 col1" id="T_67e55_row2_col1">12743</td>
+</tr>
+<tr>
+<td class="data row3 col0" id="T_67e55_row3_col0">Noise - Vehicle</td>
+<td class="data row3 col1" id="T_67e55_row3_col1">11372</td>
+</tr>
+<tr>
+<td class="data row4 col0" id="T_67e55_row4_col0">Noise - Commercial</td>
+<td class="data row4 col1" id="T_67e55_row4_col1">11114</td>
+</tr>
+<tr>
+<td class="data row5 col0" id="T_67e55_row5_col0">Noise</td>
+<td class="data row5 col1" id="T_67e55_row5_col1">10789</td>
+</tr>
+<tr>
+<td class="data row6 col0" id="T_67e55_row6_col0">Noise - Helicopter</td>
+<td class="data row6 col1" id="T_67e55_row6_col1">5290</td>
+</tr>
+<tr>
+<td class="data row7 col0" id="T_67e55_row7_col0">Noise - Park</td>
+<td class="data row7 col1" id="T_67e55_row7_col1">498</td>
+</tr>
+<tr>
+<td class="data row8 col0" id="T_67e55_row8_col0">Noise - House of Worship</td>
+<td class="data row8 col1" id="T_67e55_row8_col1">395</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>=== NOISE &amp; PARKING complaint_type values in date range ===
-complaint_type                                               count
--------------------------------------------------------------------
-Illegal Parking                                             86,493
-Noise - Residential                                         75,543
-Noise - Street/Sidewalk                                     12,743
-Noise - Vehicle                                             11,372
-Noise - Commercial                                          11,114
-Noise                                                       10,789
-Noise - Helicopter                                           5,290
-Noise - Park                                                   498
-Noise - House of Worship                                       395
-
-TOTAL (all Noise subcategories)                            127,744
-
-=== CRITICAL FINDING ===
-Exact match "Noise":               10,789
-All noise subcategories:           127,744
-Difference:                        116,955
-
-An exact match for "Noise" captures only 8.4% of noise complaints.
-This is the trap: most noise complaints are in subcategories like "Noise - Residential".
+<pre>
+All noise subcategories: 127,744
+Exact "Noise" only:      10,789
+Using starts_with captures 127,744 vs exact match 10,789 — a 11.8x difference.
 </pre>
 </div>
 </div>
@@ -13859,28 +13578,21 @@ This is the trap: most noise complaints are in subcategories like "Noise - Resid
 <p><strong>Our interpretation:</strong> Capture ALL complaint types that start with "Noise" (including subcategories) plus "Illegal Parking" exactly.</p>
 <p><strong>Justification:</strong></p>
 <ol>
-<li>The 311 system categorizes noise complaints into subcategories (Residential, Commercial, Vehicle, etc.)</li>
-<li>An exact match for "Noise" alone captures only a fraction of noise complaints</li>
-<li>The project's intent is clearly to analyze noise complaints broadly — excluding subcategories would be misleading</li>
-<li>We will present results both ways (all subcategories vs. exact match) for transparency</li>
+<li>The 311 system categorizes noise into subcategories (Residential, Commercial, Vehicle, etc.)</li>
+<li>An exact match for "Noise" alone captures only ~8% of noise complaints</li>
+<li>The exact "Noise" type belongs to <strong>DEP</strong> (not NYPD or HPD), so it is correctly excluded by the agency filter</li>
+<li>HPD has zero noise/parking complaints — HPD handles housing quality (heat/hot water, plumbing)</li>
 </ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Critical-Discovery:-Agency-Ownership-of-Noise-Complaints">Critical Discovery: Agency Ownership of Noise Complaints<a class="anchor-link" href="#Critical-Discovery:-Agency-Ownership-of-Noise-Complaints">¶</a></h3><p>Before building the main query, we must understand WHICH agencies handle which noise types.</p>
+<p><strong>IMPLICATION:</strong> When we filter for (NYPD OR HPD) AND (noise OR illegal parking), HPD returns zero rows.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Which agencies handle noise complaints?</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'$select'</span><span class="p">:</span> <span class="s1">'agency_name, complaint_type, count(*) as cnt'</span><span class="p">,</span>
     <span class="s1">'$where'</span><span class="p">:</span> <span class="s2">"created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' AND starts_with(complaint_type, 'Noise')"</span><span class="p">,</span>
     <span class="s1">'$group'</span><span class="p">:</span> <span class="s1">'agency_name, complaint_type'</span><span class="p">,</span>
@@ -13888,22 +13600,13 @@ This is the trap: most noise complaints are in subcategories like "Noise - Resid
     <span class="s1">'$limit'</span><span class="p">:</span> <span class="mi">100</span>
 <span class="p">}</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="n">agency_noise</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">agency_noise</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="n">agency_noise</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span> <span class="o">=</span> <span class="n">agency_noise</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">agency_noise</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'index'</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== AGENCY × NOISE COMPLAINT TYPE MATRIX ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="s2">"agency_name"</span><span class="si">:</span><span class="s1">&lt;60</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"complaint_type"</span><span class="si">:</span><span class="s1">&lt;30</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="s2">"count"</span><span class="si">:</span><span class="s1">&gt;10</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">102</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">agency_noise</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">"agency_name"</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;60</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">"complaint_type"</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;30</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"cnt"</span><span class="p">])</span><span class="si">:</span><span class="s1">&gt;10,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">=== KEY FINDINGS ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'1. NYPD handles: Noise - Residential, Noise - Street/Sidewalk, Noise - Vehicle,'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'   Noise - Commercial, Noise - Park, Noise - House of Worship'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'2. Department of Environmental Protection (DEP) handles: exact "Noise" type (10,789)'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'3. Economic Development Corporation handles: Noise - Helicopter (5,290)'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'4. HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, plumbing, etc.)'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">IMPLICATION: When we filter for (NYPD OR HPD) AND (noise OR illegal parking),'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'HPD will return ZERO rows because HPD does not handle noise or parking complaints.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Key: NYPD handles all noise subcategories (Residential, Commercial, etc.)'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'DEP handles exact "Noise" type only. EDC handles Noise - Helicopter.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, plumbing).'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13912,84 +13615,67 @@ This is the trap: most noise complaints are in subcategories like "Noise - Resid
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== AGENCY × NOISE COMPLAINT TYPE MATRIX ===
-agency_name                                                  complaint_type                      count
-------------------------------------------------------------------------------------------------------
-New York City Police Department                              Noise - Residential                75,543
-New York City Police Department                              Noise - Street/Sidewalk            12,743
-New York City Police Department                              Noise - Vehicle                    11,372
-New York City Police Department                              Noise - Commercial                 11,114
-Department of Environmental Protection                       Noise                              10,789
-Economic Development Corporation                             Noise - Helicopter                  5,290
-New York City Police Department                              Noise - Park                          498
-New York City Police Department                              Noise - House of Worship              395
-
-=== KEY FINDINGS ===
-1. NYPD handles: Noise - Residential, Noise - Street/Sidewalk, Noise - Vehicle,
-   Noise - Commercial, Noise - Park, Noise - House of Worship
-2. Department of Environmental Protection (DEP) handles: exact "Noise" type (10,789)
-3. Economic Development Corporation handles: Noise - Helicopter (5,290)
-4. HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, plumbing, etc.)
-
-IMPLICATION: When we filter for (NYPD OR HPD) AND (noise OR illegal parking),
-HPD will return ZERO rows because HPD does not handle noise or parking complaints.
-</pre>
+<div class="output_html rendered_html output_subarea"><style type="text/css">
+</style>
+<table id="T_71764">
+<thead>
+<tr>
+<th class="col_heading level0 col0" id="T_71764_level0_col0">agency_name</th>
+<th class="col_heading level0 col1" id="T_71764_level0_col1">complaint_type</th>
+<th class="col_heading level0 col2" id="T_71764_level0_col2">cnt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data row0 col0" id="T_71764_row0_col0">New York City Police Department</td>
+<td class="data row0 col1" id="T_71764_row0_col1">Noise - Residential</td>
+<td class="data row0 col2" id="T_71764_row0_col2">75543</td>
+</tr>
+<tr>
+<td class="data row1 col0" id="T_71764_row1_col0">New York City Police Department</td>
+<td class="data row1 col1" id="T_71764_row1_col1">Noise - Street/Sidewalk</td>
+<td class="data row1 col2" id="T_71764_row1_col2">12743</td>
+</tr>
+<tr>
+<td class="data row2 col0" id="T_71764_row2_col0">New York City Police Department</td>
+<td class="data row2 col1" id="T_71764_row2_col1">Noise - Vehicle</td>
+<td class="data row2 col2" id="T_71764_row2_col2">11372</td>
+</tr>
+<tr>
+<td class="data row3 col0" id="T_71764_row3_col0">New York City Police Department</td>
+<td class="data row3 col1" id="T_71764_row3_col1">Noise - Commercial</td>
+<td class="data row3 col2" id="T_71764_row3_col2">11114</td>
+</tr>
+<tr>
+<td class="data row4 col0" id="T_71764_row4_col0">Department of Environmental Protection</td>
+<td class="data row4 col1" id="T_71764_row4_col1">Noise</td>
+<td class="data row4 col2" id="T_71764_row4_col2">10789</td>
+</tr>
+<tr>
+<td class="data row5 col0" id="T_71764_row5_col0">Economic Development Corporation</td>
+<td class="data row5 col1" id="T_71764_row5_col1">Noise - Helicopter</td>
+<td class="data row5 col2" id="T_71764_row5_col2">5290</td>
+</tr>
+<tr>
+<td class="data row6 col0" id="T_71764_row6_col0">New York City Police Department</td>
+<td class="data row6 col1" id="T_71764_row6_col1">Noise - Park</td>
+<td class="data row6 col2" id="T_71764_row6_col2">498</td>
+</tr>
+<tr>
+<td class="data row7 col0" id="T_71764_row7_col0">New York City Police Department</td>
+<td class="data row7 col1" id="T_71764_row7_col1">Noise - House of Worship</td>
+<td class="data row7 col2" id="T_71764_row7_col2">395</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [12]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Verify: what complaint types DOES HPD handle in this period?</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'$select'</span><span class="p">:</span> <span class="s1">'complaint_type, count(*) as cnt'</span><span class="p">,</span>
-    <span class="s1">'$where'</span><span class="p">:</span> <span class="s2">"created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' AND agency_name='Department of Housing Preservation and Development'"</span><span class="p">,</span>
-    <span class="s1">'$group'</span><span class="p">:</span> <span class="s1">'complaint_type'</span><span class="p">,</span>
-    <span class="s1">'$order'</span><span class="p">:</span> <span class="s1">'cnt DESC'</span><span class="p">,</span>
-    <span class="s1">'$limit'</span><span class="p">:</span> <span class="mi">20</span>
-<span class="p">}</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="n">hpd_types</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== HPD COMPLAINT TYPES (top 20, date range Dec 2021 - Mar 2022) ==='</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">hpd_types</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">"complaint_type"</span><span class="p">]</span><span class="si">:</span><span class="s1">45s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"cnt"</span><span class="p">])</span><span class="si">:</span><span class="s1">&gt;10,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">HPD handles housing quality issues: heat/hot water, plumbing, paint, etc.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'HPD has NO noise or illegal parking complaints in this period.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'This is NOT a data error — it reflects the actual division of responsibilities between NYC agencies.'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>=== HPD COMPLAINT TYPES (top 20, date range Dec 2021 - Mar 2022) ===
-  HEAT/HOT WATER                                   121,072
-  UNSANITARY CONDITION                              22,267
-  PLUMBING                                          15,738
-  PAINT/PLASTER                                     13,186
-  DOOR/WINDOW                                       11,402
-  WATER LEAK                                         9,568
-  GENERAL                                            7,723
-  ELECTRIC                                           6,869
-  FLOORING/STAIRS                                    6,150
-  APPLIANCE                                          4,876
-  SAFETY                                             3,233
-  ELEVATOR                                             516
-  OUTSIDE BUILDING                                     201
-
-HPD handles housing quality issues: heat/hot water, plumbing, paint, etc.
-HPD has NO noise or illegal parking complaints in this period.
-This is NOT a data error — it reflects the actual division of responsibilities between NYC agencies.
+<pre>Key: NYPD handles all noise subcategories (Residential, Commercial, etc.)
+DEP handles exact "Noise" type only. EDC handles Noise - Helicopter.
+HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, plumbing).
 </pre>
 </div>
 </div>
@@ -14006,15 +13692,10 @@ This is NOT a data error — it reflects the actual division of responsibilities
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Build the exact SoQL query URL</span>
-<span class="c1"># Requirements from Q2a:</span>
-<span class="c1">#   1. created_date between 12/15/2021 and 3/15/2022 (inclusive)</span>
-<span class="c1">#   2. agency_name = NYPD or HPD</span>
-<span class="c1">#   3. complaint_type starts with 'Noise' OR = 'Illegal Parking'</span>
-
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">select_fields</span> <span class="o">=</span> <span class="s1">'unique_key,created_date,agency_name,complaint_type,descriptor,borough,incident_zip,latitude,longitude'</span>
 <span class="n">where_clause</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">"created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' "</span>
     <span class="s2">"AND (agency_name='New York City Police Department' "</span>
@@ -14023,44 +13704,6 @@ This is NOT a data error — it reflects the actual division of responsibilities
     <span class="s2">"OR complaint_type='Illegal Parking')"</span>
 <span class="p">)</span>
 
-<span class="n">select_fields</span> <span class="o">=</span> <span class="s1">'unique_key,created_date,agency_name,complaint_type,descriptor,borough,incident_zip,latitude,longitude'</span>
-
-<span class="c1"># The exact query URL</span>
-<span class="n">QUERY_URL</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="sa">f</span><span class="s1">'https://data.cityofnewyork.us/resource/erm2-nwe9.json'</span>
-    <span class="sa">f</span><span class="s1">'?$select=</span><span class="si">{</span><span class="n">select_fields</span><span class="si">}</span><span class="s1">'</span>
-    <span class="sa">f</span><span class="s1">'&amp;$where=</span><span class="si">{</span><span class="n">where_clause</span><span class="si">}</span><span class="s1">'</span>
-    <span class="sa">f</span><span class="s1">'&amp;$limit=500000'</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== EXACT QUERY URL ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">QUERY_URL</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">URL length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">QUERY_URL</span><span class="p">)</span><span class="si">}</span><span class="s1"> characters'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== EXACT QUERY URL ===
-https://data.cityofnewyork.us/resource/erm2-nwe9.json?$select=unique_key,created_date,agency_name,complaint_type,descriptor,borough,incident_zip,latitude,longitude&amp;$where=created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' AND (agency_name='New York City Police Department' OR agency_name='Department of Housing Preservation and Development') AND (starts_with(complaint_type, 'Noise') OR complaint_type='Illegal Parking')&amp;$limit=500000
-
-URL length: 452 characters
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [14]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Execute the query</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'$select'</span><span class="p">:</span> <span class="n">select_fields</span><span class="p">,</span>
     <span class="s1">'$where'</span><span class="p">:</span> <span class="n">where_clause</span><span class="p">,</span>
@@ -14074,9 +13717,7 @@ URL length: 452 characters
 <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="n">df_311</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rows pulled: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_311</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Limit was: </span><span class="si">{</span><span class="mi">500000</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Truncated: </span><span class="si">{</span><span class="s2">"YES - WARNING!"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">df_311</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">500000</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">"No"</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Columns: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">df_311</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Columns: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">df_311</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14101,9 +13742,6 @@ URL length: 452 characters
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Rows pulled: 198,158
-Limit was: 500,000
-Truncated: No
-
 Columns: ['unique_key', 'created_date', 'agency_name', 'complaint_type', 'descriptor', 'borough', 'incident_zip', 'latitude', 'longitude']
 </pre>
 </div>
@@ -14113,41 +13751,15 @@ Columns: ['unique_key', 'created_date', 'agency_name', 'complaint_type', 'descri
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Step 1.9: Validate the pulled data</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== DATA VALIDATION ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Total rows: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_311</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Date range:'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  Min created_date: </span><span class="si">{</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"created_date"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  Max created_date: </span><span class="si">{</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"created_date"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Unique agency_name values:'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df_311</span><span class="p">[</span><span class="s1">'agency_name'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_311</span><span class="p">[</span><span class="n">df_311</span><span class="p">[</span><span class="s1">'agency_name'</span><span class="p">]</span> <span class="o">==</span> <span class="n">a</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Unique complaint_type values:'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">ct</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df_311</span><span class="p">[</span><span class="s1">'complaint_type'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_311</span><span class="p">[</span><span class="n">df_311</span><span class="p">[</span><span class="s1">'complaint_type'</span><span class="p">]</span> <span class="o">==</span> <span class="n">ct</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">ct</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="c1"># Duplicate check</span>
-<span class="n">dupes</span> <span class="o">=</span> <span class="n">df_311</span><span class="p">[</span><span class="s1">'unique_key'</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Duplicate unique_key values: </span><span class="si">{</span><span class="n">dupes</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="c1"># Null checks</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Null values per column:'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_311</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="n">nulls</span> <span class="o">=</span> <span class="n">df_311</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">nulls</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Total rows: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_311</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Date range: </span><span class="si">{</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"created_date"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"created_date"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Unique agencies: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"agency_name"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Complaint types: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"complaint_type"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Duplicate unique_key: </span><span class="si">{</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"unique_key"</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Null incident_zip: </span><span class="si">{</span><span class="n">df_311</span><span class="p">[</span><span class="s2">"incident_zip"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14157,43 +13769,12 @@ Columns: ['unique_key', 'created_date', 'agency_name', 'complaint_type', 'descri
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>=== DATA VALIDATION ===
-Total rows: 198,158
-
-Date range:
-  Min created_date: 2021-12-15T00:02:21.000
-  Max created_date: 2022-03-15T23:59:38.000
-
-Unique agency_name values:
-  New York City Police Department: 198,158
-
-Unique complaint_type values:
-  Illegal Parking: 86,493
-  Noise - Commercial: 11,114
-  Noise - House of Worship: 395
-  Noise - Park: 498
-  Noise - Residential: 75,543
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>  Noise - Street/Sidewalk: 12,743
-  Noise - Vehicle: 11,372
-
-Duplicate unique_key values: 0
-
-Null values per column:
-  unique_key: 0
-  created_date: 0
-  agency_name: 0
-  complaint_type: 0
-  descriptor: 0
-  borough: 0
-  incident_zip: 5
-  latitude: 779
-  longitude: 779
+<pre>Total rows: 198,158
+Date range: 2021-12-15T00:02:21.000 to 2022-03-15T23:59:38.000
+Unique agencies: ['New York City Police Department']
+Complaint types: ['Illegal Parking', 'Noise - Commercial', 'Noise - House of Worship', 'Noise - Park', 'Noise - Residential', 'Noise - Street/Sidewalk', 'Noise - Vehicle']
+Duplicate unique_key: 0
+Null incident_zip: 5
 </pre>
 </div>
 </div>
@@ -14202,7 +13783,7 @@ Null values per column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Export to CSV</span>

@@ -13222,16 +13222,13 @@ Missing sectors: set()
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df_yoy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'YoY %'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== YEAR-OVER-YEAR CHANGE: Feb 2026 vs Feb 2025 ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Ranked by YoY </span><span class="si">% c</span><span class="s1">hange (most negative to most positive)'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
 <span class="n">display_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'NAICS'</span><span class="p">,</span> <span class="s1">'Industry'</span><span class="p">,</span> <span class="s1">'Feb 2026'</span><span class="p">,</span> <span class="s1">'Feb 2025'</span><span class="p">,</span> <span class="s1">'YoY Change'</span><span class="p">,</span> <span class="s1">'YoY %'</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_yoy</span><span class="p">[</span><span class="n">display_cols</span><span class="p">]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'NYC Total Nonfarm: Feb 2026 = 4,791,000 | Feb 2025 = 4,830,400 | YoY = -39,400 (-0.82%)'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Note: All figures are actual employment units (not thousands). Data is not seasonally adjusted.'</span><span class="p">)</span>
+<span class="n">styled</span> <span class="o">=</span> <span class="n">df_yoy</span><span class="p">[</span><span class="n">display_cols</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">({</span>
+    <span class="s1">'Feb 2026'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:,}</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'Feb 2025'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:,}</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'YoY Change'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+,}</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'YoY %'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+.2f}</span><span class="s1">%'</span>
+<span class="p">})</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">styled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">NYC Total Nonfarm: Feb 2026 = 4,791,000 | Feb 2025 = 4,830,400 | YoY = -39,400 (-0.82%)'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'All figures are actual employment units (not thousands). Data is not seasonally adjusted.'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13240,115 +13237,174 @@ Missing sectors: set()
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
+<div class="output_html rendered_html output_subarea"><style type="text/css">
+</style>
+<table id="T_aa377">
+<thead>
+<tr>
+<th class="col_heading level0 col0" id="T_aa377_level0_col0">NAICS</th>
+<th class="col_heading level0 col1" id="T_aa377_level0_col1">Industry</th>
+<th class="col_heading level0 col2" id="T_aa377_level0_col2">Feb 2026</th>
+<th class="col_heading level0 col3" id="T_aa377_level0_col3">Feb 2025</th>
+<th class="col_heading level0 col4" id="T_aa377_level0_col4">YoY Change</th>
+<th class="col_heading level0 col5" id="T_aa377_level0_col5">YoY %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data row0 col0" id="T_aa377_row0_col0">31-33</td>
+<td class="data row0 col1" id="T_aa377_row0_col1">Manufacturing</td>
+<td class="data row0 col2" id="T_aa377_row0_col2">50,200</td>
+<td class="data row0 col3" id="T_aa377_row0_col3">53,300</td>
+<td class="data row0 col4" id="T_aa377_row0_col4">-3,100</td>
+<td class="data row0 col5" id="T_aa377_row0_col5">-5.82%</td>
+</tr>
+<tr>
+<td class="data row1 col0" id="T_aa377_row1_col0">71</td>
+<td class="data row1 col1" id="T_aa377_row1_col1">Arts, Entertainment, and Recreation</td>
+<td class="data row1 col2" id="T_aa377_row1_col2">83,300</td>
+<td class="data row1 col3" id="T_aa377_row1_col3">88,000</td>
+<td class="data row1 col4" id="T_aa377_row1_col4">-4,700</td>
+<td class="data row1 col5" id="T_aa377_row1_col5">-5.34%</td>
+</tr>
+<tr>
+<td class="data row2 col0" id="T_aa377_row2_col0">21+23</td>
+<td class="data row2 col1" id="T_aa377_row2_col1">Mining, Logging and Construction</td>
+<td class="data row2 col2" id="T_aa377_row2_col2">130,400</td>
+<td class="data row2 col3" id="T_aa377_row2_col3">137,000</td>
+<td class="data row2 col4" id="T_aa377_row2_col4">-6,600</td>
+<td class="data row2 col5" id="T_aa377_row2_col5">-4.82%</td>
+</tr>
+<tr>
+<td class="data row3 col0" id="T_aa377_row3_col0">81</td>
+<td class="data row3 col1" id="T_aa377_row3_col1">Other Services</td>
+<td class="data row3 col2" id="T_aa377_row3_col2">171,900</td>
+<td class="data row3 col3" id="T_aa377_row3_col3">176,800</td>
+<td class="data row3 col4" id="T_aa377_row3_col4">-4,900</td>
+<td class="data row3 col5" id="T_aa377_row3_col5">-2.77%</td>
+</tr>
+<tr>
+<td class="data row4 col0" id="T_aa377_row4_col0">62</td>
+<td class="data row4 col1" id="T_aa377_row4_col1">Health Care and Social Assistance</td>
+<td class="data row4 col2" id="T_aa377_row4_col2">1,017,700</td>
+<td class="data row4 col3" id="T_aa377_row4_col3">1,041,900</td>
+<td class="data row4 col4" id="T_aa377_row4_col4">-24,200</td>
+<td class="data row4 col5" id="T_aa377_row4_col5">-2.32%</td>
+</tr>
+<tr>
+<td class="data row5 col0" id="T_aa377_row5_col0">42</td>
+<td class="data row5 col1" id="T_aa377_row5_col1">Wholesale Trade</td>
+<td class="data row5 col2" id="T_aa377_row5_col2">129,700</td>
+<td class="data row5 col3" id="T_aa377_row5_col3">132,700</td>
+<td class="data row5 col4" id="T_aa377_row5_col4">-3,000</td>
+<td class="data row5 col5" id="T_aa377_row5_col5">-2.26%</td>
+</tr>
+<tr>
+<td class="data row6 col0" id="T_aa377_row6_col0">72</td>
+<td class="data row6 col1" id="T_aa377_row6_col1">Accommodation and Food Services</td>
+<td class="data row6 col2" id="T_aa377_row6_col2">346,200</td>
+<td class="data row6 col3" id="T_aa377_row6_col3">351,500</td>
+<td class="data row6 col4" id="T_aa377_row6_col4">-5,300</td>
+<td class="data row6 col5" id="T_aa377_row6_col5">-1.51%</td>
+</tr>
+<tr>
+<td class="data row7 col0" id="T_aa377_row7_col0">48-49</td>
+<td class="data row7 col1" id="T_aa377_row7_col1">Transportation and Warehousing</td>
+<td class="data row7 col2" id="T_aa377_row7_col2">132,500</td>
+<td class="data row7 col3" id="T_aa377_row7_col3">134,100</td>
+<td class="data row7 col4" id="T_aa377_row7_col4">-1,600</td>
+<td class="data row7 col5" id="T_aa377_row7_col5">-1.19%</td>
+</tr>
+<tr>
+<td class="data row8 col0" id="T_aa377_row8_col0">56</td>
+<td class="data row8 col1" id="T_aa377_row8_col1">Administrative and Support and Waste Management and Remediation Services</td>
+<td class="data row8 col2" id="T_aa377_row8_col2">256,500</td>
+<td class="data row8 col3" id="T_aa377_row8_col3">259,400</td>
+<td class="data row8 col4" id="T_aa377_row8_col4">-2,900</td>
+<td class="data row8 col5" id="T_aa377_row8_col5">-1.12%</td>
+</tr>
+<tr>
+<td class="data row9 col0" id="T_aa377_row9_col0">44-45</td>
+<td class="data row9 col1" id="T_aa377_row9_col1">Retail Trade</td>
+<td class="data row9 col2" id="T_aa377_row9_col2">294,100</td>
+<td class="data row9 col3" id="T_aa377_row9_col3">296,800</td>
+<td class="data row9 col4" id="T_aa377_row9_col4">-2,700</td>
+<td class="data row9 col5" id="T_aa377_row9_col5">-0.91%</td>
+</tr>
+<tr>
+<td class="data row10 col0" id="T_aa377_row10_col0">54</td>
+<td class="data row10 col1" id="T_aa377_row10_col1">Professional, Scientific, and Technical Services</td>
+<td class="data row10 col2" id="T_aa377_row10_col2">452,500</td>
+<td class="data row10 col3" id="T_aa377_row10_col3">455,900</td>
+<td class="data row10 col4" id="T_aa377_row10_col4">-3,400</td>
+<td class="data row10 col5" id="T_aa377_row10_col5">-0.75%</td>
+</tr>
+<tr>
+<td class="data row11 col0" id="T_aa377_row11_col0">55</td>
+<td class="data row11 col1" id="T_aa377_row11_col1">Management of Companies and Enterprises</td>
+<td class="data row11 col2" id="T_aa377_row11_col2">79,800</td>
+<td class="data row11 col3" id="T_aa377_row11_col3">80,000</td>
+<td class="data row11 col4" id="T_aa377_row11_col4">-200</td>
+<td class="data row11 col5" id="T_aa377_row11_col5">-0.25%</td>
+</tr>
+<tr>
+<td class="data row12 col0" id="T_aa377_row12_col0">53</td>
+<td class="data row12 col1" id="T_aa377_row12_col1">Real Estate and Rental and Leasing</td>
+<td class="data row12 col2" id="T_aa377_row12_col2">133,000</td>
+<td class="data row12 col3" id="T_aa377_row12_col3">132,600</td>
+<td class="data row12 col4" id="T_aa377_row12_col4">+400</td>
+<td class="data row12 col5" id="T_aa377_row12_col5">+0.30%</td>
+</tr>
+<tr>
+<td class="data row13 col0" id="T_aa377_row13_col0">61</td>
+<td class="data row13 col1" id="T_aa377_row13_col1">Private Educational Services</td>
+<td class="data row13 col2" id="T_aa377_row13_col2">279,700</td>
+<td class="data row13 col3" id="T_aa377_row13_col3">276,900</td>
+<td class="data row13 col4" id="T_aa377_row13_col4">+2,800</td>
+<td class="data row13 col5" id="T_aa377_row13_col5">+1.01%</td>
+</tr>
+<tr>
+<td class="data row14 col0" id="T_aa377_row14_col0">22</td>
+<td class="data row14 col1" id="T_aa377_row14_col1">Utilities</td>
+<td class="data row14 col2" id="T_aa377_row14_col2">17,000</td>
+<td class="data row14 col3" id="T_aa377_row14_col3">16,800</td>
+<td class="data row14 col4" id="T_aa377_row14_col4">+200</td>
+<td class="data row14 col5" id="T_aa377_row14_col5">+1.19%</td>
+</tr>
+<tr>
+<td class="data row15 col0" id="T_aa377_row15_col0">92</td>
+<td class="data row15 col1" id="T_aa377_row15_col1">Government</td>
+<td class="data row15 col2" id="T_aa377_row15_col2">611,300</td>
+<td class="data row15 col3" id="T_aa377_row15_col3">601,800</td>
+<td class="data row15 col4" id="T_aa377_row15_col4">+9,500</td>
+<td class="data row15 col5" id="T_aa377_row15_col5">+1.58%</td>
+</tr>
+<tr>
+<td class="data row16 col0" id="T_aa377_row16_col0">52</td>
+<td class="data row16 col1" id="T_aa377_row16_col1">Finance and Insurance</td>
+<td class="data row16 col2" id="T_aa377_row16_col2">383,900</td>
+<td class="data row16 col3" id="T_aa377_row16_col3">377,800</td>
+<td class="data row16 col4" id="T_aa377_row16_col4">+6,100</td>
+<td class="data row16 col5" id="T_aa377_row16_col5">+1.61%</td>
+</tr>
+<tr>
+<td class="data row17 col0" id="T_aa377_row17_col0">51</td>
+<td class="data row17 col1" id="T_aa377_row17_col1">Information</td>
+<td class="data row17 col2" id="T_aa377_row17_col2">221,300</td>
+<td class="data row17 col3" id="T_aa377_row17_col3">217,100</td>
+<td class="data row17 col4" id="T_aa377_row17_col4">+4,200</td>
+<td class="data row17 col5" id="T_aa377_row17_col5">+1.93%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>=== YEAR-OVER-YEAR CHANGE: Feb 2026 vs Feb 2025 ===
-Ranked by YoY % change (most negative to most positive)
-
-NAICS                                                                 Industry  Feb 2026  Feb 2025  YoY Change  YoY %
-31-33                                                            Manufacturing     50200     53300       -3100  -5.82
-   71                                      Arts, Entertainment, and Recreation     83300     88000       -4700  -5.34
-21+23                                         Mining, Logging and Construction    130400    137000       -6600  -4.82
-   81                                                           Other Services    171900    176800       -4900  -2.77
-   62                                        Health Care and Social Assistance   1017700   1041900      -24200  -2.32
-   42                                                          Wholesale Trade    129700    132700       -3000  -2.26
-   72                                          Accommodation and Food Services    346200    351500       -5300  -1.51
-48-49                                           Transportation and Warehousing    132500    134100       -1600  -1.19
-   56 Administrative and Support and Waste Management and Remediation Services    256500    259400       -2900  -1.12
-44-45                                                             Retail Trade    294100    296800       -2700  -0.91
-   54                         Professional, Scientific, and Technical Services    452500    455900       -3400  -0.75
-   55                                  Management of Companies and Enterprises     79800     80000        -200  -0.25
-   53                                       Real Estate and Rental and Leasing    133000    132600         400   0.30
-   61                                             Private Educational Services    279700    276900        2800   1.01
-   22                                                                Utilities     17000     16800         200   1.19
-   92                                                               Government    611300    601800        9500   1.58
-   52                                                    Finance and Insurance    383900    377800        6100   1.61
-   51                                                              Information    221300    217100        4200   1.93
-
+<pre>
 NYC Total Nonfarm: Feb 2026 = 4,791,000 | Feb 2025 = 4,830,400 | YoY = -39,400 (-0.82%)
-
-Note: All figures are actual employment units (not thousands). Data is not seasonally adjusted.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [4]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'=== TOP MOVERS BY ABSOLUTE CHANGE ==='</span><span class="p">)</span>
-<span class="n">df_abs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'YoY Change'</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_abs</span><span class="p">[[</span><span class="s1">'NAICS'</span><span class="p">,</span> <span class="s1">'Industry'</span><span class="p">,</span> <span class="s1">'YoY Change'</span><span class="p">,</span> <span class="s1">'YoY %'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== TOP MOVERS BY ABSOLUTE CHANGE ===
-NAICS                            Industry  YoY Change  YoY %
-   62   Health Care and Social Assistance      -24200  -2.32
-   92                          Government        9500   1.58
-21+23    Mining, Logging and Construction       -6600  -4.82
-   52               Finance and Insurance        6100   1.61
-   72     Accommodation and Food Services       -5300  -1.51
-   81                      Other Services       -4900  -2.77
-   71 Arts, Entertainment, and Recreation       -4700  -5.34
-   51                         Information        4200   1.93
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr/>
-<h2 id="Step-2.6:-Hand-Verification">Step 2.6: Hand Verification<a class="anchor-link" href="#Step-2.6:-Hand-Verification">¶</a></h2><p>Verifying Health Care &amp; Social Assistance manually:</p>
-<ul>
-<li>Feb 2026: 1,017,700</li>
-<li>Feb 2025: 1,041,900</li>
-<li>YoY Change: 1,017,700 - 1,041,900 = <strong>-24,200</strong></li>
-<li>YoY %: -24,200 / 1,041,900 × 100 = <strong>-2.32%</strong></li>
-</ul>
-<p>Verifying Arts, Entertainment, and Recreation manually:</p>
-<ul>
-<li>Feb 2026: 83,300</li>
-<li>Feb 2025: 88,000</li>
-<li>YoY Change: 83,300 - 88,000 = <strong>-4,700</strong></li>
-<li>YoY %: -4,700 / 88,000 × 100 = <strong>-5.34%</strong></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [5]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">hc</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'NAICS'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'62'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">arts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'NAICS'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'71'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">assert</span> <span class="n">hc</span><span class="p">[</span><span class="s1">'YoY Change'</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">24200</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Health Care YoY mismatch: </span><span class="si">{</span><span class="n">hc</span><span class="p">[</span><span class="s2">"YoY Change"</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>
-<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">hc</span><span class="p">[</span><span class="s1">'YoY %'</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.32</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Health Care YoY% mismatch: </span><span class="si">{</span><span class="n">hc</span><span class="p">[</span><span class="s2">"YoY %"</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>
-<span class="k">assert</span> <span class="n">arts</span><span class="p">[</span><span class="s1">'YoY Change'</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">4700</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Arts YoY mismatch: </span><span class="si">{</span><span class="n">arts</span><span class="p">[</span><span class="s2">"YoY Change"</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>
-<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">arts</span><span class="p">[</span><span class="s1">'YoY %'</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mf">5.34</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Arts YoY% mismatch: </span><span class="si">{</span><span class="n">arts</span><span class="p">[</span><span class="s2">"YoY %"</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'All hand verifications PASS'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>All hand verifications PASS
+All figures are actual employment units (not thousands). Data is not seasonally adjusted.
 </pre>
 </div>
 </div>
@@ -13365,17 +13421,18 @@ NAICS                            Industry  YoY Change  YoY %
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'=== FULL COMPARISON TABLE: Feb 2026 vs Feb 2025 vs Feb 2021 ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="n">display_all</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'NAICS'</span><span class="p">,</span> <span class="s1">'Industry'</span><span class="p">,</span> <span class="s1">'Feb 2026'</span><span class="p">,</span> <span class="s1">'Feb 2025'</span><span class="p">,</span> <span class="s1">'YoY Change'</span><span class="p">,</span> <span class="s1">'YoY %'</span><span class="p">,</span> <span class="s1">'Feb 2021'</span><span class="p">,</span> <span class="s1">'5yr Change'</span><span class="p">,</span> <span class="s1">'5yr %'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display_all</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'NAICS'</span><span class="p">,</span> <span class="s1">'Industry'</span><span class="p">,</span> <span class="s1">'Feb 2026'</span><span class="p">,</span> <span class="s1">'Feb 2025'</span><span class="p">,</span> <span class="s1">'YoY Change'</span><span class="p">,</span> <span class="s1">'YoY %'</span><span class="p">,</span> <span class="s1">'Feb 2021'</span><span class="p">,</span> <span class="s1">'5yr Change'</span><span class="p">,</span> <span class="s1">'5yr %'</span><span class="p">]</span>
 <span class="n">df_full</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'YoY %'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_full</span><span class="p">[</span><span class="n">display_all</span><span class="p">]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'CRITICAL CONTEXT: Feb 2021 was still in COVID disruption.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'The 5-year comparison captures the full post-COVID recovery arc.'</span><span class="p">)</span>
+<span class="n">styled_full</span> <span class="o">=</span> <span class="n">df_full</span><span class="p">[</span><span class="n">display_all</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">({</span>
+    <span class="s1">'Feb 2026'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:,}</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'Feb 2025'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:,}</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'Feb 2021'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:,}</span><span class="s1">'</span><span class="p">,</span>
+    <span class="s1">'YoY Change'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+,}</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'5yr Change'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+,}</span><span class="s1">'</span><span class="p">,</span>
+    <span class="s1">'YoY %'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+.2f}</span><span class="s1">%'</span><span class="p">,</span> <span class="s1">'5yr %'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+.2f}</span><span class="s1">%'</span>
+<span class="p">})</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">styled_full</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">CRITICAL CONTEXT: Feb 2021 was still in COVID disruption.'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Large positive 5-year </span><span class="si">% c</span><span class="s1">hanges reflect recovery from COVID lows, not sustainable growth rates.'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -13385,31 +13442,230 @@ NAICS                            Industry  YoY Change  YoY %
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
+<div class="output_html rendered_html output_subarea"><style type="text/css">
+</style>
+<table id="T_b11ef">
+<thead>
+<tr>
+<th class="col_heading level0 col0" id="T_b11ef_level0_col0">NAICS</th>
+<th class="col_heading level0 col1" id="T_b11ef_level0_col1">Industry</th>
+<th class="col_heading level0 col2" id="T_b11ef_level0_col2">Feb 2026</th>
+<th class="col_heading level0 col3" id="T_b11ef_level0_col3">Feb 2025</th>
+<th class="col_heading level0 col4" id="T_b11ef_level0_col4">YoY Change</th>
+<th class="col_heading level0 col5" id="T_b11ef_level0_col5">YoY %</th>
+<th class="col_heading level0 col6" id="T_b11ef_level0_col6">Feb 2021</th>
+<th class="col_heading level0 col7" id="T_b11ef_level0_col7">5yr Change</th>
+<th class="col_heading level0 col8" id="T_b11ef_level0_col8">5yr %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data row0 col0" id="T_b11ef_row0_col0">31-33</td>
+<td class="data row0 col1" id="T_b11ef_row0_col1">Manufacturing</td>
+<td class="data row0 col2" id="T_b11ef_row0_col2">50,200</td>
+<td class="data row0 col3" id="T_b11ef_row0_col3">53,300</td>
+<td class="data row0 col4" id="T_b11ef_row0_col4">-3,100</td>
+<td class="data row0 col5" id="T_b11ef_row0_col5">-5.82%</td>
+<td class="data row0 col6" id="T_b11ef_row0_col6">52,100</td>
+<td class="data row0 col7" id="T_b11ef_row0_col7">-1,900</td>
+<td class="data row0 col8" id="T_b11ef_row0_col8">-3.65%</td>
+</tr>
+<tr>
+<td class="data row1 col0" id="T_b11ef_row1_col0">71</td>
+<td class="data row1 col1" id="T_b11ef_row1_col1">Arts, Entertainment, and Recreation</td>
+<td class="data row1 col2" id="T_b11ef_row1_col2">83,300</td>
+<td class="data row1 col3" id="T_b11ef_row1_col3">88,000</td>
+<td class="data row1 col4" id="T_b11ef_row1_col4">-4,700</td>
+<td class="data row1 col5" id="T_b11ef_row1_col5">-5.34%</td>
+<td class="data row1 col6" id="T_b11ef_row1_col6">47,000</td>
+<td class="data row1 col7" id="T_b11ef_row1_col7">+36,300</td>
+<td class="data row1 col8" id="T_b11ef_row1_col8">+77.23%</td>
+</tr>
+<tr>
+<td class="data row2 col0" id="T_b11ef_row2_col0">21+23</td>
+<td class="data row2 col1" id="T_b11ef_row2_col1">Mining, Logging and Construction</td>
+<td class="data row2 col2" id="T_b11ef_row2_col2">130,400</td>
+<td class="data row2 col3" id="T_b11ef_row2_col3">137,000</td>
+<td class="data row2 col4" id="T_b11ef_row2_col4">-6,600</td>
+<td class="data row2 col5" id="T_b11ef_row2_col5">-4.82%</td>
+<td class="data row2 col6" id="T_b11ef_row2_col6">135,700</td>
+<td class="data row2 col7" id="T_b11ef_row2_col7">-5,300</td>
+<td class="data row2 col8" id="T_b11ef_row2_col8">-3.91%</td>
+</tr>
+<tr>
+<td class="data row3 col0" id="T_b11ef_row3_col0">81</td>
+<td class="data row3 col1" id="T_b11ef_row3_col1">Other Services</td>
+<td class="data row3 col2" id="T_b11ef_row3_col2">171,900</td>
+<td class="data row3 col3" id="T_b11ef_row3_col3">176,800</td>
+<td class="data row3 col4" id="T_b11ef_row3_col4">-4,900</td>
+<td class="data row3 col5" id="T_b11ef_row3_col5">-2.77%</td>
+<td class="data row3 col6" id="T_b11ef_row3_col6">161,600</td>
+<td class="data row3 col7" id="T_b11ef_row3_col7">+10,300</td>
+<td class="data row3 col8" id="T_b11ef_row3_col8">+6.37%</td>
+</tr>
+<tr>
+<td class="data row4 col0" id="T_b11ef_row4_col0">62</td>
+<td class="data row4 col1" id="T_b11ef_row4_col1">Health Care and Social Assistance</td>
+<td class="data row4 col2" id="T_b11ef_row4_col2">1,017,700</td>
+<td class="data row4 col3" id="T_b11ef_row4_col3">1,041,900</td>
+<td class="data row4 col4" id="T_b11ef_row4_col4">-24,200</td>
+<td class="data row4 col5" id="T_b11ef_row4_col5">-2.32%</td>
+<td class="data row4 col6" id="T_b11ef_row4_col6">783,200</td>
+<td class="data row4 col7" id="T_b11ef_row4_col7">+234,500</td>
+<td class="data row4 col8" id="T_b11ef_row4_col8">+29.94%</td>
+</tr>
+<tr>
+<td class="data row5 col0" id="T_b11ef_row5_col0">42</td>
+<td class="data row5 col1" id="T_b11ef_row5_col1">Wholesale Trade</td>
+<td class="data row5 col2" id="T_b11ef_row5_col2">129,700</td>
+<td class="data row5 col3" id="T_b11ef_row5_col3">132,700</td>
+<td class="data row5 col4" id="T_b11ef_row5_col4">-3,000</td>
+<td class="data row5 col5" id="T_b11ef_row5_col5">-2.26%</td>
+<td class="data row5 col6" id="T_b11ef_row5_col6">119,600</td>
+<td class="data row5 col7" id="T_b11ef_row5_col7">+10,100</td>
+<td class="data row5 col8" id="T_b11ef_row5_col8">+8.44%</td>
+</tr>
+<tr>
+<td class="data row6 col0" id="T_b11ef_row6_col0">72</td>
+<td class="data row6 col1" id="T_b11ef_row6_col1">Accommodation and Food Services</td>
+<td class="data row6 col2" id="T_b11ef_row6_col2">346,200</td>
+<td class="data row6 col3" id="T_b11ef_row6_col3">351,500</td>
+<td class="data row6 col4" id="T_b11ef_row6_col4">-5,300</td>
+<td class="data row6 col5" id="T_b11ef_row6_col5">-1.51%</td>
+<td class="data row6 col6" id="T_b11ef_row6_col6">185,100</td>
+<td class="data row6 col7" id="T_b11ef_row6_col7">+161,100</td>
+<td class="data row6 col8" id="T_b11ef_row6_col8">+87.03%</td>
+</tr>
+<tr>
+<td class="data row7 col0" id="T_b11ef_row7_col0">48-49</td>
+<td class="data row7 col1" id="T_b11ef_row7_col1">Transportation and Warehousing</td>
+<td class="data row7 col2" id="T_b11ef_row7_col2">132,500</td>
+<td class="data row7 col3" id="T_b11ef_row7_col3">134,100</td>
+<td class="data row7 col4" id="T_b11ef_row7_col4">-1,600</td>
+<td class="data row7 col5" id="T_b11ef_row7_col5">-1.19%</td>
+<td class="data row7 col6" id="T_b11ef_row7_col6">114,500</td>
+<td class="data row7 col7" id="T_b11ef_row7_col7">+18,000</td>
+<td class="data row7 col8" id="T_b11ef_row7_col8">+15.72%</td>
+</tr>
+<tr>
+<td class="data row8 col0" id="T_b11ef_row8_col0">56</td>
+<td class="data row8 col1" id="T_b11ef_row8_col1">Administrative and Support and Waste Management and Remediation Services</td>
+<td class="data row8 col2" id="T_b11ef_row8_col2">256,500</td>
+<td class="data row8 col3" id="T_b11ef_row8_col3">259,400</td>
+<td class="data row8 col4" id="T_b11ef_row8_col4">-2,900</td>
+<td class="data row8 col5" id="T_b11ef_row8_col5">-1.12%</td>
+<td class="data row8 col6" id="T_b11ef_row8_col6">221,000</td>
+<td class="data row8 col7" id="T_b11ef_row8_col7">+35,500</td>
+<td class="data row8 col8" id="T_b11ef_row8_col8">+16.06%</td>
+</tr>
+<tr>
+<td class="data row9 col0" id="T_b11ef_row9_col0">44-45</td>
+<td class="data row9 col1" id="T_b11ef_row9_col1">Retail Trade</td>
+<td class="data row9 col2" id="T_b11ef_row9_col2">294,100</td>
+<td class="data row9 col3" id="T_b11ef_row9_col3">296,800</td>
+<td class="data row9 col4" id="T_b11ef_row9_col4">-2,700</td>
+<td class="data row9 col5" id="T_b11ef_row9_col5">-0.91%</td>
+<td class="data row9 col6" id="T_b11ef_row9_col6">283,100</td>
+<td class="data row9 col7" id="T_b11ef_row9_col7">+11,000</td>
+<td class="data row9 col8" id="T_b11ef_row9_col8">+3.89%</td>
+</tr>
+<tr>
+<td class="data row10 col0" id="T_b11ef_row10_col0">54</td>
+<td class="data row10 col1" id="T_b11ef_row10_col1">Professional, Scientific, and Technical Services</td>
+<td class="data row10 col2" id="T_b11ef_row10_col2">452,500</td>
+<td class="data row10 col3" id="T_b11ef_row10_col3">455,900</td>
+<td class="data row10 col4" id="T_b11ef_row10_col4">-3,400</td>
+<td class="data row10 col5" id="T_b11ef_row10_col5">-0.75%</td>
+<td class="data row10 col6" id="T_b11ef_row10_col6">414,400</td>
+<td class="data row10 col7" id="T_b11ef_row10_col7">+38,100</td>
+<td class="data row10 col8" id="T_b11ef_row10_col8">+9.19%</td>
+</tr>
+<tr>
+<td class="data row11 col0" id="T_b11ef_row11_col0">55</td>
+<td class="data row11 col1" id="T_b11ef_row11_col1">Management of Companies and Enterprises</td>
+<td class="data row11 col2" id="T_b11ef_row11_col2">79,800</td>
+<td class="data row11 col3" id="T_b11ef_row11_col3">80,000</td>
+<td class="data row11 col4" id="T_b11ef_row11_col4">-200</td>
+<td class="data row11 col5" id="T_b11ef_row11_col5">-0.25%</td>
+<td class="data row11 col6" id="T_b11ef_row11_col6">64,200</td>
+<td class="data row11 col7" id="T_b11ef_row11_col7">+15,600</td>
+<td class="data row11 col8" id="T_b11ef_row11_col8">+24.30%</td>
+</tr>
+<tr>
+<td class="data row12 col0" id="T_b11ef_row12_col0">53</td>
+<td class="data row12 col1" id="T_b11ef_row12_col1">Real Estate and Rental and Leasing</td>
+<td class="data row12 col2" id="T_b11ef_row12_col2">133,000</td>
+<td class="data row12 col3" id="T_b11ef_row12_col3">132,600</td>
+<td class="data row12 col4" id="T_b11ef_row12_col4">+400</td>
+<td class="data row12 col5" id="T_b11ef_row12_col5">+0.30%</td>
+<td class="data row12 col6" id="T_b11ef_row12_col6">124,700</td>
+<td class="data row12 col7" id="T_b11ef_row12_col7">+8,300</td>
+<td class="data row12 col8" id="T_b11ef_row12_col8">+6.66%</td>
+</tr>
+<tr>
+<td class="data row13 col0" id="T_b11ef_row13_col0">61</td>
+<td class="data row13 col1" id="T_b11ef_row13_col1">Private Educational Services</td>
+<td class="data row13 col2" id="T_b11ef_row13_col2">279,700</td>
+<td class="data row13 col3" id="T_b11ef_row13_col3">276,900</td>
+<td class="data row13 col4" id="T_b11ef_row13_col4">+2,800</td>
+<td class="data row13 col5" id="T_b11ef_row13_col5">+1.01%</td>
+<td class="data row13 col6" id="T_b11ef_row13_col6">254,100</td>
+<td class="data row13 col7" id="T_b11ef_row13_col7">+25,600</td>
+<td class="data row13 col8" id="T_b11ef_row13_col8">+10.07%</td>
+</tr>
+<tr>
+<td class="data row14 col0" id="T_b11ef_row14_col0">22</td>
+<td class="data row14 col1" id="T_b11ef_row14_col1">Utilities</td>
+<td class="data row14 col2" id="T_b11ef_row14_col2">17,000</td>
+<td class="data row14 col3" id="T_b11ef_row14_col3">16,800</td>
+<td class="data row14 col4" id="T_b11ef_row14_col4">+200</td>
+<td class="data row14 col5" id="T_b11ef_row14_col5">+1.19%</td>
+<td class="data row14 col6" id="T_b11ef_row14_col6">14,300</td>
+<td class="data row14 col7" id="T_b11ef_row14_col7">+2,700</td>
+<td class="data row14 col8" id="T_b11ef_row14_col8">+18.88%</td>
+</tr>
+<tr>
+<td class="data row15 col0" id="T_b11ef_row15_col0">92</td>
+<td class="data row15 col1" id="T_b11ef_row15_col1">Government</td>
+<td class="data row15 col2" id="T_b11ef_row15_col2">611,300</td>
+<td class="data row15 col3" id="T_b11ef_row15_col3">601,800</td>
+<td class="data row15 col4" id="T_b11ef_row15_col4">+9,500</td>
+<td class="data row15 col5" id="T_b11ef_row15_col5">+1.58%</td>
+<td class="data row15 col6" id="T_b11ef_row15_col6">579,600</td>
+<td class="data row15 col7" id="T_b11ef_row15_col7">+31,700</td>
+<td class="data row15 col8" id="T_b11ef_row15_col8">+5.47%</td>
+</tr>
+<tr>
+<td class="data row16 col0" id="T_b11ef_row16_col0">52</td>
+<td class="data row16 col1" id="T_b11ef_row16_col1">Finance and Insurance</td>
+<td class="data row16 col2" id="T_b11ef_row16_col2">383,900</td>
+<td class="data row16 col3" id="T_b11ef_row16_col3">377,800</td>
+<td class="data row16 col4" id="T_b11ef_row16_col4">+6,100</td>
+<td class="data row16 col5" id="T_b11ef_row16_col5">+1.61%</td>
+<td class="data row16 col6" id="T_b11ef_row16_col6">336,300</td>
+<td class="data row16 col7" id="T_b11ef_row16_col7">+47,600</td>
+<td class="data row16 col8" id="T_b11ef_row16_col8">+14.15%</td>
+</tr>
+<tr>
+<td class="data row17 col0" id="T_b11ef_row17_col0">51</td>
+<td class="data row17 col1" id="T_b11ef_row17_col1">Information</td>
+<td class="data row17 col2" id="T_b11ef_row17_col2">221,300</td>
+<td class="data row17 col3" id="T_b11ef_row17_col3">217,100</td>
+<td class="data row17 col4" id="T_b11ef_row17_col4">+4,200</td>
+<td class="data row17 col5" id="T_b11ef_row17_col5">+1.93%</td>
+<td class="data row17 col6" id="T_b11ef_row17_col6">210,300</td>
+<td class="data row17 col7" id="T_b11ef_row17_col7">+11,000</td>
+<td class="data row17 col8" id="T_b11ef_row17_col8">+5.23%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>=== FULL COMPARISON TABLE: Feb 2026 vs Feb 2025 vs Feb 2021 ===
-
-NAICS                                                                 Industry  Feb 2026  Feb 2025  YoY Change  YoY %  Feb 2021  5yr Change  5yr %
-31-33                                                            Manufacturing     50200     53300       -3100  -5.82     52100       -1900  -3.65
-   71                                      Arts, Entertainment, and Recreation     83300     88000       -4700  -5.34     47000       36300  77.23
-21+23                                         Mining, Logging and Construction    130400    137000       -6600  -4.82    135700       -5300  -3.91
-   81                                                           Other Services    171900    176800       -4900  -2.77    161600       10300   6.37
-   62                                        Health Care and Social Assistance   1017700   1041900      -24200  -2.32    783200      234500  29.94
-   42                                                          Wholesale Trade    129700    132700       -3000  -2.26    119600       10100   8.44
-   72                                          Accommodation and Food Services    346200    351500       -5300  -1.51    185100      161100  87.03
-48-49                                           Transportation and Warehousing    132500    134100       -1600  -1.19    114500       18000  15.72
-   56 Administrative and Support and Waste Management and Remediation Services    256500    259400       -2900  -1.12    221000       35500  16.06
-44-45                                                             Retail Trade    294100    296800       -2700  -0.91    283100       11000   3.89
-   54                         Professional, Scientific, and Technical Services    452500    455900       -3400  -0.75    414400       38100   9.19
-   55                                  Management of Companies and Enterprises     79800     80000        -200  -0.25     64200       15600  24.30
-   53                                       Real Estate and Rental and Leasing    133000    132600         400   0.30    124700        8300   6.66
-   61                                             Private Educational Services    279700    276900        2800   1.01    254100       25600  10.07
-   22                                                                Utilities     17000     16800         200   1.19     14300        2700  18.88
-   92                                                               Government    611300    601800        9500   1.58    579600       31700   5.47
-   52                                                    Finance and Insurance    383900    377800        6100   1.61    336300       47600  14.15
-   51                                                              Information    221300    217100        4200   1.93    210300       11000   5.23
-
+<pre>
 CRITICAL CONTEXT: Feb 2021 was still in COVID disruption.
-The 5-year comparison captures the full post-COVID recovery arc.
 Large positive 5-year % changes reflect recovery from COVID lows, not sustainable growth rates.
 </pre>
 </div>
@@ -13427,7 +13683,7 @@ Large positive 5-year % changes reflect recovery from COVID lows, not sustainabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df_chart</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'YoY %'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13466,7 +13722,7 @@ Large positive 5-year % changes reflect recovery from COVID lows, not sustainabl
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea"><div> <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-<script charset="utf-8" crossorigin="anonymous" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" src="https://cdn.plot.ly/plotly-3.5.0.min.js"></script> <div class="plotly-graph-div" id="764b5cb3-44ad-461a-9cd5-c70de65c7ec0" style="height:700px; width:1000px;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("764b5cb3-44ad-461a-9cd5-c70de65c7ec0")) {                    Plotly.newPlot(                        "764b5cb3-44ad-461a-9cd5-c70de65c7ec0",                        [{"marker":{"color":["#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#2e7d32","#2e7d32","#2e7d32","#2e7d32","#2e7d32","#2e7d32"]},"orientation":"h","text":["-5.82%","-5.34%","-4.82%","-2.77%","-2.32%","-2.26%","-1.51%","-1.19%","-1.12%","-0.91%","-0.75%","-0.25%","+0.30%","+1.01%","+1.19%","+1.58%","+1.61%","+1.93%"],"textfont":{"size":10},"textposition":"outside","x":{"bdata":"SOF6FK5HF8Bcj8L1KFwVwEjhehSuRxPAKVyPwvUoBsCPwvUoXI8CwBSuR+F6FALAKVyPwvUo+L8K16NwPQrzv+xRuB6F6\u002fG\u002fH4XrUbge7b8AAAAAAADovwAAAAAAANC\u002fMzMzMzMz0z8pXI\u002fC9SjwPwrXo3A9CvM\u002fSOF6FK5H+T\u002fD9Shcj8L5P+F6FK5H4f4\u002f","dtype":"f8"},"y":["31-33: Manufacturing","71: Arts, Entertainment, and Recreation","21+23: Mining, Logging and Construction","81: Other Services","62: Health Care and Social Assistance","42: Wholesale Trade","72: Accommodation and Food Services","48-49: Transportation and Warehousing","56: Administrative and Support and Waste Management and Remediation Services","44-45: Retail Trade","54: Professional, Scientific, and Technical Services","55: Management of Companies and Enterprises","53: Real Estate and Rental and Leasing","61: Private Educational Services","22: Utilities","92: Government","52: Finance and Insurance","51: Information"],"type":"bar"}],                        {"font":{"size":11},"height":700,"margin":{"l":350},"showlegend":false,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"Year-over-Year Employment Change by Industry (Feb 2026 vs Feb 2025)\u003cbr\u003e\u003csup\u003eNew York City, 2-digit NAICS sectors | Not seasonally adjusted | Data: NYS DOL CES\u003c\u002fsup\u003e"},"width":1000,"xaxis":{"title":{"text":"YoY % Change"},"zeroline":true,"zerolinecolor":"#333","zerolinewidth":1},"yaxis":{"title":{"text":""}}},                        {"responsive": true}                    )                };            </script> </div></div>
+<script charset="utf-8" crossorigin="anonymous" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" src="https://cdn.plot.ly/plotly-3.5.0.min.js"></script> <div class="plotly-graph-div" id="72c85e52-8e04-4252-91f5-60d3fc68f363" style="height:700px; width:1000px;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("72c85e52-8e04-4252-91f5-60d3fc68f363")) {                    Plotly.newPlot(                        "72c85e52-8e04-4252-91f5-60d3fc68f363",                        [{"marker":{"color":["#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#d32f2f","#2e7d32","#2e7d32","#2e7d32","#2e7d32","#2e7d32","#2e7d32"]},"orientation":"h","text":["-5.82%","-5.34%","-4.82%","-2.77%","-2.32%","-2.26%","-1.51%","-1.19%","-1.12%","-0.91%","-0.75%","-0.25%","+0.30%","+1.01%","+1.19%","+1.58%","+1.61%","+1.93%"],"textfont":{"size":10},"textposition":"outside","x":{"bdata":"SOF6FK5HF8Bcj8L1KFwVwEjhehSuRxPAKVyPwvUoBsCPwvUoXI8CwBSuR+F6FALAKVyPwvUo+L8K16NwPQrzv+xRuB6F6\u002fG\u002fH4XrUbge7b8AAAAAAADovwAAAAAAANC\u002fMzMzMzMz0z8pXI\u002fC9SjwPwrXo3A9CvM\u002fSOF6FK5H+T\u002fD9Shcj8L5P+F6FK5H4f4\u002f","dtype":"f8"},"y":["31-33: Manufacturing","71: Arts, Entertainment, and Recreation","21+23: Mining, Logging and Construction","81: Other Services","62: Health Care and Social Assistance","42: Wholesale Trade","72: Accommodation and Food Services","48-49: Transportation and Warehousing","56: Administrative and Support and Waste Management and Remediation Services","44-45: Retail Trade","54: Professional, Scientific, and Technical Services","55: Management of Companies and Enterprises","53: Real Estate and Rental and Leasing","61: Private Educational Services","22: Utilities","92: Government","52: Finance and Insurance","51: Information"],"type":"bar"}],                        {"font":{"size":11},"height":700,"margin":{"l":350},"showlegend":false,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"Year-over-Year Employment Change by Industry (Feb 2026 vs Feb 2025)\u003cbr\u003e\u003csup\u003eNew York City, 2-digit NAICS sectors | Not seasonally adjusted | Data: NYS DOL CES\u003c\u002fsup\u003e"},"width":1000,"xaxis":{"title":{"text":"YoY % Change"},"zeroline":true,"zerolinecolor":"#333","zerolinewidth":1},"yaxis":{"title":{"text":""}}},                        {"responsive": true}                    )                };            </script> </div></div>
 </div>
 </div>
 </div>
@@ -13481,7 +13737,7 @@ Large positive 5-year % changes reflect recovery from COVID lows, not sustainabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">top_movers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'YoY %'</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mf">1.0</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'YoY %'</span><span class="p">)</span>
@@ -13522,7 +13778,7 @@ Large positive 5-year % changes reflect recovery from COVID lows, not sustainabl
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea"><div> <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-<script charset="utf-8" crossorigin="anonymous" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" src="https://cdn.plot.ly/plotly-3.5.0.min.js"></script> <div class="plotly-graph-div" id="b0d6fee6-0f16-4111-a53e-52389288f4db" style="height:600px; width:1000px;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("b0d6fee6-0f16-4111-a53e-52389288f4db")) {                    Plotly.newPlot(                        "b0d6fee6-0f16-4111-a53e-52389288f4db",                        [{"marker":{"color":"#1565c0"},"name":"1-Year (Feb 2026 vs Feb 2025)","orientation":"h","x":{"bdata":"SOF6FK5HF8Bcj8L1KFwVwEjhehSuRxPAKVyPwvUoBsCPwvUoXI8CwBSuR+F6FALAKVyPwvUo+L8K16NwPQrzv+xRuB6F6\u002fG\u002fKVyPwvUo8D8K16NwPQrzP0jhehSuR\u002fk\u002fw\u002fUoXI\u002fC+T\u002fhehSuR+H+Pw==","dtype":"f8"},"y":["31-33: Manufacturing","71: Arts, Entertainment, and Recreation","21+23: Mining, Logging and Construction","81: Other Services","62: Health Care and Social Assistance","42: Wholesale Trade","72: Accommodation and Food Services","48-49: Transportation and Warehousing","56: Administrative and Support and Waste Management and Remediation Services","61: Private Educational Services","22: Utilities","92: Government","52: Finance and Insurance","51: Information"],"type":"bar"},{"marker":{"color":"#f57c00"},"name":"5-Year (Feb 2026 vs Feb 2021)","orientation":"h","x":{"bdata":"MzMzMzMzDcAfhetRuE5TQEjhehSuRw\u002fAexSuR+F6GUBxPQrXo\u002fA9QOF6FK5H4SBAUrgehevBVUBxPQrXo3AvQI\u002fC9ShcDzBApHA9CtcjJEDhehSuR+EyQOF6FK5H4RVAzczMzMxMLEDsUbgehesUQA==","dtype":"f8"},"y":["31-33: Manufacturing","71: Arts, Entertainment, and Recreation","21+23: Mining, Logging and Construction","81: Other Services","62: Health Care and Social Assistance","42: Wholesale Trade","72: Accommodation and Food Services","48-49: Transportation and Warehousing","56: Administrative and Support and Waste Management and Remediation Services","61: Private Educational Services","22: Utilities","92: Government","52: Finance and Insurance","51: Information"],"type":"bar"}],                        {"barmode":"group","font":{"size":11},"height":600,"legend":{"x":0.7,"y":0.98},"margin":{"l":350},"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"1-Year vs 5-Year Employment % Change: Top Movers\u003cbr\u003e\u003csup\u003eFeb 2021 was still in COVID disruption \u2014 large 5-year gains reflect recovery, not organic growth\u003c\u002fsup\u003e"},"width":1000,"xaxis":{"title":{"text":"% Change"}}},                        {"responsive": true}                    )                };            </script> </div></div>
+<script charset="utf-8" crossorigin="anonymous" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" src="https://cdn.plot.ly/plotly-3.5.0.min.js"></script> <div class="plotly-graph-div" id="be7d693a-754a-4aaf-8008-757c119939ef" style="height:600px; width:1000px;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("be7d693a-754a-4aaf-8008-757c119939ef")) {                    Plotly.newPlot(                        "be7d693a-754a-4aaf-8008-757c119939ef",                        [{"marker":{"color":"#1565c0"},"name":"1-Year (Feb 2026 vs Feb 2025)","orientation":"h","x":{"bdata":"SOF6FK5HF8Bcj8L1KFwVwEjhehSuRxPAKVyPwvUoBsCPwvUoXI8CwBSuR+F6FALAKVyPwvUo+L8K16NwPQrzv+xRuB6F6\u002fG\u002fKVyPwvUo8D8K16NwPQrzP0jhehSuR\u002fk\u002fw\u002fUoXI\u002fC+T\u002fhehSuR+H+Pw==","dtype":"f8"},"y":["31-33: Manufacturing","71: Arts, Entertainment, and Recreation","21+23: Mining, Logging and Construction","81: Other Services","62: Health Care and Social Assistance","42: Wholesale Trade","72: Accommodation and Food Services","48-49: Transportation and Warehousing","56: Administrative and Support and Waste Management and Remediation Services","61: Private Educational Services","22: Utilities","92: Government","52: Finance and Insurance","51: Information"],"type":"bar"},{"marker":{"color":"#f57c00"},"name":"5-Year (Feb 2026 vs Feb 2021)","orientation":"h","x":{"bdata":"MzMzMzMzDcAfhetRuE5TQEjhehSuRw\u002fAexSuR+F6GUBxPQrXo\u002fA9QOF6FK5H4SBAUrgehevBVUBxPQrXo3AvQI\u002fC9ShcDzBApHA9CtcjJEDhehSuR+EyQOF6FK5H4RVAzczMzMxMLEDsUbgehesUQA==","dtype":"f8"},"y":["31-33: Manufacturing","71: Arts, Entertainment, and Recreation","21+23: Mining, Logging and Construction","81: Other Services","62: Health Care and Social Assistance","42: Wholesale Trade","72: Accommodation and Food Services","48-49: Transportation and Warehousing","56: Administrative and Support and Waste Management and Remediation Services","61: Private Educational Services","22: Utilities","92: Government","52: Finance and Insurance","51: Information"],"type":"bar"}],                        {"barmode":"group","font":{"size":11},"height":600,"legend":{"x":0.7,"y":0.98},"margin":{"l":350},"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"1-Year vs 5-Year Employment % Change: Top Movers\u003cbr\u003e\u003csup\u003eFeb 2021 was still in COVID disruption \u2014 large 5-year gains reflect recovery, not organic growth\u003c\u002fsup\u003e"},"width":1000,"xaxis":{"title":{"text":"% Change"}}},                        {"responsive": true}                    )                };            </script> </div></div>
 </div>
 </div>
 </div>
@@ -13567,135 +13823,13 @@ Large positive 5-year % changes reflect recovery from COVID lows, not sustainabl
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
-<h2 id="Step-2.14:-Q1b-Narrative-%E2%80%94-1-Year-vs-5-Year-Comparison">Step 2.14: Q1b Narrative — 1-Year vs 5-Year Comparison<a class="anchor-link" href="#Step-2.14:-Q1b-Narrative-%E2%80%94-1-Year-vs-5-Year-Comparison">¶</a></h2><p>The contrast between 1-year and 5-year changes is dramatic, and for good reason: <strong>the 5-year baseline (February 2021) is still deep in COVID disruption.</strong></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [9]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_compare</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'5yr %'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== INDUSTRIES WHERE 5-YEAR GAINS FAR EXCEED 1-YEAR CHANGES ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'(Indicating COVID recovery that has since plateaued or reversed)'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_compare</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">diff</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'5yr %'</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s1">'YoY %'</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'NAICS'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'Industry'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    1-year: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'YoY %'</span><span class="p">]</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2">%  |  5-year: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'5yr %'</span><span class="p">]</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2">%  |  Gap: </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">pp"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== INDUSTRIES WHERE 5-YEAR GAINS FAR EXCEED 1-YEAR CHANGES ===
-(Indicating COVID recovery that has since plateaued or reversed)
-
-  72: Accommodation and Food Services
-    1-year: -1.51%  |  5-year: +87.03%  |  Gap: 88.5pp
-
-  71: Arts, Entertainment, and Recreation
-    1-year: -5.34%  |  5-year: +77.23%  |  Gap: 82.6pp
-
-  62: Health Care and Social Assistance
-    1-year: -2.32%  |  5-year: +29.94%  |  Gap: 32.3pp
-
-  55: Management of Companies and Enterprises
-    1-year: -0.25%  |  5-year: +24.30%  |  Gap: 24.6pp
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Key-Observations:-1-Year-vs-5-Year">Key Observations: 1-Year vs 5-Year<a class="anchor-link" href="#Key-Observations:-1-Year-vs-5-Year">¶</a></h3><p><strong>1. Accommodation and Food Services (NAICS 72): 5yr = +87.0%, 1yr = -1.51%</strong></p>
-<p>This sector more than doubled from its COVID low (185,100 in Feb 2021 to 346,200 in Feb 2026), but has now begun declining year-over-year. The 5-year figure reflects the full arc of restaurant and hotel recovery from the pandemic shutdown. The recent decline suggests the recovery is complete and the sector is now experiencing normal cyclical softening.</p>
-<p><strong>2. Arts, Entertainment, and Recreation (NAICS 71): 5yr = +77.2%, 1yr = -5.34%</strong></p>
-<p>Similar pattern — massive recovery from COVID (47,000 → 83,300 over 5 years) but now contracting. The post-COVID boom in entertainment spending has normalized.</p>
-<p><strong>3. Health Care and Social Assistance (NAICS 62): 5yr = +29.9%, 1yr = -2.32%</strong></p>
-<p>The 5-year gain of +234,500 jobs is largely real growth driven by an aging population and expanded home health care programs. However, the year-over-year decline of -24,200 is <strong>primarily a policy artifact</strong> (CDPAP reform), not a reversal of the underlying demand trend. After the reclassification effects wash out (expected by mid-2026), health care employment is likely to resume growing.</p>
-<p><strong>4. Information (NAICS 51): 5yr = +10.5%, 1yr = +1.94%</strong></p>
-<p>Information is one of the few sectors where both the 1-year and 5-year changes are positive. This suggests sustained structural growth in NYC's media, streaming, and technology content sectors, even as traditional tech employment faces AI-related headwinds.</p>
-<p><strong>5. Manufacturing (NAICS 31-33): 5yr = -3.6%, 1yr = -5.81%</strong></p>
-<p>Manufacturing is declining in both timeframes, but the pace of decline has accelerated. This is a continuation of a decades-long secular trend — not a COVID artifact.</p>
-<h3 id="The-COVID-Lens">The COVID Lens<a class="anchor-link" href="#The-COVID-Lens">¶</a></h3><p>The 5-year comparison must be interpreted through a COVID lens:</p>
-<ul>
-<li><strong>Sectors with the largest 5-year gains</strong> (Accommodation, Arts, Health Care) had the deepest COVID troughs</li>
-<li><strong>The 5-year % change is NOT a normal growth rate</strong> — it conflates recovery with organic growth</li>
-<li><strong>A sector showing +50% over 5 years may actually be plateauing</strong> if the 1-year trend is flat or negative</li>
-<li>The only sectors showing positive growth in BOTH periods are: Information (+10.5%, +1.94%), Finance &amp; Insurance (+14.2%, +1.61%), Utilities (+18.9%, +1.19%), Real Estate (+6.7%, +0.30%), and Government (+5.5%, +1.58%)</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [10]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">both_positive</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'YoY %'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'5yr %'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'YoY %'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== SECTORS WITH POSITIVE GROWTH IN BOTH PERIODS ==='</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">both_positive</span><span class="p">[[</span><span class="s1">'NAICS'</span><span class="p">,</span> <span class="s1">'Industry'</span><span class="p">,</span> <span class="s1">'YoY %'</span><span class="p">,</span> <span class="s1">'5yr %'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'=== SECTORS WITH NEGATIVE GROWTH IN BOTH PERIODS ==='</span><span class="p">)</span>
-<span class="n">both_negative</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'YoY %'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'5yr %'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)]</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">both_negative</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">both_negative</span><span class="p">[[</span><span class="s1">'NAICS'</span><span class="p">,</span> <span class="s1">'Industry'</span><span class="p">,</span> <span class="s1">'YoY %'</span><span class="p">,</span> <span class="s1">'5yr %'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'None — every sector grew over 5 years except...'</span><span class="p">)</span>
-    <span class="n">neg5</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'5yr %'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neg5</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">neg5</span><span class="p">[[</span><span class="s1">'NAICS'</span><span class="p">,</span> <span class="s1">'Industry'</span><span class="p">,</span> <span class="s1">'5yr %'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>=== SECTORS WITH POSITIVE GROWTH IN BOTH PERIODS ===
-NAICS                           Industry  YoY %  5yr %
-   51                        Information   1.93   5.23
-   52              Finance and Insurance   1.61  14.15
-   92                         Government   1.58   5.47
-   22                          Utilities   1.19  18.88
-   61       Private Educational Services   1.01  10.07
-   53 Real Estate and Rental and Leasing   0.30   6.66
-
-=== SECTORS WITH NEGATIVE GROWTH IN BOTH PERIODS ===
-NAICS                         Industry  YoY %  5yr %
-21+23 Mining, Logging and Construction  -4.82  -3.91
-31-33                    Manufacturing  -5.82  -3.65
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr/>
 <h2 id="Step-2.12:-Chart-3-%E2%80%94-5-Year-Employment-Trends-for-Key-Industries">Step 2.12: Chart 3 — 5-Year Employment Trends for Key Industries<a class="anchor-link" href="#Step-2.12:-Chart-3-%E2%80%94-5-Year-Employment-Trends-for-Key-Industries">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">key_naics</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'62'</span><span class="p">,</span> <span class="s1">'72'</span><span class="p">,</span> <span class="s1">'71'</span><span class="p">,</span> <span class="s1">'51'</span><span class="p">,</span> <span class="s1">'52'</span><span class="p">,</span> <span class="s1">'92'</span><span class="p">]</span>
@@ -13737,7 +13871,7 @@ NAICS                         Industry  YoY %  5yr %
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea"><div> <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-<script charset="utf-8" crossorigin="anonymous" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" src="https://cdn.plot.ly/plotly-3.5.0.min.js"></script> <div class="plotly-graph-div" id="aace5685-23b9-4e8d-884b-982f6b3b1f0a" style="height:500px; width:1000px;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("aace5685-23b9-4e8d-884b-982f6b3b1f0a")) {                    Plotly.newPlot(                        "aace5685-23b9-4e8d-884b-982f6b3b1f0a",                        [{"mode":"lines+markers","name":"62: Health Care and Social Assistance","x":[2021,2022,2023,2024,2025,2026],"y":[783200,829700,895400,965500,1041900,1017700],"type":"scatter"},{"mode":"lines+markers","name":"72: Accommodation and Food Services","x":[2021,2022,2023,2024,2025,2026],"y":[185100,290200,333700,342800,351500,346200],"type":"scatter"},{"mode":"lines+markers","name":"71: Arts, Entertainment, and Recreation","x":[2021,2022,2023,2024,2025,2026],"y":[47000,70600,80400,84800,88000,83300],"type":"scatter"},{"mode":"lines+markers","name":"51: Information","x":[2021,2022,2023,2024,2025,2026],"y":[210300,230900,234400,224500,217100,221300],"type":"scatter"},{"mode":"lines+markers","name":"52: Finance and Insurance","x":[2021,2022,2023,2024,2025,2026],"y":[336300,345400,363800,369100,377800,383900],"type":"scatter"},{"mode":"lines+markers","name":"92: Government","x":[2021,2022,2023,2024,2025,2026],"y":[579600,581200,576700,592500,601800,611300],"type":"scatter"}],                        {"font":{"size":11},"height":500,"legend":{"bgcolor":"rgba(255,255,255,0.8)","x":0.01,"y":0.99},"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"February Employment Trends for Key NYC Industries (2021\u20132026)\u003cbr\u003e\u003csup\u003eDashed line marks pre-COVID recovery | Data: NYS DOL CES, not seasonally adjusted\u003c\u002fsup\u003e"},"width":1000,"xaxis":{"title":{"text":"Year"}},"yaxis":{"title":{"text":"Employment"}}},                        {"responsive": true}                    )                };            </script> </div></div>
+<script charset="utf-8" crossorigin="anonymous" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" src="https://cdn.plot.ly/plotly-3.5.0.min.js"></script> <div class="plotly-graph-div" id="c6574192-d5f4-4de8-95da-543650794e5b" style="height:500px; width:1000px;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("c6574192-d5f4-4de8-95da-543650794e5b")) {                    Plotly.newPlot(                        "c6574192-d5f4-4de8-95da-543650794e5b",                        [{"mode":"lines+markers","name":"62: Health Care and Social Assistance","x":[2021,2022,2023,2024,2025,2026],"y":[783200,829700,895400,965500,1041900,1017700],"type":"scatter"},{"mode":"lines+markers","name":"72: Accommodation and Food Services","x":[2021,2022,2023,2024,2025,2026],"y":[185100,290200,333700,342800,351500,346200],"type":"scatter"},{"mode":"lines+markers","name":"71: Arts, Entertainment, and Recreation","x":[2021,2022,2023,2024,2025,2026],"y":[47000,70600,80400,84800,88000,83300],"type":"scatter"},{"mode":"lines+markers","name":"51: Information","x":[2021,2022,2023,2024,2025,2026],"y":[210300,230900,234400,224500,217100,221300],"type":"scatter"},{"mode":"lines+markers","name":"52: Finance and Insurance","x":[2021,2022,2023,2024,2025,2026],"y":[336300,345400,363800,369100,377800,383900],"type":"scatter"},{"mode":"lines+markers","name":"92: Government","x":[2021,2022,2023,2024,2025,2026],"y":[579600,581200,576700,592500,601800,611300],"type":"scatter"}],                        {"font":{"size":11},"height":500,"legend":{"bgcolor":"rgba(255,255,255,0.8)","x":0.01,"y":0.99},"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"February Employment Trends for Key NYC Industries (2021\u20132026)\u003cbr\u003e\u003csup\u003eDashed line marks pre-COVID recovery | Data: NYS DOL CES, not seasonally adjusted\u003c\u002fsup\u003e"},"width":1000,"xaxis":{"title":{"text":"Year"}},"yaxis":{"title":{"text":"Employment"}}},                        {"responsive": true}                    )                };            </script> </div></div>
 </div>
 </div>
 </div>
