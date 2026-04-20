@@ -63,56 +63,71 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
-        .card .icon {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-        .card h2 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .card p {
-            font-size: 0.9rem;
-            color: #6e6e73;
-            line-height: 1.5;
-        }
+        .card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+        .card h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; }
+        .card p { font-size: 0.9rem; color: #6e6e73; line-height: 1.5; }
         .card .tag {
-            display: inline-block;
-            font-size: 0.72rem;
-            font-weight: 500;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-top: 12px;
+            display: inline-block; font-size: 0.72rem; font-weight: 500;
+            padding: 3px 8px; border-radius: 4px; margin-top: 12px;
         }
         .tag-blue { background: #e8f0fe; color: #1a73e8; }
         .tag-green { background: #e6f4ea; color: #137333; }
         .tag-orange { background: #fef7e0; color: #b06000; }
 
-        .summary {
+        .qa-block {
             background: white;
             border-radius: 12px;
             padding: 32px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
-        .summary h2 {
-            font-size: 1.2rem;
+        .qa-block h2 {
+            font-size: 1rem;
             font-weight: 600;
+            color: #0f3460;
+            margin-bottom: 6px;
+        }
+        .qa-block .question {
+            font-size: 0.92rem;
+            color: #555;
             margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+            font-style: italic;
         }
-        .summary ul {
-            list-style: none;
-            padding: 0;
+        .qa-block .answer {
+            font-size: 0.92rem;
+            color: #1d1d1f;
+            line-height: 1.7;
         }
-        .summary li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.9rem;
+        .qa-block .answer p { margin-bottom: 10px; }
+        .qa-block .answer ul { margin: 8px 0 12px 20px; }
+        .qa-block .answer li { margin-bottom: 4px; }
+        .qa-block .answer strong { color: #0f3460; }
+        .qa-block .answer .viz-ref {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1a73e8;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin: 2px 0;
+        }
+        .qa-block .answer .viz-ref:hover { background: #d2e3fc; }
+        .qa-block .answer .query-url {
+            background: #f5f5f7;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-family: 'SF Mono', 'Consolas', monospace;
+            font-size: 0.78rem;
             color: #333;
+            word-break: break-all;
+            margin: 12px 0;
+            line-height: 1.5;
         }
-        .summary li:last-child { border-bottom: none; }
-        .summary li strong { color: #1d1d1f; }
 
         footer {
             text-align: center;
@@ -152,25 +167,161 @@
             </a>
         </div>
 
-        <div class="section-label">Key Findings</div>
-        <div class="summary">
-            <h2>Employment (Q1)</h2>
-            <ul>
-                <li><strong>NYC Total Nonfarm (Feb 2026):</strong> 4,791,000 &mdash; declined 0.82% year-over-year</li>
-                <li><strong>Largest YoY decline:</strong> Health Care &amp; Social Assistance (&minus;24,200 jobs, &minus;2.32%), driven by CDPAP policy reform rather than economic contraction</li>
-                <li><strong>Largest YoY gain:</strong> Transportation &amp; Warehousing (+5,400, +5.21%), consistent with e-commerce logistics expansion</li>
-                <li><strong>5-year comparison:</strong> Baseline (Feb 2021) is COVID-distorted, making percentage changes reflect recovery rather than organic growth</li>
-            </ul>
+        <div class="section-label">Responses</div>
+
+        <!-- Q1a -->
+        <div class="qa-block">
+            <h2>Question 1a</h2>
+            <div class="question">
+                Using the NYS DOL's employment statistics data for the latest available month, discuss which major industries (by 2-digit NAICS) in New York City changed the most over the prior year. Describe possible reasons why these industries experienced greater change than other industries.
+            </div>
+            <div class="answer">
+                <p>The latest available month is <strong>February 2026</strong>. NYC total nonfarm employment stood at <strong>4,791,000</strong>, down 39,400 (&minus;0.82%) from February 2025. Twelve of eighteen sectors contracted; only six grew.</p>
+
+                <p><strong>Top declining industries:</strong></p>
+                <ul>
+                    <li><strong>Manufacturing (NAICS 31-33): &minus;5.82%</strong> (&minus;3,100 jobs) &mdash; continued long-term secular decline driven by offshoring and automation. NYC manufacturing is small (50,200 total), so modest absolute losses appear large in percentage terms.</li>
+                    <li><strong>Arts, Entertainment &amp; Recreation (NAICS 71): &minus;5.34%</strong> (&minus;4,700 jobs) &mdash; after a strong post-COVID recovery surge in 2022&ndash;2024, employment appears to be normalizing. Consumer spending patterns are shifting amid broader economic softening.</li>
+                    <li><strong>Mining &amp; Construction (NAICS 21+23): &minus;4.82%</strong> (&minus;6,600 jobs) &mdash; elevated interest rates throughout 2024&ndash;2025 dampened new residential and commercial development. NYC housing construction faces headwinds despite high demand.</li>
+                    <li><strong>Health Care &amp; Social Assistance (NAICS 62): &minus;2.32%</strong> (&minus;24,200 jobs) &mdash; the <em>largest absolute decline</em> of any sector, but primarily driven by a <strong>policy change</strong>, not economic contraction. New York State's CDPAP reform (April 2025) consolidated home health care fiscal intermediaries, causing a reclassification of roughly 79,000 home health workers. Some were reclassified into Individual &amp; Family Services (which grew), partially offsetting the headline decline.</li>
+                    <li><strong>Accommodation &amp; Food Services (NAICS 72): &minus;1.51%</strong> (&minus;5,300 jobs) &mdash; the sector recovered strongly from COVID but is now experiencing saturation and margin pressure from rising wages, high rents, and reduced downtown foot traffic from persistent remote work.</li>
+                </ul>
+
+                <p><strong>Top growing industries:</strong></p>
+                <ul>
+                    <li><strong>Information (NAICS 51): +1.94%</strong> (+4,200 jobs) &mdash; NYC remains a global media capital; growth in streaming services and digital content production supports employment.</li>
+                    <li><strong>Government (NAICS 92): +1.58%</strong> (+9,500 jobs) &mdash; driven by continued restoration of public sector staffing following COVID-era attrition.</li>
+                    <li><strong>Finance &amp; Insurance (NAICS 52): +1.61%</strong> (+6,100 jobs) &mdash; steady growth consistent with NYC's role as a global financial center.</li>
+                </ul>
+
+                <p>According to the NYC Comptroller's February 2026 report, there was essentially no net job creation outside health care during 2025, and the economy is characterized as a "low hire, low fire" environment.</p>
+
+                <p><a class="viz-ref" href="q1.html">See: YoY Diverging Bar Chart &middot; Full Comparison Table</a></p>
+            </div>
         </div>
-        <div class="summary">
-            <h2>311 Service Requests (Q2)</h2>
-            <ul>
-                <li><strong>Total complaints:</strong> 198,158 &mdash; all NYPD (HPD returned zero matching rows)</li>
-                <li><strong>Illegal Parking:</strong> 86,493 (44%) &mdash; nearly as many as all noise combined</li>
-                <li><strong>Noise - Residential:</strong> 75,543 (38%) &mdash; single largest complaint type</li>
-                <li><strong>Research question:</strong> Do lower-income neighborhoods generate more complaints per capita, controlling for population density?</li>
-            </ul>
+
+        <!-- Q1b -->
+        <div class="qa-block">
+            <h2>Question 1b</h2>
+            <div class="question">
+                How was the change that these industries experienced over the last year different from what they experienced over the last five years? Please include all analysis (calculations, tables, charts, etc.) in your response.
+            </div>
+            <div class="answer">
+                <p>The 1-year and 5-year comparisons tell very different stories because <strong>the 5-year baseline (February 2021) was still deep in COVID disruption</strong>. Large positive 5-year figures reflect recovery from pandemic lows, not sustainable organic growth.</p>
+
+                <p><strong>Key contrasts:</strong></p>
+                <ul>
+                    <li><strong>Accommodation &amp; Food Services:</strong> 1-year = &minus;1.51%, but 5-year = <strong>+87.0%</strong> (from 185,100 to 346,200). The sector nearly doubled from its COVID low, but has now begun contracting again &mdash; the recovery is complete and the sector is plateauing.</li>
+                    <li><strong>Arts, Entertainment &amp; Recreation:</strong> 1-year = &minus;5.34%, but 5-year = <strong>+77.2%</strong> (from 47,000 to 83,300). Massive post-COVID recovery, now normalizing.</li>
+                    <li><strong>Health Care &amp; Social Assistance:</strong> 1-year = &minus;2.32%, but 5-year = <strong>+29.9%</strong> (+234,500 jobs). The 5-year gain is largely real growth (aging population, expanded home health programs). The 1-year decline is a CDPAP policy artifact, not a reversal of demand.</li>
+                    <li><strong>Manufacturing:</strong> 1-year = &minus;5.82%, 5-year = &minus;3.65%. <strong>Declining in both periods</strong> &mdash; this is a decades-long secular trend, not a COVID effect.</li>
+                    <li><strong>Information:</strong> 1-year = +1.94%, 5-year = +5.23%. One of the few sectors growing in <em>both</em> periods, suggesting sustained structural growth in media and technology content.</li>
+                </ul>
+
+                <p>Only six sectors show positive growth in <em>both</em> periods: Information, Finance &amp; Insurance, Government, Utilities, Private Educational Services, and Real Estate. Only two sectors decline in both: Manufacturing and Mining/Construction.</p>
+
+                <p><a class="viz-ref" href="q1.html">See: 1-Year vs 5-Year Grouped Bar Chart &middot; 5-Year Trend Lines</a></p>
+            </div>
         </div>
+
+        <!-- Q2a -->
+        <div class="qa-block">
+            <h2>Question 2a</h2>
+            <div class="question">
+                Using the API docs, pull and export only the following data. Please include the exact query that you used (in the form of https://...) in your response.
+            </div>
+            <div class="answer">
+                <p>The query filters for all 311 service requests where:</p>
+                <ul>
+                    <li><code>created_date</code> is between 12/15/2021 and 3/15/2022 (inclusive)</li>
+                    <li><code>agency_name</code> is NYPD or HPD</li>
+                    <li><code>complaint_type</code> starts with "Noise" (captures all subcategories) or equals "Illegal Parking"</li>
+                </ul>
+
+                <p><strong>Exact query URL:</strong></p>
+                <div class="query-url">https://data.cityofnewyork.us/resource/erm2-nwe9.json?$select=unique_key,created_date,agency_name,complaint_type,descriptor,borough,incident_zip,latitude,longitude&amp;$where=created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' AND (agency_name='New York City Police Department' OR agency_name='Department of Housing Preservation and Development') AND (starts_with(complaint_type, 'Noise') OR complaint_type='Illegal Parking')&amp;$limit=500000</div>
+
+                <p>This returned <strong>198,158 rows</strong>, all from NYPD. HPD returned zero matching rows because HPD handles housing quality (heat/hot water, plumbing) &mdash; not noise or parking complaints.</p>
+
+                <p><strong>Note on noise matching:</strong> The 311 system categorizes noise into subcategories ("Noise - Residential", "Noise - Commercial", etc.). An exact match for <code>complaint_type = 'Noise'</code> would capture only the ~10,800 records handled by the Department of Environmental Protection &mdash; missing 92% of noise complaints. Using <code>starts_with(complaint_type, 'Noise')</code> captures the full scope as the question intends. The exact "Noise" type belongs to DEP (not NYPD or HPD), so it is correctly excluded by the agency filter.</p>
+
+                <p><a class="viz-ref" href="phase1.html">See: Phase 1 Notebook — Data Acquisition &amp; Validation</a></p>
+            </div>
+        </div>
+
+        <!-- Q2b -->
+        <div class="qa-block">
+            <h2>Question 2b</h2>
+            <div class="question">
+                Based on the data you pulled, how many complaints were there for each agency and complaint type? Please include all analysis (calculations, tables, charts, etc.) in your response.
+            </div>
+            <div class="answer">
+                <p><strong>By agency:</strong> All 198,158 complaints came from the <strong>New York City Police Department</strong>. The Department of Housing Preservation and Development (HPD) returned <strong>zero</strong> matching rows. HPD handles housing quality issues (heat/hot water, plumbing, paint) &mdash; not noise or parking.</p>
+
+                <p><strong>By complaint type:</strong></p>
+                <ul>
+                    <li><strong>Illegal Parking:</strong> 86,493 (43.6%)</li>
+                    <li><strong>Noise - Residential:</strong> 75,543 (38.1%) &mdash; single largest noise subcategory</li>
+                    <li><strong>Noise - Street/Sidewalk:</strong> 12,743 (6.4%)</li>
+                    <li><strong>Noise - Vehicle:</strong> 11,372 (5.7%)</li>
+                    <li><strong>Noise - Commercial:</strong> 11,114 (5.6%)</li>
+                    <li><strong>Noise - Park:</strong> 498 (0.3%)</li>
+                    <li><strong>Noise - House of Worship:</strong> 395 (0.2%)</li>
+                </ul>
+
+                <p>Broadly: <strong>Noise (all subcategories)</strong> accounts for 111,665 complaints (56.4%) and <strong>Illegal Parking</strong> accounts for 86,493 (43.6%). Together, these two categories represent nearly 200,000 quality-of-life complaints over just three months.</p>
+
+                <p><a class="viz-ref" href="q2.html">See: Complaint Counts Table &middot; Horizontal Bar Chart</a></p>
+            </div>
+        </div>
+
+        <!-- Q2c -->
+        <div class="qa-block">
+            <h2>Question 2c</h2>
+            <div class="question">
+                Describe one way to visualize this data and include the visualization in your response. What do you want policymakers to know about your findings?
+            </div>
+            <div class="answer">
+                <p><strong>Visualization:</strong> A horizontal bar chart showing complaint volume by type, color-coded by category (red for noise subcategories, blue for illegal parking). This allows immediate visual comparison of the scale and composition of complaints.</p>
+
+                <p><a class="viz-ref" href="q2.html">See: Horizontal Bar Chart &middot; Weekly Time Series</a></p>
+
+                <p><strong>What policymakers should know:</strong></p>
+                <ul>
+                    <li><strong>Residential noise dominates.</strong> With 75,543 complaints (38% of all complaints), residential noise is the single largest quality-of-life concern reported to 311. Dense living conditions in multi-unit buildings are a persistent source of friction.</li>
+                    <li><strong>Illegal parking rivals all noise combined.</strong> At 86,493 complaints (44%), illegal parking is nearly as large as the entire noise category (111,665). This represents a significant enforcement burden on NYPD and raises the question of whether parking enforcement could be handled by a civilian agency.</li>
+                    <li><strong>Quality-of-life enforcement consumes substantial NYPD resources.</strong> Nearly 200,000 complaints over three months is an extraordinary volume. If the city wants to rethink policing priorities, understanding the volume and nature of 311 complaints is an essential starting point.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Q2d -->
+        <div class="qa-block">
+            <h2>Question 2d</h2>
+            <div class="question">
+                Ask one research question about this data; discuss additional data that you would merge with this dataset to answer your question and write a simple equation that shows the relationship. Why is studying that relationship important for policymaking?
+            </div>
+            <div class="answer">
+                <p><strong>Research question:</strong> Do neighborhoods with lower median household incomes generate more noise and illegal parking complaints per capita, after controlling for population density?</p>
+
+                <p><strong>Additional data needed:</strong> American Community Survey (ACS) 5-Year Estimates from the U.S. Census Bureau &mdash; specifically median household income, total population, and land area by zip code tabulation area (ZCTA). The 311 data contains <code>incident_zip</code>, which can be merged with ACS ZCTA-level data.</p>
+
+                <p><strong>Equation (OLS regression):</strong></p>
+                <p style="font-family: 'SF Mono', 'Consolas', monospace; font-size: 0.88rem; background: #f5f5f7; padding: 10px 16px; border-radius: 6px; display: inline-block;">
+                    ComplaintsPerCapita<sub>i</sub> = &beta;<sub>0</sub> + &beta;<sub>1</sub> &middot; MedianIncome<sub>i</sub> + &beta;<sub>2</sub> &middot; PopulationDensity<sub>i</sub> + &epsilon;<sub>i</sub>
+                </p>
+                <p>Where &beta;<sub>1</sub> is the key coefficient of interest: if negative and statistically significant, it would indicate that lower-income neighborhoods file more complaints per person, after accounting for population density.</p>
+
+                <p><strong>Why this matters for policymaking:</strong></p>
+                <ul>
+                    <li><strong>Resource allocation equity:</strong> If lower-income neighborhoods generate more complaints per capita, it could indicate greater quality-of-life challenges (noise from overcrowded housing, inadequate parking infrastructure). City services should be directed proportionally to where need is greatest.</li>
+                    <li><strong>Complaint-driven vs. need-driven governance:</strong> 311 data reflects who files complaints, not necessarily who experiences the most problems. Higher-income residents may be more likely to file complaints, biasing resource allocation toward wealthier neighborhoods. Understanding this relationship helps distinguish between actual need and reporting behavior.</li>
+                </ul>
+
+                <p><a class="viz-ref" href="q2.html">See: Full Research Question Discussion in Notebook</a></p>
+            </div>
+        </div>
+
     </div>
 
     <footer>
