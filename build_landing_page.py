@@ -604,7 +604,7 @@ def build_page():
 
                 <p><strong>Limitations:</strong></p>
                 <ul>
-                    <li>R&sup2; of 0.02 means income explains only 2% of the variation in complaints per capita &mdash; 98% is driven by other factors.</li>
+                    <li>R&sup2; of 0.02 means income explains only 2% of the variation in complaints per capita &mdash; 98% is explained by other factors.</li>
                     <li>No control variables (population density, building types, renter vs. owner occupancy, age of housing stock, etc.).</li>
                     <li>Zip codes are coarse units &mdash; a single median income may not represent neighborhood-level variation within a zip.</li>
                     <li>311 data reflects <em>complaints filed</em>, not necessarily the underlying level of noise or parking violations. Filing behavior varies by education, language access, and trust in government.</li>
