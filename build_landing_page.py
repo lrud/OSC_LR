@@ -180,7 +180,7 @@ Q1A_NARRATIVE = """
 
                     <li><strong>Government (NAICS 92): <span style="color:green">+1.58% (+9,500 jobs)</span></strong><br>
                     <em>BLS Supersector: Government (standalone).</em><br>
-                    Local government hiring has continued, particularly in education, as the city fills positions left vacant during earlier budget constraints. The 1-year and 5-year growth rates are similar, indicating steady expansion rather than recovery-driven gains.</li>
+                    Local government hiring has continued, with Local Government Education (NAICS 90936111) accounting for all +9,500 of the sector's 1-year gain (Feb 2025: 162,400 → Feb 2026: 171,900). The 1-year and 5-year growth rates are similar, indicating steady expansion rather than recovery-driven gains.</li>
 
                     <li><strong>Financial Activities (NAICS 52,53): <span style="color:green">+1.27% (+6,500 jobs)</span></strong><br>
                     <em>Composition: Finance &amp; Insurance (52) + Real Estate &amp; Rental/Leasing (53).</em><br>
@@ -249,7 +249,7 @@ Q1B_NARRATIVE = """
 
                     <li><strong>Government (NAICS 92): <span style="color:green">+5.47% (+31,700 jobs)</span></strong><br>
                     <em>BLS Supersector: Government (standalone).</em><br>
-                    Steady hiring across local government agencies, particularly in education, with similar 1-year and 5-year rates indicating consistent expansion.</li>
+                    Steady hiring across local government agencies, with Local Government Education (NAICS 90936111) contributing 55% of the 5-year gain (+17,500 of +31,700). Similar 1-year and 5-year rates indicate consistent expansion.</li>
 
                     <li><strong>Information (NAICS 51): <span style="color:green">+5.23% (+11,000 jobs)</span></strong><br>
                     <em>BLS Supersector: Information (standalone).</em><br>
