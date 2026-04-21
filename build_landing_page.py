@@ -506,8 +506,8 @@ def build_page():
                 </ul>
                 <p><strong>Exact query URL:</strong></p>
                 <div class="query-url">https://data.cityofnewyork.us/resource/erm2-nwe9.json?$select=unique_key,created_date,agency_name,complaint_type,descriptor,borough,incident_zip,latitude,longitude&amp;$where=created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' AND (agency_name='New York City Police Department' OR agency_name='Department of Housing Preservation and Development') AND (starts_with(complaint_type, 'Noise') OR complaint_type='Illegal Parking')&amp;$limit=500000</div>
-                <p>This returned <strong>198,158 rows</strong>, all from NYPD. HPD returned zero matching rows because HPD handles housing quality (heat/hot water, plumbing) &mdash; not noise or parking.</p>
-                <p><strong>Note on noise matching:</strong> An exact match for <code>complaint_type = 'Noise'</code> captures only ~10,800 DEP records &mdash; missing 92% of noise complaints. Using <code>starts_with(complaint_type, 'Noise')</code> captures all subcategories. The exact "Noise" type belongs to DEP (not NYPD/HPD), so it is correctly excluded by the agency filter.</p>
+                <p>This returned <strong>198,158 rows</strong>, all from NYPD. HPD returned zero matching rows.</p>
+                <p><strong>Note on noise matching:</strong> An exact match for <code>complaint_type = 'Noise'</code> returns DEP-handled records, which are excluded by the NYPD/HPD agency filter. Using <code>starts_with(complaint_type, 'Noise')</code> captures all noise subcategories (Residential, Commercial, Street/Sidewalk, Vehicle, Park, House of Worship) that are handled by NYPD.</p>
             </div>
         </div>
 
@@ -536,7 +536,14 @@ def build_page():
             <h2>Question 2c</h2>
             <div class="question">Describe one way to visualize this data and include the visualization in your response. What do you want policymakers to know about your findings?</div>
             <div class="answer">
-                <p><strong>Visualization:</strong> A horizontal bar chart (above) showing complaint volume by type, color-coded by category (red = noise, blue = illegal parking). A weekly time series (below) shows seasonal patterns.</p>
+                <p><strong>Visualizations included:</strong></p>
+                <ul>
+                    <li><strong>Horizontal bar chart (Q2b):</strong> Complaint volume by type, color-coded (red = noise subcategories, blue = illegal parking).</li>
+                    <li><strong>Weekly time series:</strong> Noise vs. illegal parking complaint trends over 14 weeks (Dec 2021 &ndash; Mar 2022).</li>
+                    <li><strong>Choropleth map:</strong> Complaint density by borough using NYC borough boundary GeoJSON, colored on a YlOrRd scale.</li>
+                    <li><strong>Borough table:</strong> Complaint counts and percentages for all five boroughs.</li>
+                    <li><strong>Pie charts:</strong> Complaint-type distribution within each of the five boroughs, showing how the noise/parking split varies geographically.</li>
+                </ul>
 
                 <div class="chart-label">Weekly Complaint Trends</div>
                 <div class="embedded-chart">{q2_weekly_chart_html}</div>
@@ -564,21 +571,43 @@ def build_page():
             <div class="question">Ask one research question about this data; discuss additional data that you would merge with this dataset to answer your question and write a simple equation that shows the relationship. Why is studying that relationship important for policymaking?</div>
             <div class="answer">
                 <p><strong>Research question:</strong> Do neighborhoods with lower median household incomes generate more noise and illegal parking complaints per capita?</p>
-                <p><strong>Additional data:</strong> ACS 5-Year Estimates (2020) from the U.S. Census Bureau &mdash; median household income (<code>B19013_001E</code>) and total population (<code>B01003_001E</code>) by zip code tabulation area. Merged on <code>incident_zip</code> from the 311 data (181 NYC zip codes matched).</p>
+
+                <p><strong>Additional data merged:</strong></p>
+                <ul>
+                    <li><strong>Source:</strong> U.S. Census Bureau, ACS 5-Year Estimates (2016&ndash;2020), retrieved via the Census API (<code>api.census.gov</code>).</li>
+                    <li><strong>Variables:</strong> Median household income (<code>B19013_001E</code>) and total population (<code>B01003_001E</code>).</li>
+                    <li><strong>Geography:</strong> Zip code tabulation areas (ZCTAs). Merged on <code>incident_zip</code> from the 311 data.</li>
+                    <li><strong>Match rate:</strong> 181 of 203 unique zip codes in the 311 data matched to ACS records with valid income and population values.</li>
+                    <li><strong>Income range:</strong> $23,337 &ndash; $250,001. <strong>Population range:</strong> 154 &ndash; 112,528.</li>
+                    <li><strong>Dependent variable:</strong> Complaints per capita = total complaints / population for each zip code.</li>
+                </ul>
+
                 <p><strong>Equation (OLS):</strong></p>
                 <p style="font-family: 'SF Mono', 'Consolas', monospace; font-size: 0.88rem; background: #f5f5f7; padding: 10px 16px; border-radius: 6px; display: inline-block;">
                     ComplaintsPerCapita<sub>i</sub> = &beta;<sub>0</sub> + &beta;<sub>1</sub> &middot; MedianIncome<sub>i</sub> + &epsilon;<sub>i</sub>
                 </p>
 
+                <p><strong>Note on simplicity:</strong> This is a bivariate OLS regression &mdash; a single predictor (median income) with no control variables. It tests for a linear association only.</p>
+
                 <div class="chart-label">Regression: Complaints per Capita vs Median Household Income</div>
                 <div class="embedded-chart">{q2_reg_chart_html}</div>
 
-                <p><strong>Results:</strong> The coefficient on median income (&beta;<sub>1</sub>) is negative, consistent with the hypothesis that lower-income neighborhoods generate more complaints per capita. However, the relationship is only marginally significant (p &asymp; 0.06) and the model explains very little variation (R&sup2; &asymp; 0.02), suggesting that household income alone is not a strong predictor of complaint volume at the zip-code level. Many other factors &mdash; housing density, building types, enforcement patterns, and reporting behavior &mdash; likely drive the variation.</p>
+                <p><strong>Results:</strong> &beta;<sub>1</sub> is negative (&minus;7.8 &times; 10<sup>&minus;8</sup>), meaning higher income is associated with fewer complaints per capita. The relationship is marginally significant (p &asymp; 0.06) and the model explains very little variation (R&sup2; &asymp; 0.02).</p>
 
-                <p><strong>Why this matters:</strong></p>
+                <p><strong>Limitations:</strong></p>
                 <ul>
-                    <li><strong>Equity:</strong> If lower-income areas have more per-capita complaints, services should be proportionally directed to where need is greatest.</li>
-                    <li><strong>Complaint vs. need:</strong> 311 reflects who files complaints, not who experiences problems. Higher-income residents may file more, biasing allocation. Understanding this helps distinguish need from reporting behavior.</li>
+                    <li>R&sup2; of 0.02 means income explains only 2% of the variation in complaints per capita &mdash; 98% is driven by other factors.</li>
+                    <li>No control variables (population density, building types, renter vs. owner occupancy, age of housing stock, etc.).</li>
+                    <li>Zip codes are coarse units &mdash; a single median income may not represent neighborhood-level variation within a zip.</li>
+                    <li>311 data reflects <em>complaints filed</em>, not necessarily the underlying level of noise or parking violations. Filing behavior varies by education, language access, and trust in government.</li>
+                    <li>ACS estimates are a 5-year average (2016&ndash;2020), not a point-in-time snapshot.</li>
+                </ul>
+
+                <p><strong>What policymakers should know:</strong></p>
+                <ul>
+                    <li><strong>Income alone does not predict complaint volume.</strong> A model with only median household income explains 2% of the variation across 181 zip codes. Complaint patterns are driven by a complex mix of housing density, building type, street infrastructure, enforcement intensity, and reporting culture.</li>
+                    <li><strong>Complaints measure reporting, not need.</strong> A neighborhood with few complaints may still have significant noise or parking problems if residents are less likely to call 311. Using raw complaint counts to allocate resources would systematically disadvantage communities with lower reporting rates.</li>
+                    <li><strong>This regression is a starting point.</strong> A more complete analysis would include controls for population density, housing stock, and demographic composition, and would use spatial methods to account for geographic clustering.</li>
                 </ul>
             </div>
         </div>
