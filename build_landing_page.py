@@ -337,7 +337,7 @@ def build_page():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bureau of Tax and Economic Analysis — Quantitative Research</title>
+    <title>Lukas Rueda — Senior Municipal Finance Analyst</title>
     <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
@@ -446,7 +446,7 @@ def build_page():
 </head>
 <body>
     <header>
-        <h1>Bureau of Tax and Economic Analysis</h1>
+        <h1>Lukas Rueda — Senior Municipal Finance Analyst</h1>
         <p>Quantitative Research Project &mdash; NYC Employment Trends &amp; 311 Service Requests</p>
     </header>
 
@@ -578,7 +578,7 @@ def build_page():
                     <li><strong>Variables:</strong> Median household income (<code>B19013_001E</code>) and total population (<code>B01003_001E</code>).</li>
                     <li><strong>Geography:</strong> Zip code tabulation areas (ZCTAs). Merged on <code>incident_zip</code> from the 311 data.</li>
                     <li><strong>Match rate:</strong> 181 of 203 unique zip codes in the 311 data matched to ACS records with valid income and population values.</li>
-                    <li><strong>Income range:</strong> $23,337 &ndash; $250,001. <strong>Population range:</strong> 154 &ndash; 112,528.</li>
+                    <li><strong>Income range:</strong> $23,337 &ndash; $250,001. <strong>Population range:</strong> 1,240 &ndash; 108,661.</li>
                     <li><strong>Dependent variable:</strong> Complaints per capita = total complaints / population for each zip code.</li>
                 </ul>
 
