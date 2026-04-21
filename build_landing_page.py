@@ -36,6 +36,18 @@ def extract_html_outputs(nb):
     return results
 
 
+def plotly_json_to_html(plotly_json, div_id=None):
+    if div_id is None:
+        div_id = str(uuid.uuid4())
+    fig_data = json.dumps(plotly_json.get("data", []))
+    fig_layout = json.dumps(plotly_json.get("layout", {}))
+    config = json.dumps(plotly_json.get("config", {"responsive": True}))
+    return (
+        f'<div id="{div_id}" class="plotly-graph-div" style="height:100%; width:100%;"></div>\n'
+        f'<script>Plotly.newPlot("{div_id}", {fig_data}, {fig_layout}, {config});</script>'
+    )
+
+
 def extract_plotly_html(nb):
     """Return list of (cell_index, html_string) for cells with Plotly embeds."""
     results = []
@@ -48,6 +60,10 @@ def extract_plotly_html(nb):
                 html = "".join(data["text/html"])
                 if "plotly" in html.lower() and "Plotly.newPlot" in html:
                     results.append((i, html))
+            elif "application/vnd.plotly.v1+json" in data:
+                plotly_json = data["application/vnd.plotly.v1+json"]
+                html = plotly_json_to_html(plotly_json)
+                results.append((i, html))
     return results
 
 
@@ -129,12 +145,14 @@ trends_chart_html = make_plotly_chart_unique(next(html for ci, html in q1_charts
 
 # Narrative is hardcoded in Q1A_NARRATIVE and Q1B_NARRATIVE below
 
-# Q2: cell 6 = complaint table
-q2_complaint_table_html = next(html for ci, html in q2_tables if ci == 6)
+# Q2: cell 7 = complaint table, cell 13 = borough table, cell 17 = borough-type table
+q2_complaint_table_html = next(html for ci, html in q2_tables if ci == 7)
+q2_borough_table_html = next(html for ci, html in q2_tables if ci == 13)
 
-# Q2: cell 7 = complaint bar chart, cell 8 = weekly trend chart
-q2_complaint_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 7))
-q2_weekly_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 8))
+# Q2: cell 9 = complaint bar chart, cell 11 = weekly trend chart, cell 15 = borough map
+q2_complaint_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 9))
+q2_weekly_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 11))
+q2_borough_map_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 15))
 
 
 # ---------------------------------------------------------------------------
@@ -509,6 +527,10 @@ def build_page():
 
                 <div class="chart-label">Weekly Complaint Trends</div>
                 <div class="embedded-chart">{q2_weekly_chart_html}</div>
+
+                <div class="chart-label">Complaints by Borough</div>
+                <div class="embedded-chart">{q2_borough_map_html}</div>
+                <div class="embedded-table">{q2_borough_table_html}</div>
 
                 <p><strong>What policymakers should know:</strong></p>
                 <ul>
