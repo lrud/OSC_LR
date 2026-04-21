@@ -212,9 +212,6 @@ def build_q1a_answer():
     parts.append(Q1A_NARRATIVE)
 
     parts.append(
-        "<p>NYC Total Nonfarm: Feb 2026 = 4,791,000 | Feb 2025 = 4,830,400 | YoY = -39,400 (-0.82%)</p>"
-    )
-    parts.append(
         "<p>All figures are actual employment units (not thousands). Data is not seasonally adjusted.</p>"
     )
     return "\n                ".join(parts)
