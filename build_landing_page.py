@@ -49,21 +49,30 @@ def plotly_json_to_html(plotly_json, div_id=None):
 
 
 def extract_plotly_html(nb):
-    """Return list of (cell_index, html_string) for cells with Plotly embeds."""
+    """Return list of (cell_index, html_string) for cells with Plotly embeds.
+    Prefers outputs with plotly-graph-div (clean chart HTML) over embedded library output."""
     results = []
     for i, cell in enumerate(nb["cells"]):
         if cell["cell_type"] != "code":
             continue
+        best = None
         for out in cell.get("outputs", []):
             data = out.get("data", {})
             if "text/html" in data:
                 html = "".join(data["text/html"])
-                if "plotly" in html.lower() and "Plotly.newPlot" in html:
-                    results.append((i, html))
+                if "Plotly.newPlot" in html:
+                    has_div = "plotly-graph-div" in html
+                    if has_div:
+                        best = (i, html)
+                    elif best is None:
+                        best = (i, html)
             elif "application/vnd.plotly.v1+json" in data:
                 plotly_json = data["application/vnd.plotly.v1+json"]
                 html = plotly_json_to_html(plotly_json)
-                results.append((i, html))
+                if best is None:
+                    best = (i, html)
+        if best:
+            results.append(best)
     return results
 
 
@@ -150,11 +159,12 @@ trends_chart_html = make_plotly_chart_unique(next(html for ci, html in q1_charts
 q2_complaint_table_html = next(html for ci, html in q2_tables if ci == 7)
 q2_borough_table_html = next(html for ci, html in q2_tables if ci == 13)
 
-# Q2: cell 9 = complaint bar chart, cell 11 = weekly trend chart, cell 15 = borough map, cell 17 = pie charts
+# Q2: cell 9 = complaint bar chart, cell 11 = weekly trend chart, cell 15 = borough map, cell 17 = pie charts, cell 19 = regression scatter
 q2_complaint_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 9))
 q2_weekly_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 11))
 q2_borough_map_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 15))
 q2_pie_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 17))
+q2_reg_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 19))
 
 
 # ---------------------------------------------------------------------------
@@ -552,13 +562,18 @@ def build_page():
             <h2>Question 2d</h2>
             <div class="question">Ask one research question about this data; discuss additional data that you would merge with this dataset to answer your question and write a simple equation that shows the relationship. Why is studying that relationship important for policymaking?</div>
             <div class="answer">
-                <p><strong>Research question:</strong> Do neighborhoods with lower median household incomes generate more noise and illegal parking complaints per capita, after controlling for population density?</p>
-                <p><strong>Additional data:</strong> ACS 5-Year Estimates (Census Bureau) &mdash; median household income, population, and land area by zip code. Merge on <code>incident_zip</code> from the 311 data.</p>
+                <p><strong>Research question:</strong> Do neighborhoods with lower median household incomes generate more noise and illegal parking complaints per capita?</p>
+                <p><strong>Additional data:</strong> ACS 5-Year Estimates (2020) from the U.S. Census Bureau &mdash; median household income (<code>B19013_001E</code>) and total population (<code>B01003_001E</code>) by zip code tabulation area. Merged on <code>incident_zip</code> from the 311 data (181 NYC zip codes matched).</p>
                 <p><strong>Equation (OLS):</strong></p>
                 <p style="font-family: 'SF Mono', 'Consolas', monospace; font-size: 0.88rem; background: #f5f5f7; padding: 10px 16px; border-radius: 6px; display: inline-block;">
-                    ComplaintsPerCapita<sub>i</sub> = &beta;<sub>0</sub> + &beta;<sub>1</sub> &middot; MedianIncome<sub>i</sub> + &beta;<sub>2</sub> &middot; PopulationDensity<sub>i</sub> + &epsilon;<sub>i</sub>
+                    ComplaintsPerCapita<sub>i</sub> = &beta;<sub>0</sub> + &beta;<sub>1</sub> &middot; MedianIncome<sub>i</sub> + &epsilon;<sub>i</sub>
                 </p>
-                <p>If &beta;<sub>1</sub> is negative and significant, lower-income neighborhoods file more complaints per person, after accounting for density.</p>
+
+                <div class="chart-label">Regression: Complaints per Capita vs Median Household Income</div>
+                <div class="embedded-chart">{q2_reg_chart_html}</div>
+
+                <p><strong>Results:</strong> The coefficient on median income (&beta;<sub>1</sub>) is negative, consistent with the hypothesis that lower-income neighborhoods generate more complaints per capita. However, the relationship is only marginally significant (p &asymp; 0.06) and the model explains very little variation (R&sup2; &asymp; 0.02), suggesting that household income alone is not a strong predictor of complaint volume at the zip-code level. Many other factors &mdash; housing density, building types, enforcement patterns, and reporting behavior &mdash; likely drive the variation.</p>
+
                 <p><strong>Why this matters:</strong></p>
                 <ul>
                     <li><strong>Equity:</strong> If lower-income areas have more per-capita complaints, services should be proportionally directed to where need is greatest.</li>
