@@ -145,14 +145,15 @@ trends_chart_html = make_plotly_chart_unique(next(html for ci, html in q1_charts
 
 # Narrative is hardcoded in Q1A_NARRATIVE and Q1B_NARRATIVE below
 
-# Q2: cell 7 = complaint table, cell 13 = borough table, cell 17 = borough-type table
+# Q2: cell 7 = complaint table, cell 13 = borough table, cell 19 = borough-type table
 q2_complaint_table_html = next(html for ci, html in q2_tables if ci == 7)
 q2_borough_table_html = next(html for ci, html in q2_tables if ci == 13)
 
-# Q2: cell 9 = complaint bar chart, cell 11 = weekly trend chart, cell 15 = borough map
+# Q2: cell 9 = complaint bar chart, cell 11 = weekly trend chart, cell 15 = borough map, cell 17 = pie charts
 q2_complaint_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 9))
 q2_weekly_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 11))
 q2_borough_map_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 15))
+q2_pie_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 17))
 
 
 # ---------------------------------------------------------------------------
@@ -531,6 +532,9 @@ def build_page():
                 <div class="chart-label">Complaints by Borough</div>
                 <div class="embedded-chart">{q2_borough_map_html}</div>
                 <div class="embedded-table">{q2_borough_table_html}</div>
+
+                <div class="chart-label">Complaint Distribution by Borough</div>
+                <div class="embedded-chart">{q2_pie_chart_html}</div>
 
                 <p><strong>What policymakers should know:</strong></p>
                 <ul>
