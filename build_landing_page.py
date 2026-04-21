@@ -347,10 +347,13 @@ def build_page():
         }}
         header {{
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white; padding: 60px 20px; text-align: center;
+            color: white; padding: 60px 20px 48px; text-align: center;
         }}
+        header .org {{ font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.65; margin-bottom: 16px; }}
         header h1 {{ font-size: 2.2rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }}
-        header p {{ font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto; }}
+        header .subtitle {{ font-size: 1.1rem; opacity: 0.85; max-width: 680px; margin: 0 auto 20px; }}
+        header .meta {{ font-size: 0.82rem; opacity: 0.6; max-width: 600px; margin: 0 auto; line-height: 1.7; }}
+        header .meta strong {{ opacity: 0.85; font-weight: 500; }}
         .container {{ max-width: 960px; margin: 0 auto; padding: 40px 20px; }}
         .section-label {{
             font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
@@ -446,8 +449,13 @@ def build_page():
 </head>
 <body>
     <header>
-        <h1>Lukas Rueda — Senior Municipal Finance Analyst</h1>
-        <p>Quantitative Research Project &mdash; NYC Employment Trends &amp; 311 Service Requests</p>
+        <div class="org">Office of the New York State Comptroller &middot; Bureau of Tax &amp; Economic Analysis</div>
+        <h1>Lukas Rueda</h1>
+        <p class="subtitle">Candidate, Senior Municipal Finance Analyst &mdash; Quantitative Research Project</p>
+        <div class="meta">
+            <strong>NYC Employment Trends &amp; 311 Service Requests</strong><br>
+            Prepared for review by Anita Yadavalli, Ph.D.
+        </div>
     </header>
 
     <div class="container">
@@ -615,7 +623,7 @@ def build_page():
 
     <footer>
         <p>Data: <a href="https://dol.ny.gov/current-employment-statistics-0">NYS DOL CES</a> &middot; <a href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">NYC 311 OpenData</a></p>
-        <p style="margin-top: 8px;">Bureau of Tax and Economic Analysis &mdash; Quantitative Research Project</p>
+        <p style="margin-top: 8px;">Office of the New York State Comptroller &middot; Bureau of Tax &amp; Economic Analysis</p>
     </footer>
 
     <script>
