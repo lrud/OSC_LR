@@ -100,7 +100,8 @@ def get_chart_div_id(html):
 
 
 def make_plotly_chart_unique(html):
-    """Replace the Plotly div id with a new unique one to avoid collisions."""
+    """Replace the Plotly div id with a new unique one to avoid collisions, strip embedded CDN tags."""
+    html = re.sub(r'<script[^>]*src="https://cdn\.plot\.ly/plotly-[^"]*"[^>]*></script>\s*', '', html)
     old_id = get_chart_div_id(html)
     if not old_id:
         return html
@@ -327,6 +328,7 @@ def build_page():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bureau of Tax and Economic Analysis — Quantitative Research</title>
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{
