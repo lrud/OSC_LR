@@ -13120,7 +13120,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
-<h2 id="Step-1.1%E2%80%931.2:-Load-and-Inspect-CES-Data">Step 1.1–1.2: Load and Inspect CES Data<a class="anchor-link" href="#Step-1.1%E2%80%931.2:-Load-and-Inspect-CES-Data">¶</a></h2>
+<h2 id="Step-1.1:-Load-and-Inspect-CES-Data">Step 1.1: Load and Inspect CES Data<a class="anchor-link" href="#Step-1.1:-Load-and-Inspect-CES-Data">¶</a></h2>
 </div>
 </div>
 </div>
@@ -13447,7 +13447,7 @@ Columns: ['SERIESCODE', 'INDUSTRY_TITLE', 'AREATYPE', 'AREA', 'AREANAME', 'YEAR'
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
-<h2 id="Step-1.3:-Verify-Geography-%E2%80%94-How-is-NYC-Represented?">Step 1.3: Verify Geography — How is NYC Represented?<a class="anchor-link" href="#Step-1.3:-Verify-Geography-%E2%80%94-How-is-NYC-Represented?">¶</a></h2>
+<h2 id="Step-1.2:-Verify-Geography-%E2%80%94-How-is-NYC-Represented?">Step 1.2: Verify Geography — How is NYC Represented?<a class="anchor-link" href="#Step-1.2:-Verify-Geography-%E2%80%94-How-is-NYC-Represented?">¶</a></h2>
 </div>
 </div>
 </div>
@@ -13463,9 +13463,9 @@ Columns: ['SERIESCODE', 'INDUSTRY_TITLE', 'AREATYPE', 'AREA', 'AREANAME', 'YEAR'
 <span class="n">nyc</span> <span class="o">=</span> <span class="n">ces</span><span class="p">[</span><span class="n">ces</span><span class="p">[</span><span class="s1">'AREANAME'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'New York City'</span><span class="p">]</span>
 <span class="n">tnf</span> <span class="o">=</span> <span class="n">nyc</span><span class="p">[</span><span class="n">nyc</span><span class="p">[</span><span class="s1">'INDUSTRY_TITLE'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Total Nonfarm'</span><span class="p">]</span>
 <span class="n">latest_tnf</span> <span class="o">=</span> <span class="n">tnf</span><span class="p">[</span><span class="n">tnf</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span> <span class="o">==</span> <span class="n">tnf</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+<span class="n">max_year</span> <span class="o">=</span> <span class="n">tnf</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">feb_val</span> <span class="o">=</span> <span class="n">latest_tnf</span><span class="p">[</span><span class="s1">'FEB'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">NYC Total Nonfarm (Feb </span><span class="si">{</span><span class="n">tnf</span><span class="p">[</span><span class="s2">"YEAR"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">): </span><span class="si">{</span><span class="n">feb_val</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Sanity check: ~4.8M = NYC proper (not the broader ~10M MSA) ✓'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'NYC Total Nonfarm (Feb </span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1">): </span><span class="si">{</span><span class="n">feb_val</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13477,9 +13477,7 @@ Columns: ['SERIESCODE', 'INDUSTRY_TITLE', 'AREATYPE', 'AREA', 'AREANAME', 'YEAR'
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total unique areas: 15
 NYC entry: ['New York City']
-
 NYC Total Nonfarm (Feb 2026): 4,791,000
-Sanity check: ~4.8M = NYC proper (not the broader ~10M MSA) ✓
 </pre>
 </div>
 </div>
@@ -13490,7 +13488,7 @@ Sanity check: ~4.8M = NYC proper (not the broader ~10M MSA) ✓
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
-<h2 id="Step-1.4:-Verify-Latest-Available-Month">Step 1.4: Verify Latest Available Month<a class="anchor-link" href="#Step-1.4:-Verify-Latest-Available-Month">¶</a></h2>
+<h2 id="Step-1.3:-Verify-Latest-Available-Month">Step 1.3: Verify Latest Available Month<a class="anchor-link" href="#Step-1.3:-Verify-Latest-Available-Month">¶</a></h2>
 </div>
 </div>
 </div>
@@ -13499,20 +13497,27 @@ Sanity check: ~4.8M = NYC proper (not the broader ~10M MSA) ✓
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">latest_year</span> <span class="o">=</span> <span class="n">ces</span><span class="p">[</span><span class="n">ces</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span> <span class="o">==</span> <span class="n">ces</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Max year in data: </span><span class="si">{</span><span class="n">ces</span><span class="p">[</span><span class="s2">"YEAR"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Month columns with non-null data in </span><span class="si">{</span><span class="n">ces</span><span class="p">[</span><span class="s2">"YEAR"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">:'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">max_year</span> <span class="o">=</span> <span class="n">ces</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">latest_year_df</span> <span class="o">=</span> <span class="n">ces</span><span class="p">[</span><span class="n">ces</span><span class="p">[</span><span class="s1">'YEAR'</span><span class="p">]</span> <span class="o">==</span> <span class="n">max_year</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Max year in data: </span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Month columns with non-null data in </span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1">:'</span><span class="p">)</span>
 
 <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'JAN'</span><span class="p">,</span><span class="s1">'FEB'</span><span class="p">,</span><span class="s1">'MAR'</span><span class="p">,</span><span class="s1">'APR'</span><span class="p">,</span><span class="s1">'MAY'</span><span class="p">,</span><span class="s1">'JUN'</span><span class="p">,</span><span class="s1">'JUL'</span><span class="p">,</span><span class="s1">'AUG'</span><span class="p">,</span><span class="s1">'SEP'</span><span class="p">,</span><span class="s1">'OCT'</span><span class="p">,</span><span class="s1">'NOV'</span><span class="p">,</span><span class="s1">'DEC'</span><span class="p">]</span>
 <span class="n">status_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
-    <span class="n">non_null</span> <span class="o">=</span> <span class="n">latest_year</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">non_null</span> <span class="o">=</span> <span class="n">latest_year_df</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="n">status_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'Month'</span><span class="p">:</span> <span class="n">m</span><span class="p">,</span> <span class="s1">'Non-null rows'</span><span class="p">:</span> <span class="n">non_null</span><span class="p">,</span> <span class="s1">'Status'</span><span class="p">:</span> <span class="s1">'HAS DATA'</span> <span class="k">if</span> <span class="n">non_null</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">'NO DATA'</span><span class="p">})</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">status_data</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Latest available month: **February 2026**'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'  → YoY: Feb 2026 vs Feb 2025'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'  → 5yr: Feb 2026 vs Feb 2021 (COVID-distorted baseline)'</span><span class="p">)</span>
+<span class="n">latest_months</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">months</span> <span class="k">if</span> <span class="n">latest_year_df</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">month_names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'JAN'</span><span class="p">:</span><span class="s1">'January'</span><span class="p">,</span><span class="s1">'FEB'</span><span class="p">:</span><span class="s1">'February'</span><span class="p">,</span><span class="s1">'MAR'</span><span class="p">:</span><span class="s1">'March'</span><span class="p">,</span><span class="s1">'APR'</span><span class="p">:</span><span class="s1">'April'</span><span class="p">,</span><span class="s1">'MAY'</span><span class="p">:</span><span class="s1">'May'</span><span class="p">,</span><span class="s1">'JUN'</span><span class="p">:</span><span class="s1">'June'</span><span class="p">,</span>
+               <span class="s1">'JUL'</span><span class="p">:</span><span class="s1">'July'</span><span class="p">,</span><span class="s1">'AUG'</span><span class="p">:</span><span class="s1">'August'</span><span class="p">,</span><span class="s1">'SEP'</span><span class="p">:</span><span class="s1">'September'</span><span class="p">,</span><span class="s1">'OCT'</span><span class="p">:</span><span class="s1">'October'</span><span class="p">,</span><span class="s1">'NOV'</span><span class="p">:</span><span class="s1">'November'</span><span class="p">,</span><span class="s1">'DEC'</span><span class="p">:</span><span class="s1">'December'</span><span class="p">}</span>
+<span class="n">latest_month_name</span> <span class="o">=</span> <span class="n">month_names</span><span class="p">[</span><span class="n">latest_months</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">prev_year</span> <span class="o">=</span> <span class="n">max_year</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">baseline_year</span> <span class="o">=</span> <span class="n">max_year</span> <span class="o">-</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Latest available month: </span><span class="si">{</span><span class="n">latest_month_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  -&gt; YoY: </span><span class="si">{</span><span class="n">latest_month_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1"> vs </span><span class="si">{</span><span class="n">latest_month_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">prev_year</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  -&gt; 5yr: </span><span class="si">{</span><span class="n">latest_month_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1"> vs </span><span class="si">{</span><span class="n">latest_month_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">baseline_year</span><span class="si">}</span><span class="s1"> (COVID-distorted baseline)'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13633,9 +13638,9 @@ Month columns with non-null data in 2026:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Latest available month: **February 2026**
-  → YoY: Feb 2026 vs Feb 2025
-  → 5yr: Feb 2026 vs Feb 2021 (COVID-distorted baseline)
+<pre>Latest available month: February 2026
+  -&gt; YoY: February 2026 vs February 2025
+  -&gt; 5yr: February 2026 vs February 2021 (COVID-distorted baseline)
 </pre>
 </div>
 </div>
@@ -13646,15 +13651,20 @@ Month columns with non-null data in 2026:
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
-<h2 id="Step-1.5:-Identify-2-Digit-NAICS-Industry-Mapping">Step 1.5: Identify 2-Digit NAICS Industry Mapping<a class="anchor-link" href="#Step-1.5:-Identify-2-Digit-NAICS-Industry-Mapping">¶</a></h2><p>Reference: <a href="https://www.census.gov/programs-surveys/economic-census/year/2022/guidance/understanding-naics.html">https://www.census.gov/programs-surveys/economic-census/year/2022/guidance/understanding-naics.html</a></p>
-<p>The CES data uses BLS industry codes, not NAICS codes directly. However, the industry titles map to 2-digit NAICS sectors.</p>
-<p><strong>Note:</strong> Some 2-digit NAICS sectors are combined in the CES data for NYC:</p>
-<ul>
-<li>Mining (NAICS 21) + Construction (NAICS 23) = "Mining, Logging and Construction" (combined)</li>
-<li>Education (NAICS 61) is "Private Educational Services" only (excludes public education)</li>
-<li>Health Care (NAICS 62) is private sector only</li>
-<li>Government (NAICS 92) is shown separately</li>
-</ul>
+<h2 id="Step-1.4:-BLS-Supersector-Industry-Mapping">Step 1.4: BLS Supersector Industry Mapping<a class="anchor-link" href="#Step-1.4:-BLS-Supersector-Industry-Mapping">¶</a></h2><p>Reference: <a href="https://www.bls.gov/sae/additional-resources/naics-supersectors-for-ces-program.htm">https://www.bls.gov/sae/additional-resources/naics-supersectors-for-ces-program.htm</a></p>
+<p>The BLS defines <strong>10 supersectors</strong> that partition all private-sector employment plus Government.
+These 10 supersectors <strong>sum exactly to Total Nonfarm</strong> with no overlap — each is a direct CES series.</p>
+<p><strong>Why we use 10 BLS supersectors instead of 18 individual NAICS 2-digit sectors:</strong></p>
+<ol>
+<li><strong>BLS standard:</strong> NYS DOL, BLS, and the NYC Comptroller all present NYC employment using these supersectors.</li>
+<li><strong>No double-counting:</strong> The 10 supersectors partition Total Nonfarm exactly. Five supersectors aggregate
+smaller 2-digit sectors (e.g., Leisure &amp; Hospitality = NAICS 71 + 72), and those component sectors are
+available as separate CES series — but presenting both levels would be redundant.</li>
+<li><strong>Statistical robustness:</strong> Individual sub-sectors like Utilities (17K) and Management of Companies (80K)
+are too small for meaningful YoY trend analysis.</li>
+<li><strong>Analytical clarity:</strong> 10 sectors + Total Nonfarm keeps tables and charts readable; 18 sectors dilute focus.</li>
+</ol>
+<p><strong>Note:</strong> Education (NAICS 61) is private-sector only. Government (NAICS 92) is shown separately.</p>
 </div>
 </div>
 </div>
@@ -13663,39 +13673,44 @@ Month columns with non-null data in 2026:
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">naics_2digit_mapping</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'21+23'</span><span class="p">:</span> <span class="s1">'Mining, Logging and Construction'</span><span class="p">,</span>
-    <span class="s1">'31-33'</span><span class="p">:</span> <span class="s1">'Manufacturing'</span><span class="p">,</span>
-    <span class="s1">'42'</span><span class="p">:</span> <span class="s1">'Wholesale Trade'</span><span class="p">,</span>
-    <span class="s1">'44-45'</span><span class="p">:</span> <span class="s1">'Retail Trade'</span><span class="p">,</span>
-    <span class="s1">'48-49'</span><span class="p">:</span> <span class="s1">'Transportation and Warehousing'</span><span class="p">,</span>
-    <span class="s1">'22'</span><span class="p">:</span> <span class="s1">'Utilities'</span><span class="p">,</span>
-    <span class="s1">'51'</span><span class="p">:</span> <span class="s1">'Information'</span><span class="p">,</span>
-    <span class="s1">'52'</span><span class="p">:</span> <span class="s1">'Finance and Insurance'</span><span class="p">,</span>
-    <span class="s1">'53'</span><span class="p">:</span> <span class="s1">'Real Estate and Rental and Leasing'</span><span class="p">,</span>
-    <span class="s1">'54'</span><span class="p">:</span> <span class="s1">'Professional, Scientific, and Technical Services'</span><span class="p">,</span>
-    <span class="s1">'55'</span><span class="p">:</span> <span class="s1">'Management of Companies and Enterprises'</span><span class="p">,</span>
-    <span class="s1">'56'</span><span class="p">:</span> <span class="s1">'Administrative and Support and Waste Management and Remediation Services'</span><span class="p">,</span>
-    <span class="s1">'61'</span><span class="p">:</span> <span class="s1">'Private Educational Services'</span><span class="p">,</span>
-    <span class="s1">'62'</span><span class="p">:</span> <span class="s1">'Health Care and Social Assistance'</span><span class="p">,</span>
-    <span class="s1">'71'</span><span class="p">:</span> <span class="s1">'Arts, Entertainment, and Recreation'</span><span class="p">,</span>
-    <span class="s1">'72'</span><span class="p">:</span> <span class="s1">'Accommodation and Food Services'</span><span class="p">,</span>
-    <span class="s1">'81'</span><span class="p">:</span> <span class="s1">'Other Services'</span><span class="p">,</span>
-    <span class="s1">'92'</span><span class="p">:</span> <span class="s1">'Government'</span><span class="p">,</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">supersectors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">'21+23'</span><span class="p">,</span> <span class="s1">'Mining, Logging and Construction'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'31-33'</span><span class="p">,</span> <span class="s1">'Manufacturing'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'22,42-49'</span><span class="p">,</span> <span class="s1">'Trade, Transportation, and Utilities'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'51'</span><span class="p">,</span> <span class="s1">'Information'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'52,53'</span><span class="p">,</span> <span class="s1">'Financial Activities'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'54-56'</span><span class="p">,</span> <span class="s1">'Professional and Business Services'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'61,62'</span><span class="p">,</span> <span class="s1">'Private Education and Health Services'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'71,72'</span><span class="p">,</span> <span class="s1">'Leisure and Hospitality'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'81'</span><span class="p">,</span> <span class="s1">'Other Services'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'92'</span><span class="p">,</span> <span class="s1">'Government'</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># Sub-sector composition for the 5 aggregated supersectors</span>
+<span class="n">composition</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'22,42-49'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'22: Utilities'</span><span class="p">,</span> <span class="s1">'42: Wholesale Trade'</span><span class="p">,</span> <span class="s1">'44-45: Retail Trade'</span><span class="p">,</span> <span class="s1">'48-49: Transport/Warehousing'</span><span class="p">],</span>
+    <span class="s1">'52,53'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'52: Finance/Insurance'</span><span class="p">,</span> <span class="s1">'53: Real Estate'</span><span class="p">],</span>
+    <span class="s1">'54-56'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'54: Prof/Technical Svcs'</span><span class="p">,</span> <span class="s1">'55: Management of Cos'</span><span class="p">,</span> <span class="s1">'56: Admin/Waste Mgmt'</span><span class="p">],</span>
+    <span class="s1">'61,62'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'61: Education (Private)'</span><span class="p">,</span> <span class="s1">'62: Health Care/Social Asst'</span><span class="p">],</span>
+    <span class="s1">'71,72'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'71: Arts/Entertainment'</span><span class="p">,</span> <span class="s1">'72: Accommodation/Food'</span><span class="p">],</span>
 <span class="p">}</span>
 
 <span class="n">nyc_industries</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ces</span><span class="p">[</span><span class="n">ces</span><span class="p">[</span><span class="s1">'AREANAME'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'New York City'</span><span class="p">][</span><span class="s1">'INDUSTRY_TITLE'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 
 <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">naics</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">naics_2digit_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'NAICS'</span><span class="p">:</span> <span class="n">naics</span><span class="p">,</span> <span class="s1">'CES Industry Title'</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">'In Data'</span><span class="p">:</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">nyc_industries</span><span class="p">})</span>
+<span class="k">for</span> <span class="n">naics</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">supersectors</span><span class="p">:</span>
+    <span class="n">in_data</span> <span class="o">=</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">nyc_industries</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">naics</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'NAICS'</span><span class="p">:</span> <span class="n">naics</span><span class="p">,</span> <span class="s1">'Supersector'</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">'Sub-sectors'</span><span class="p">:</span> <span class="n">sub</span> <span class="k">if</span> <span class="n">sub</span> <span class="k">else</span> <span class="s1">'(standalone)'</span><span class="p">,</span> <span class="s1">'In CES Data'</span><span class="p">:</span> <span class="n">in_data</span><span class="p">})</span>
+
+<span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'NAICS'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'Supersector'</span><span class="p">:</span> <span class="s1">'Total Nonfarm'</span><span class="p">,</span> <span class="s1">'Sub-sectors'</span><span class="p">:</span> <span class="s1">'Sum of all 10 above'</span><span class="p">,</span> <span class="s1">'In CES Data'</span><span class="p">:</span> <span class="s1">'Total Nonfarm'</span> <span class="ow">in</span> <span class="n">nyc_industries</span><span class="p">})</span>
 
 <span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-<span class="n">df_map</span><span class="p">[</span><span class="s1">'In Data'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_map</span><span class="p">[</span><span class="s1">'In Data'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="s1">'✓'</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s1">'✗'</span><span class="p">})</span>
+<span class="n">df_map</span><span class="p">[</span><span class="s1">'In CES Data'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_map</span><span class="p">[</span><span class="s1">'In CES Data'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="s1">'Yes'</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s1">'No'</span><span class="p">})</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df_map</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'index'</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Note: NAICS 21+23 (Mining + Construction) are COMBINED in CES data for NYC.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Note: Education (61) and Health Care (62) are PRIVATE SECTOR only.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'All 10 supersectors + Total Nonfarm confirmed in CES data.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'5 of 10 supersectors are aggregations — their sub-sectors are also available individually in CES.'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13706,104 +13721,81 @@ Month columns with non-null data in 2026:
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea"><style type="text/css">
 </style>
-<table id="T_25194">
+<table id="T_d660d">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_25194_level0_col0">NAICS</th>
-<th class="col_heading level0 col1" id="T_25194_level0_col1">CES Industry Title</th>
-<th class="col_heading level0 col2" id="T_25194_level0_col2">In Data</th>
+<th class="col_heading level0 col0" id="T_d660d_level0_col0">NAICS</th>
+<th class="col_heading level0 col1" id="T_d660d_level0_col1">Supersector</th>
+<th class="col_heading level0 col2" id="T_d660d_level0_col2">Sub-sectors</th>
+<th class="col_heading level0 col3" id="T_d660d_level0_col3">In CES Data</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_25194_row0_col0">21+23</td>
-<td class="data row0 col1" id="T_25194_row0_col1">Mining, Logging and Construction</td>
-<td class="data row0 col2" id="T_25194_row0_col2">✓</td>
+<td class="data row0 col0" id="T_d660d_row0_col0">21+23</td>
+<td class="data row0 col1" id="T_d660d_row0_col1">Mining, Logging and Construction</td>
+<td class="data row0 col2" id="T_d660d_row0_col2">(standalone)</td>
+<td class="data row0 col3" id="T_d660d_row0_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_25194_row1_col0">31-33</td>
-<td class="data row1 col1" id="T_25194_row1_col1">Manufacturing</td>
-<td class="data row1 col2" id="T_25194_row1_col2">✓</td>
+<td class="data row1 col0" id="T_d660d_row1_col0">31-33</td>
+<td class="data row1 col1" id="T_d660d_row1_col1">Manufacturing</td>
+<td class="data row1 col2" id="T_d660d_row1_col2">(standalone)</td>
+<td class="data row1 col3" id="T_d660d_row1_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_25194_row2_col0">42</td>
-<td class="data row2 col1" id="T_25194_row2_col1">Wholesale Trade</td>
-<td class="data row2 col2" id="T_25194_row2_col2">✓</td>
+<td class="data row2 col0" id="T_d660d_row2_col0">22,42-49</td>
+<td class="data row2 col1" id="T_d660d_row2_col1">Trade, Transportation, and Utilities</td>
+<td class="data row2 col2" id="T_d660d_row2_col2">22: Utilities, 42: Wholesale Trade, 44-45: Retail Trade, 48-49: Transport/Warehousing</td>
+<td class="data row2 col3" id="T_d660d_row2_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_25194_row3_col0">44-45</td>
-<td class="data row3 col1" id="T_25194_row3_col1">Retail Trade</td>
-<td class="data row3 col2" id="T_25194_row3_col2">✓</td>
+<td class="data row3 col0" id="T_d660d_row3_col0">51</td>
+<td class="data row3 col1" id="T_d660d_row3_col1">Information</td>
+<td class="data row3 col2" id="T_d660d_row3_col2">(standalone)</td>
+<td class="data row3 col3" id="T_d660d_row3_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_25194_row4_col0">48-49</td>
-<td class="data row4 col1" id="T_25194_row4_col1">Transportation and Warehousing</td>
-<td class="data row4 col2" id="T_25194_row4_col2">✓</td>
+<td class="data row4 col0" id="T_d660d_row4_col0">52,53</td>
+<td class="data row4 col1" id="T_d660d_row4_col1">Financial Activities</td>
+<td class="data row4 col2" id="T_d660d_row4_col2">52: Finance/Insurance, 53: Real Estate</td>
+<td class="data row4 col3" id="T_d660d_row4_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_25194_row5_col0">22</td>
-<td class="data row5 col1" id="T_25194_row5_col1">Utilities</td>
-<td class="data row5 col2" id="T_25194_row5_col2">✓</td>
+<td class="data row5 col0" id="T_d660d_row5_col0">54-56</td>
+<td class="data row5 col1" id="T_d660d_row5_col1">Professional and Business Services</td>
+<td class="data row5 col2" id="T_d660d_row5_col2">54: Prof/Technical Svcs, 55: Management of Cos, 56: Admin/Waste Mgmt</td>
+<td class="data row5 col3" id="T_d660d_row5_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_25194_row6_col0">51</td>
-<td class="data row6 col1" id="T_25194_row6_col1">Information</td>
-<td class="data row6 col2" id="T_25194_row6_col2">✓</td>
+<td class="data row6 col0" id="T_d660d_row6_col0">61,62</td>
+<td class="data row6 col1" id="T_d660d_row6_col1">Private Education and Health Services</td>
+<td class="data row6 col2" id="T_d660d_row6_col2">61: Education (Private), 62: Health Care/Social Asst</td>
+<td class="data row6 col3" id="T_d660d_row6_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_25194_row7_col0">52</td>
-<td class="data row7 col1" id="T_25194_row7_col1">Finance and Insurance</td>
-<td class="data row7 col2" id="T_25194_row7_col2">✓</td>
+<td class="data row7 col0" id="T_d660d_row7_col0">71,72</td>
+<td class="data row7 col1" id="T_d660d_row7_col1">Leisure and Hospitality</td>
+<td class="data row7 col2" id="T_d660d_row7_col2">71: Arts/Entertainment, 72: Accommodation/Food</td>
+<td class="data row7 col3" id="T_d660d_row7_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row8 col0" id="T_25194_row8_col0">53</td>
-<td class="data row8 col1" id="T_25194_row8_col1">Real Estate and Rental and Leasing</td>
-<td class="data row8 col2" id="T_25194_row8_col2">✓</td>
+<td class="data row8 col0" id="T_d660d_row8_col0">81</td>
+<td class="data row8 col1" id="T_d660d_row8_col1">Other Services</td>
+<td class="data row8 col2" id="T_d660d_row8_col2">(standalone)</td>
+<td class="data row8 col3" id="T_d660d_row8_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row9 col0" id="T_25194_row9_col0">54</td>
-<td class="data row9 col1" id="T_25194_row9_col1">Professional, Scientific, and Technical Services</td>
-<td class="data row9 col2" id="T_25194_row9_col2">✓</td>
+<td class="data row9 col0" id="T_d660d_row9_col0">92</td>
+<td class="data row9 col1" id="T_d660d_row9_col1">Government</td>
+<td class="data row9 col2" id="T_d660d_row9_col2">(standalone)</td>
+<td class="data row9 col3" id="T_d660d_row9_col3">Yes</td>
 </tr>
 <tr>
-<td class="data row10 col0" id="T_25194_row10_col0">55</td>
-<td class="data row10 col1" id="T_25194_row10_col1">Management of Companies and Enterprises</td>
-<td class="data row10 col2" id="T_25194_row10_col2">✓</td>
-</tr>
-<tr>
-<td class="data row11 col0" id="T_25194_row11_col0">56</td>
-<td class="data row11 col1" id="T_25194_row11_col1">Administrative and Support and Waste Management and Remediation Services</td>
-<td class="data row11 col2" id="T_25194_row11_col2">✓</td>
-</tr>
-<tr>
-<td class="data row12 col0" id="T_25194_row12_col0">61</td>
-<td class="data row12 col1" id="T_25194_row12_col1">Private Educational Services</td>
-<td class="data row12 col2" id="T_25194_row12_col2">✓</td>
-</tr>
-<tr>
-<td class="data row13 col0" id="T_25194_row13_col0">62</td>
-<td class="data row13 col1" id="T_25194_row13_col1">Health Care and Social Assistance</td>
-<td class="data row13 col2" id="T_25194_row13_col2">✓</td>
-</tr>
-<tr>
-<td class="data row14 col0" id="T_25194_row14_col0">71</td>
-<td class="data row14 col1" id="T_25194_row14_col1">Arts, Entertainment, and Recreation</td>
-<td class="data row14 col2" id="T_25194_row14_col2">✓</td>
-</tr>
-<tr>
-<td class="data row15 col0" id="T_25194_row15_col0">72</td>
-<td class="data row15 col1" id="T_25194_row15_col1">Accommodation and Food Services</td>
-<td class="data row15 col2" id="T_25194_row15_col2">✓</td>
-</tr>
-<tr>
-<td class="data row16 col0" id="T_25194_row16_col0">81</td>
-<td class="data row16 col1" id="T_25194_row16_col1">Other Services</td>
-<td class="data row16 col2" id="T_25194_row16_col2">✓</td>
-</tr>
-<tr>
-<td class="data row17 col0" id="T_25194_row17_col0">92</td>
-<td class="data row17 col1" id="T_25194_row17_col1">Government</td>
-<td class="data row17 col2" id="T_25194_row17_col2">✓</td>
+<td class="data row10 col0" id="T_d660d_row10_col0"></td>
+<td class="data row10 col1" id="T_d660d_row10_col1">Total Nonfarm</td>
+<td class="data row10 col2" id="T_d660d_row10_col2">Sum of all 10 above</td>
+<td class="data row10 col3" id="T_d660d_row10_col3">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -13812,8 +13804,8 @@ Month columns with non-null data in 2026:
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Note: NAICS 21+23 (Mining + Construction) are COMBINED in CES data for NYC.
-Note: Education (61) and Health Care (62) are PRIVATE SECTOR only.
+<pre>All 10 supersectors + Total Nonfarm confirmed in CES data.
+5 of 10 supersectors are aggregations — their sub-sectors are also available individually in CES.
 </pre>
 </div>
 </div>
@@ -13824,7 +13816,7 @@ Note: Education (61) and Health Care (62) are PRIVATE SECTOR only.
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
-<h2 id="Step-1.6%E2%80%931.7:-Explore-311-API-Schema">Step 1.6–1.7: Explore 311 API Schema<a class="anchor-link" href="#Step-1.6%E2%80%931.7:-Explore-311-API-Schema">¶</a></h2><p>Before building the main query, we explore the API to verify exact field values.</p>
+<h2 id="Step-1.5:-Explore-311-API-%E2%80%94-Complaint-Types">Step 1.5: Explore 311 API — Complaint Types<a class="anchor-link" href="#Step-1.5:-Explore-311-API-%E2%80%94-Complaint-Types">¶</a></h2><p>Before building the main query, we explore the API to verify exact field values.</p>
 </div>
 </div>
 </div>
@@ -13863,49 +13855,49 @@ Note: Education (61) and Health Care (62) are PRIVATE SECTOR only.
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea"><style type="text/css">
 </style>
-<table id="T_aaaac">
+<table id="T_8f9b2">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_aaaac_level0_col0">complaint_type</th>
-<th class="col_heading level0 col1" id="T_aaaac_level0_col1">cnt</th>
+<th class="col_heading level0 col0" id="T_8f9b2_level0_col0">complaint_type</th>
+<th class="col_heading level0 col1" id="T_8f9b2_level0_col1">cnt</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_aaaac_row0_col0">Illegal Parking</td>
-<td class="data row0 col1" id="T_aaaac_row0_col1">86493</td>
+<td class="data row0 col0" id="T_8f9b2_row0_col0">Illegal Parking</td>
+<td class="data row0 col1" id="T_8f9b2_row0_col1">86493</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_aaaac_row1_col0">Noise - Residential</td>
-<td class="data row1 col1" id="T_aaaac_row1_col1">75543</td>
+<td class="data row1 col0" id="T_8f9b2_row1_col0">Noise - Residential</td>
+<td class="data row1 col1" id="T_8f9b2_row1_col1">75543</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_aaaac_row2_col0">Noise - Street/Sidewalk</td>
-<td class="data row2 col1" id="T_aaaac_row2_col1">12743</td>
+<td class="data row2 col0" id="T_8f9b2_row2_col0">Noise - Street/Sidewalk</td>
+<td class="data row2 col1" id="T_8f9b2_row2_col1">12743</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_aaaac_row3_col0">Noise - Vehicle</td>
-<td class="data row3 col1" id="T_aaaac_row3_col1">11372</td>
+<td class="data row3 col0" id="T_8f9b2_row3_col0">Noise - Vehicle</td>
+<td class="data row3 col1" id="T_8f9b2_row3_col1">11372</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_aaaac_row4_col0">Noise - Commercial</td>
-<td class="data row4 col1" id="T_aaaac_row4_col1">11114</td>
+<td class="data row4 col0" id="T_8f9b2_row4_col0">Noise - Commercial</td>
+<td class="data row4 col1" id="T_8f9b2_row4_col1">11114</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_aaaac_row5_col0">Noise</td>
-<td class="data row5 col1" id="T_aaaac_row5_col1">10789</td>
+<td class="data row5 col0" id="T_8f9b2_row5_col0">Noise</td>
+<td class="data row5 col1" id="T_8f9b2_row5_col1">10789</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_aaaac_row6_col0">Noise - Helicopter</td>
-<td class="data row6 col1" id="T_aaaac_row6_col1">5290</td>
+<td class="data row6 col0" id="T_8f9b2_row6_col0">Noise - Helicopter</td>
+<td class="data row6 col1" id="T_8f9b2_row6_col1">5290</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_aaaac_row7_col0">Noise - Park</td>
-<td class="data row7 col1" id="T_aaaac_row7_col1">498</td>
+<td class="data row7 col0" id="T_8f9b2_row7_col0">Noise - Park</td>
+<td class="data row7 col1" id="T_8f9b2_row7_col1">498</td>
 </tr>
 <tr>
-<td class="data row8 col0" id="T_aaaac_row8_col0">Noise - House of Worship</td>
-<td class="data row8 col1" id="T_aaaac_row8_col1">395</td>
+<td class="data row8 col0" id="T_8f9b2_row8_col0">Noise - House of Worship</td>
+<td class="data row8 col1" id="T_8f9b2_row8_col1">395</td>
 </tr>
 </tbody>
 </table>
@@ -13935,7 +13927,8 @@ Ratio: 11.8x more captured with starts_with approach
 <li>The exact "Noise" type belongs to <strong>DEP</strong> (not NYPD or HPD), so it is correctly excluded by the agency filter</li>
 <li>HPD has zero noise/parking complaints — HPD handles housing quality (heat/hot water, plumbing)</li>
 </ol>
-<p><strong>IMPLICATION:</strong> When we filter for (NYPD OR HPD) AND (noise OR illegal parking), HPD returns zero rows.</p>
+<hr/>
+<h2 id="Step-1.6:-Agency-Breakdown-%E2%80%94-NYPD-vs-HPD">Step 1.6: Agency Breakdown — NYPD vs HPD<a class="anchor-link" href="#Step-1.6:-Agency-Breakdown-%E2%80%94-NYPD-vs-HPD">¶</a></h2><p>Verify which agencies handle noise/parking complaints. HPD is included in the query but expected to return zero rows.</p>
 </div>
 </div>
 </div>
@@ -13945,20 +13938,36 @@ Ratio: 11.8x more captured with starts_with approach
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'$select'</span><span class="p">:</span> <span class="s1">'agency_name, complaint_type, count(*) as cnt'</span><span class="p">,</span>
+    <span class="s1">'$select'</span><span class="p">:</span> <span class="s1">'agency_name, count(*) as cnt'</span><span class="p">,</span>
     <span class="s1">'$where'</span><span class="p">:</span> <span class="s2">"created_date between '2021-12-15T00:00:00' and '2022-03-15T23:59:59' "</span>
-             <span class="s2">"AND starts_with(complaint_type, 'Noise')"</span><span class="p">,</span>
-    <span class="s1">'$group'</span><span class="p">:</span> <span class="s1">'agency_name, complaint_type'</span><span class="p">,</span>
+             <span class="s2">"AND (starts_with(complaint_type, 'Noise') "</span>
+             <span class="s2">"OR complaint_type='Illegal Parking') "</span>
+             <span class="s2">"AND (agency_name='New York City Police Department' "</span>
+             <span class="s2">"OR agency_name='Department of Housing Preservation and Development')"</span><span class="p">,</span>
+    <span class="s1">'$group'</span><span class="p">:</span> <span class="s1">'agency_name'</span><span class="p">,</span>
     <span class="s1">'$order'</span><span class="p">:</span> <span class="s1">'cnt DESC'</span><span class="p">,</span>
     <span class="s1">'$limit'</span><span class="p">:</span> <span class="mi">100</span>
 <span class="p">}</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="n">agency_noise</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-<span class="n">agency_noise</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span> <span class="o">=</span> <span class="n">agency_noise</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">agency_noise</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'index'</span><span class="p">))</span>
+<span class="n">agency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="k">if</span> <span class="s1">'cnt'</span> <span class="ow">in</span> <span class="n">agency_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">agency_df</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span> <span class="o">=</span> <span class="n">agency_df</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'NYPD handles all noise subcategories. DEP handles exact "Noise" type. EDC handles Noise - Helicopter.'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, plumbing).'</span><span class="p">)</span>
+<span class="c1"># Ensure HPD appears as a line item even if count is zero</span>
+<span class="n">hpd_row</span> <span class="o">=</span> <span class="n">agency_df</span><span class="p">[</span><span class="n">agency_df</span><span class="p">[</span><span class="s1">'agency_name'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Department of Housing Preservation and Development'</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hpd_row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">agency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">agency_df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+        <span class="s1">'agency_name'</span><span class="p">:</span> <span class="s1">'Department of Housing Preservation and Development'</span><span class="p">,</span>
+        <span class="s1">'cnt'</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}])],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">agency_df</span> <span class="o">=</span> <span class="n">agency_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'cnt'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">agency_df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'index'</span><span class="p">))</span>
+
+<span class="n">nypd_cnt</span> <span class="o">=</span> <span class="n">agency_df</span><span class="p">[</span><span class="n">agency_df</span><span class="p">[</span><span class="s1">'agency_name'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">'Police'</span><span class="p">)][</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">hpd_cnt</span> <span class="o">=</span> <span class="n">agency_df</span><span class="p">[</span><span class="n">agency_df</span><span class="p">[</span><span class="s1">'agency_name'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">'Housing'</span><span class="p">)][</span><span class="s1">'cnt'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'NYPD: </span><span class="si">{</span><span class="n">nypd_cnt</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> complaints'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'HPD:  </span><span class="si">{</span><span class="n">hpd_cnt</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> complaints (zero — HPD handles housing quality: heat/hot water, plumbing, not noise/parking)'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13969,54 +13978,21 @@ Ratio: 11.8x more captured with starts_with approach
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea"><style type="text/css">
 </style>
-<table id="T_7b5ac">
+<table id="T_95032">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_7b5ac_level0_col0">agency_name</th>
-<th class="col_heading level0 col1" id="T_7b5ac_level0_col1">complaint_type</th>
-<th class="col_heading level0 col2" id="T_7b5ac_level0_col2">cnt</th>
+<th class="col_heading level0 col0" id="T_95032_level0_col0">agency_name</th>
+<th class="col_heading level0 col1" id="T_95032_level0_col1">cnt</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_7b5ac_row0_col0">New York City Police Department</td>
-<td class="data row0 col1" id="T_7b5ac_row0_col1">Noise - Residential</td>
-<td class="data row0 col2" id="T_7b5ac_row0_col2">75543</td>
+<td class="data row0 col0" id="T_95032_row0_col0">New York City Police Department</td>
+<td class="data row0 col1" id="T_95032_row0_col1">198158</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_7b5ac_row1_col0">New York City Police Department</td>
-<td class="data row1 col1" id="T_7b5ac_row1_col1">Noise - Street/Sidewalk</td>
-<td class="data row1 col2" id="T_7b5ac_row1_col2">12743</td>
-</tr>
-<tr>
-<td class="data row2 col0" id="T_7b5ac_row2_col0">New York City Police Department</td>
-<td class="data row2 col1" id="T_7b5ac_row2_col1">Noise - Vehicle</td>
-<td class="data row2 col2" id="T_7b5ac_row2_col2">11372</td>
-</tr>
-<tr>
-<td class="data row3 col0" id="T_7b5ac_row3_col0">New York City Police Department</td>
-<td class="data row3 col1" id="T_7b5ac_row3_col1">Noise - Commercial</td>
-<td class="data row3 col2" id="T_7b5ac_row3_col2">11114</td>
-</tr>
-<tr>
-<td class="data row4 col0" id="T_7b5ac_row4_col0">Department of Environmental Protection</td>
-<td class="data row4 col1" id="T_7b5ac_row4_col1">Noise</td>
-<td class="data row4 col2" id="T_7b5ac_row4_col2">10789</td>
-</tr>
-<tr>
-<td class="data row5 col0" id="T_7b5ac_row5_col0">Economic Development Corporation</td>
-<td class="data row5 col1" id="T_7b5ac_row5_col1">Noise - Helicopter</td>
-<td class="data row5 col2" id="T_7b5ac_row5_col2">5290</td>
-</tr>
-<tr>
-<td class="data row6 col0" id="T_7b5ac_row6_col0">New York City Police Department</td>
-<td class="data row6 col1" id="T_7b5ac_row6_col1">Noise - Park</td>
-<td class="data row6 col2" id="T_7b5ac_row6_col2">498</td>
-</tr>
-<tr>
-<td class="data row7 col0" id="T_7b5ac_row7_col0">New York City Police Department</td>
-<td class="data row7 col1" id="T_7b5ac_row7_col1">Noise - House of Worship</td>
-<td class="data row7 col2" id="T_7b5ac_row7_col2">395</td>
+<td class="data row1 col0" id="T_95032_row1_col0">Department of Housing Preservation and Development</td>
+<td class="data row1 col1" id="T_95032_row1_col1">0</td>
 </tr>
 </tbody>
 </table>
@@ -14025,8 +14001,8 @@ Ratio: 11.8x more captured with starts_with approach
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>NYPD handles all noise subcategories. DEP handles exact "Noise" type. EDC handles Noise - Helicopter.
-HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, plumbing).
+<pre>NYPD: 198,158 complaints
+HPD:  0 complaints (zero — HPD handles housing quality: heat/hot water, plumbing, not noise/parking)
 </pre>
 </div>
 </div>
@@ -14037,7 +14013,7 @@ HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, p
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
-<h2 id="Step-1.8:-Build-Full-311-Query-and-Pull-Data">Step 1.8: Build Full 311 Query and Pull Data<a class="anchor-link" href="#Step-1.8:-Build-Full-311-Query-and-Pull-Data">¶</a></h2>
+<h2 id="Step-1.7:-Build-Full-311-Query-and-Pull-Data">Step 1.7: Build Full 311 Query and Pull Data<a class="anchor-link" href="#Step-1.7:-Build-Full-311-Query-and-Pull-Data">¶</a></h2>
 </div>
 </div>
 </div>
@@ -14111,33 +14087,33 @@ HPD has ZERO noise complaints — HPD handles housing quality (heat/hot water, p
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea"><style type="text/css">
 </style>
-<table id="T_77e40">
+<table id="T_28b78">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_77e40_level0_col0">Check</th>
-<th class="col_heading level0 col1" id="T_77e40_level0_col1">Value</th>
+<th class="col_heading level0 col0" id="T_28b78_level0_col0">Check</th>
+<th class="col_heading level0 col1" id="T_28b78_level0_col1">Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_77e40_row0_col0">Total rows</td>
-<td class="data row0 col1" id="T_77e40_row0_col1">198,158</td>
+<td class="data row0 col0" id="T_28b78_row0_col0">Total rows</td>
+<td class="data row0 col1" id="T_28b78_row0_col1">198,158</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_77e40_row1_col0">Date range</td>
-<td class="data row1 col1" id="T_77e40_row1_col1">2021-12-15T00:02:21.000 to 2022-03-15T23:59:38.000</td>
+<td class="data row1 col0" id="T_28b78_row1_col0">Date range</td>
+<td class="data row1 col1" id="T_28b78_row1_col1">2021-12-15T00:02:21.000 to 2022-03-15T23:59:38.000</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_77e40_row2_col0">Agencies</td>
-<td class="data row2 col1" id="T_77e40_row2_col1">New York City Police Department</td>
+<td class="data row2 col0" id="T_28b78_row2_col0">Agencies</td>
+<td class="data row2 col1" id="T_28b78_row2_col1">New York City Police Department</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_77e40_row3_col0">Complaint types</td>
-<td class="data row3 col1" id="T_77e40_row3_col1">Illegal Parking, Noise - Commercial, Noise - House of Worship, Noise - Park, Noise - Residential, Noise - Street/Sidewalk, Noise - Vehicle</td>
+<td class="data row3 col0" id="T_28b78_row3_col0">Complaint types</td>
+<td class="data row3 col1" id="T_28b78_row3_col1">Illegal Parking, Noise - Commercial, Noise - House of Worship, Noise - Park, Noise - Residential, Noise - Street/Sidewalk, Noise - Vehicle</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_77e40_row4_col0">Duplicate unique_key</td>
-<td class="data row4 col1" id="T_77e40_row4_col1">0</td>
+<td class="data row4 col0" id="T_28b78_row4_col0">Duplicate unique_key</td>
+<td class="data row4 col1" id="T_28b78_row4_col1">0</td>
 </tr>
 </tbody>
 </table>
@@ -14179,13 +14155,13 @@ File size: 29659.0 KB
 <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><h3 id="CES-Employment-Data-(Q1)">CES Employment Data (Q1)<a class="anchor-link" href="#CES-Employment-Data-(Q1)">¶</a></h3><ul>
 <li><strong>Geography:</strong> <code>AREANAME == 'New York City'</code> (direct entry, not the broader MSA)</li>
 <li><strong>Latest month:</strong> February 2026</li>
-<li><strong>NAICS sectors:</strong> 18 mapped from BLS industry codes</li>
+<li><strong>Industry classification:</strong> 10 BLS supersectors + Total Nonfarm (see Step 1.4 rationale)</li>
 <li><strong>Data is NSA:</strong> compare same month across years only</li>
 <li><strong>5-year baseline (Feb 2021) is COVID-distorted</strong> — must be central to Q1b narrative</li>
 </ul>
 <h3 id="311-Service-Requests-(Q2)">311 Service Requests (Q2)<a class="anchor-link" href="#311-Service-Requests-(Q2)">¶</a></h3><ul>
 <li><strong>Total rows:</strong> 198,158 (all NYPD, 0 HPD)</li>
-<li><strong>HPD has zero matching rows:</strong> HPD handles housing quality, not noise/parking — valid finding</li>
+<li><strong>HPD has zero matching rows:</strong> HPD handles housing quality, not noise/parking — valid finding, shown explicitly in Step 1.6 table</li>
 <li><strong>Noise matching:</strong> <code>starts_with(complaint_type, 'Noise')</code> captures all subcategories; exact "Noise" is DEP-only</li>
 <li><strong>No duplicates, dates inclusive on both ends</strong></li>
 </ul>
