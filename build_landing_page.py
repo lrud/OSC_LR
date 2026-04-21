@@ -469,7 +469,7 @@ def build_page():
                 <div class="icon">&#128222;</div>
                 <h2>Q2: 311 Service Requests</h2>
                 <p>198,158 NYPD noise and illegal parking complaints (Dec 2021 &ndash; Mar 2022).</p>
-                <span class="tag tag-orange">198K Records &middot; 2 Charts</span>
+                <span class="tag tag-orange">198K Records &middot; 5 Charts &middot; OLS Regression</span>
             </a>
         </div>
 
@@ -552,6 +552,7 @@ def build_page():
                 <ul>
                     <li><strong>Residential noise dominates.</strong> 75,543 complaints (38%) &mdash; the single largest quality-of-life concern. Dense multi-unit living is a persistent friction point.</li>
                     <li><strong>Illegal parking rivals all noise combined.</strong> 86,493 complaints (44%) &mdash; a significant enforcement burden. Could parking enforcement be handled by a civilian agency?</li>
+                    <li><strong>Brooklyn and the Bronx account for over half</strong> of all complaints (55,194 and 51,367 respectively), while Staten Island generates only 4,551 (2.3%). Resource allocation may need to scale with borough-level demand.</li>
                     <li><strong>Nearly 200,000 complaints in 3 months</strong> is an extraordinary volume. Quality-of-life enforcement consumes substantial NYPD resources.</li>
                 </ul>
             </div>
