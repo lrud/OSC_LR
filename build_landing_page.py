@@ -127,8 +127,7 @@ yoy_chart_html = make_plotly_chart_unique(next(html for ci, html in q1_charts if
 compare_chart_html = make_plotly_chart_unique(next(html for ci, html in q1_charts if ci == 11))
 trends_chart_html = make_plotly_chart_unique(next(html for ci, html in q1_charts if ci == 13))
 
-# Q1 narrative: cell 15
-q1_narrative = q1_md.get(15, "")
+# Narrative is hardcoded in Q1A_NARRATIVE and Q1B_NARRATIVE below
 
 # Q2: cell 6 = complaint table
 q2_complaint_table_html = next(html for ci, html in q2_tables if ci == 6)
@@ -139,107 +138,65 @@ q2_weekly_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_cha
 
 
 # ---------------------------------------------------------------------------
-# Parse the Q1 narrative into Q1a and Q1b sections
-# ---------------------------------------------------------------------------
-def parse_q1_narrative(md_text):
-    """Split the narrative into 1-year and 5-year sections."""
-    parts = re.split(r"(<h2[^>]*>1-Year Changes.*?</h2>)", md_text, flags=re.DOTALL)
-    if len(parts) >= 3:
-        header_1yr = parts[1]
-        rest = parts[2]
-    else:
-        header_1yr = ""
-        rest = md_text
-
-    parts2 = re.split(r"(<h2[^>]*>5-Year Changes.*?</h2>)", rest, flags=re.DOTALL)
-    if len(parts2) >= 3:
-        one_year_narrative = header_1yr + "\n" + parts2[0]
-        five_year_header = parts2[1]
-        five_year_narrative = five_year_header + "\n" + parts2[2]
-    else:
-        one_year_narrative = header_1yr + "\n" + rest
-        five_year_narrative = ""
-
-    return one_year_narrative.strip(), five_year_narrative.strip()
-
-
-q1a_narrative_md, q1b_narrative_md = parse_q1_narrative(q1_narrative)
-
-
-# ---------------------------------------------------------------------------
-# Convert markdown narrative to HTML (simple conversion)
-# ---------------------------------------------------------------------------
-def md_to_simple_html(md_text):
-    """Convert the notebook's markdown narrative to HTML for the landing page.
-
-    Handles: headers, bold, italic, lists, paragraphs, code, span styles.
-    """
-    lines = md_text.split("\n")
-    html_parts = []
-    in_list = False
-    for line in lines:
-        stripped = line.strip()
-        if not stripped:
-            if in_list:
-                html_parts.append("</ul>")
-                in_list = False
-            continue
-
-        # Skip horizontal rules
-        if stripped == "---":
-            continue
-
-        # Headers
-        if stripped.startswith("<h"):
-            if in_list:
-                html_parts.append("</ul>")
-                in_list = False
-            html_parts.append(stripped)
-            continue
-
-        # List items
-        if stripped.startswith("* ") or stripped.startswith("- "):
-            if not in_list:
-                html_parts.append("<ul>")
-                in_list = True
-            content = stripped[2:]
-            content = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", content)
-            content = re.sub(r"\*(.+?)\*", r"<em>\1</em>", content)
-            content = re.sub(r"`(.+?)`", r"<code>\1</code>", content)
-            html_parts.append(f"<li>{content}</li>")
-            continue
-
-        if in_list:
-            html_parts.append("</ul>")
-            in_list = False
-
-        # Bold paragraphs / regular text
-        content = stripped
-        content = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", content)
-        content = re.sub(r"\*(.+?)\*", r"<em>\1</em>", content)
-        content = re.sub(r"`(.+?)`", r"<code>\1</code>", content)
-
-        # Wrap in <p> if it's not already an HTML block element
-        if not content.startswith("<"):
-            html_parts.append(f"<p>{content}</p>")
-        else:
-            html_parts.append(content)
-
-    if in_list:
-        html_parts.append("</ul>")
-    return "\n                ".join(html_parts)
-
-
-# ---------------------------------------------------------------------------
 # Build Q1a answer section
 # ---------------------------------------------------------------------------
+Q1A_NARRATIVE = """
+                <h3 style="color:red">Decliners</h3>
+                <ul style="margin: 8px 0 12px 20px;">
+                    <li><strong>Manufacturing (NAICS 31-33): <span style="color:red">&minus;5.82% (&minus;3,100 jobs)</span></strong><br>
+                    <em>BLS Supersector: Manufacturing (standalone).</em><br>
+                    Manufacturing has been in long-term structural decline in NYC, driven by automation, offshoring of production, and the city's transition to a service-oriented economy.</li>
+
+                    <li><strong>Mining/Construction (NAICS 21+23): <span style="color:red">&minus;4.82% (&minus;6,600 jobs)</span></strong><br>
+                    <em>BLS Supersector: Mining, Logging &amp; Construction &mdash; provided as a single combined series for NYC.</em><br>
+                    Higher interest rates throughout 2025 may have suppressed new housing starts and commercial development, and the completion of several major infrastructure projects could have reduced construction demand.</li>
+
+                    <li><strong>Other Services (NAICS 81): <span style="color:red">&minus;2.77% (&minus;4,900 jobs)</span></strong><br>
+                    <em>BLS Supersector: Other Services (standalone).</em><br>
+                    Includes repair services, personal care, and civic organizations. Inflation may be reducing consumer discretionary spending on non-essential services.</li>
+
+                    <li><strong>Leisure &amp; Hospitality (NAICS 71,72): <span style="color:red">&minus;2.28% (&minus;10,000 jobs)</span></strong><br>
+                    <em>Composition: Arts, Entertainment &amp; Recreation (71) + Accommodation &amp; Food Services (72).</em><br>
+                    The recovery in tourism, dining, and entertainment may have peaked, with consumers reallocating spending toward essentials.</li>
+
+                    <li><strong>Education &amp; Health (NAICS 61,62): <span style="color:red">&minus;1.62% (&minus;21,400 jobs)</span></strong><br>
+                    <em>Composition: Private Educational Services (61) + Health Care &amp; Social Assistance (62).</em><br>
+                    The largest absolute YoY decline of any supersector. This reversal may reflect normalization after several years of strong growth in healthcare demand.</li>
+
+                    <li><strong>Trade/Trans/Util (NAICS 22,42-49): <span style="color:red">&minus;1.22% (&minus;7,100 jobs)</span></strong><br>
+                    <em>Composition: Utilities (22) + Wholesale Trade (42) + Retail Trade (44-45) + Transportation &amp; Warehousing (48-49).</em><br>
+                    Broad-based but modest declines across retail, wholesale, and transportation may reflect softening consumer demand and ongoing e-commerce shifts.</li>
+
+                    <li><strong>Prof &amp; Business (NAICS 54-56): <span style="color:red">&minus;0.82% (&minus;6,500 jobs)</span></strong><br>
+                    <em>Composition: Professional/Scientific/Technical (54) + Management of Companies (55) + Admin/Waste Management (56).</em><br>
+                    A modest decline that may reflect corporate cost-cutting and reduced demand for administrative and temp staffing services.</li>
+                </ul>
+
+                <h3 style="color:green">Growers</h3>
+                <ul style="margin: 8px 0 12px 20px;">
+                    <li><strong>Information (NAICS 51): <span style="color:green">+1.93% (+4,200 jobs)</span></strong><br>
+                    <em>BLS Supersector: Information (standalone).</em><br>
+                    Growth may be driven by media streaming, digital content, and AI-related services expanding in NYC.</li>
+
+                    <li><strong>Government (NAICS 92): <span style="color:green">+1.58% (+9,500 jobs)</span></strong><br>
+                    <em>BLS Supersector: Government (standalone).</em><br>
+                    Local government hiring has continued, particularly in education, as the city fills positions left vacant during earlier budget constraints. The 1-year and 5-year growth rates are similar, indicating steady expansion rather than recovery-driven gains.</li>
+
+                    <li><strong>Financial Activities (NAICS 52,53): <span style="color:green">+1.27% (+6,500 jobs)</span></strong><br>
+                    <em>Composition: Finance &amp; Insurance (52) + Real Estate &amp; Rental/Leasing (53).</em><br>
+                    Steady expansion reflecting NYC's role as a global financial center.</li>
+                </ul>
+
+                <div class="takeaway"><strong>1-Year Takeaway:</strong> NYC Total Nonfarm fell by <span style="color:red">39,400 jobs (&minus;0.82%)</span> YoY to 4,791,000. Only 3 of 10 supersectors grew. Seven supersectors contracted, led by Manufacturing (<span style="color:red">&minus;5.82%</span>) and Mining/Construction (<span style="color:red">&minus;4.82%</span>). Information (<span style="color:green">+1.93%</span>) was the strongest grower.</div>
+"""
+
 def build_q1a_answer():
     parts = []
     parts.append(
         "<p>The latest available month is <strong>February 2026</strong>. "
         "NYC total nonfarm employment stood at <strong>4,791,000</strong>, "
         "down 39,400 (&minus;0.82%) from February 2025. "
-        "Six of ten BLS supersectors contracted; four grew.</p>"
+        "Seven of ten BLS supersectors contracted; three grew.</p>"
     )
 
     parts.append(
@@ -247,13 +204,12 @@ def build_q1a_answer():
     )
     parts.append(f'<div class="embedded-chart">{yoy_chart_html}</div>')
 
-    # Insert narrative (1-year section)
-    parts.append(md_to_simple_html(q1a_narrative_md))
-
     parts.append(
         '<div class="chart-label">Year-over-Year Comparison Table (10 BLS Supersectors + Total Nonfarm)</div>'
     )
     parts.append(f'<div class="embedded-table">{yoy_table_html}</div>')
+
+    parts.append(Q1A_NARRATIVE)
 
     parts.append(
         "<p>NYC Total Nonfarm: Feb 2026 = 4,791,000 | Feb 2025 = 4,830,400 | YoY = -39,400 (-0.82%)</p>"
@@ -267,12 +223,62 @@ def build_q1a_answer():
 # ---------------------------------------------------------------------------
 # Build Q1b answer section
 # ---------------------------------------------------------------------------
+Q1B_NARRATIVE = """
+                <h3 style="color:green">Growers</h3>
+                <ul style="margin: 8px 0 12px 20px;">
+                    <li><strong>Leisure &amp; Hospitality (NAICS 71,72): <span style="color:green">+85.05% (+197,400 jobs)</span></strong><br>
+                    <em>Composition: Arts, Entertainment &amp; Recreation (71) + Accommodation &amp; Food Services (72).</em><br>
+                    Feb 2021 employment was just 232,100. The large 5-year gain reflects recovery from that low base, though the sector has now begun to contract again YoY.</li>
+
+                    <li><strong>Education &amp; Health (NAICS 61,62): <span style="color:green">+25.07% (+260,100 jobs)</span></strong><br>
+                    <em>Composition: Private Educational Services (61) + Health Care &amp; Social Assistance (62).</em><br>
+                    The largest absolute 5-year gain of any supersector, driven by both recovery from Feb 2021 lows and structural demand growth in healthcare.</li>
+
+                    <li><strong>Prof &amp; Business (NAICS 54-56): <span style="color:green">+12.75% (+89,200 jobs)</span></strong><br>
+                    <em>Composition: Professional/Scientific/Technical (54) + Management of Companies (55) + Admin/Waste Management (56).</em><br>
+                    Strong 5-year growth despite a modest YoY decline, suggesting the sector expanded during the recovery and is now consolidating.</li>
+
+                    <li><strong>Financial Activities (NAICS 52,53): <span style="color:green">+12.13% (+55,900 jobs)</span></strong><br>
+                    <em>Composition: Finance &amp; Insurance (52) + Real Estate &amp; Rental/Leasing (53).</em><br>
+                    Steady 5-year expansion across both finance and real estate, reflecting NYC's continued role as a global financial center.</li>
+
+                    <li><strong>Trade/Trans/Util (NAICS 22,42-49): <span style="color:green">+7.86% (+41,800 jobs)</span></strong><br>
+                    <em>Composition: Utilities (22) + Wholesale Trade (42) + Retail Trade (44-45) + Transportation &amp; Warehousing (48-49).</em><br>
+                    Growth was broad-based across the supersector, driven by recovery in retail and transportation from Feb 2021 lows.</li>
+
+                    <li><strong>Other Services (NAICS 81): <span style="color:green">+6.37% (+10,300 jobs)</span></strong><br>
+                    <em>BLS Supersector: Other Services (standalone).</em><br>
+                    Modest growth in repair services, personal care, and civic organizations as consumer spending patterns normalized.</li>
+
+                    <li><strong>Government (NAICS 92): <span style="color:green">+5.47% (+31,700 jobs)</span></strong><br>
+                    <em>BLS Supersector: Government (standalone).</em><br>
+                    Steady hiring across local government agencies, particularly in education, with similar 1-year and 5-year rates indicating consistent expansion.</li>
+
+                    <li><strong>Information (NAICS 51): <span style="color:green">+5.23% (+11,000 jobs)</span></strong><br>
+                    <em>BLS Supersector: Information (standalone).</em><br>
+                    Growth in media streaming, digital content, and technology services, though the sector experienced a dip in 2024-2025 before rebounding.</li>
+                </ul>
+
+                <h3 style="color:red">Decliners</h3>
+                <ul style="margin: 8px 0 12px 20px;">
+                    <li><strong>Mining/Construction (NAICS 21+23): <span style="color:red">&minus;3.91% (&minus;5,300 jobs)</span></strong><br>
+                    <em>BLS Supersector: Mining, Logging &amp; Construction &mdash; provided as a single combined series for NYC.</em><br>
+                    Construction employment in Feb 2021 was still relatively elevated compared to other sectors, leaving less recovery upside. The 5-year decline combined with the YoY decline suggests a sustained downturn in the sector.</li>
+
+                    <li><strong>Manufacturing (NAICS 31-33): <span style="color:red">&minus;3.65% (&minus;1,900 jobs)</span></strong><br>
+                    <em>BLS Supersector: Manufacturing (standalone).</em><br>
+                    The only sector besides Mining/Construction to decline over both 1-year and 5-year horizons, confirming a decades-long structural decline that has persisted regardless of broader economic conditions.</li>
+                </ul>
+
+                <div class="takeaway"><strong>5-Year Takeaway:</strong> NYC Total Nonfarm grew by <span style="color:green">690,200 jobs (+16.83%)</span> over five years to 4,791,000. Eight of ten supersectors grew, led by Leisure &amp; Hospitality (<span style="color:green">+85.05%</span>) and Education &amp; Health (<span style="color:green">+25.07%</span>). Only Manufacturing (<span style="color:red">&minus;3.65%</span>) and Mining/Construction (<span style="color:red">&minus;3.91%</span>) declined over both 1-year and 5-year horizons.</div>
+"""
+
 def build_q1b_answer():
     parts = []
     parts.append(
-        "<p>The 1-year and 5-year comparisons tell very different stories because "
-        "<strong>the 5-year baseline (February 2021) was still deep in COVID disruption</strong>. "
-        "Large positive 5-year figures reflect recovery from pandemic lows, not sustainable organic growth.</p>"
+        "<p>The 1-year and 5-year comparisons tell very different stories. "
+        "The Feb 2021 baseline was a period when employment was well below pre-pandemic levels across most sectors, "
+        "making 5-year comparisons particularly important context for interpretation.</p>"
     )
 
     parts.append(
@@ -290,8 +296,7 @@ def build_q1b_answer():
     )
     parts.append(f'<div class="embedded-table">{fiveyr_table_html}</div>')
 
-    # Insert narrative (5-year section)
-    parts.append(md_to_simple_html(q1b_narrative_md))
+    parts.append(Q1B_NARRATIVE)
 
     return "\n                ".join(parts)
 
@@ -393,6 +398,16 @@ def build_page():
         .chart-label {{
             font-size: 0.75rem; color: #86868b; font-weight: 500;
             text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;
+        }}
+
+        .takeaway {{
+            background: #f0f4f8;
+            border-left: 4px solid #0f3460;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin: 16px 0;
+            font-size: 0.92rem;
+            line-height: 1.6;
         }}
 
         footer {{
