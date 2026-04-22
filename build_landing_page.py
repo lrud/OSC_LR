@@ -459,7 +459,7 @@ def build_page():
     </header>
 
     <div class="container">
-        <div class="section-label">Analysis Notebooks</div>
+        <div class="section-label">Analysis Notebooks <span style="font-weight:400; text-transform:none; letter-spacing:0; font-size:0.78rem; color:#86868b;">&mdash; click a tile to expand the full code &amp; output</span></div>
         <div class="cards">
             <a class="card" href="phase1.html">
                 <div class="icon">&#128202;</div>
@@ -585,7 +585,7 @@ def build_page():
                     <li><strong>Source:</strong> U.S. Census Bureau, ACS 5-Year Estimates (2016&ndash;2020), retrieved via the Census API (<code>api.census.gov</code>).</li>
                     <li><strong>Variables:</strong> Median household income (<code>B19013_001E</code>) and total population (<code>B01003_001E</code>).</li>
                     <li><strong>Geography:</strong> Zip code tabulation areas (ZCTAs). Merged on <code>incident_zip</code> from the 311 data.</li>
-                    <li><strong>Match rate:</strong> 181 of 203 unique zip codes in the 311 data matched to ACS records with valid income and population values.</li>
+                    <li><strong>Match rate:</strong> 181 of 202 unique zip codes in the 311 data matched to ACS records with valid income and population values.</li>
                     <li><strong>Income range:</strong> $23,337 &ndash; $250,001. <strong>Population range:</strong> 1,240 &ndash; 108,661.</li>
                     <li><strong>Dependent variable:</strong> Complaints per capita = total complaints / population for each zip code.</li>
                 </ul>
