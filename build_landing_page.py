@@ -444,7 +444,7 @@ def build_page():
             <h2>Question 2b</h2>
             <div class="question">Based on the data you pulled, how many complaints were there for each agency and complaint type? Please include all analysis (calculations, tables, charts, etc.) in your response.</div>
             <div class="answer">
-                <p><strong>By agency:</strong> All 198,158 complaints came from NYPD. HPD returned <strong>zero</strong> matching rows (HPD handles housing quality, not noise/parking).</p>
+                <p><strong>By agency:</strong> All 198,158 complaints came from NYPD. HPD returned <strong>zero</strong> matching rows.</p>
 
                 <div class="chart-label">Complaint Counts by Type</div>
                 <div class="embedded-table">{q2_complaint_table_html}</div>
