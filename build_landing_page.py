@@ -171,51 +171,11 @@ q2_reg_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts
 # Build Q1a answer section
 # ---------------------------------------------------------------------------
 Q1A_NARRATIVE = """
-                <h3 style="color:red">Decliners</h3>
-                <ul style="margin: 8px 0 12px 20px;">
-                    <li><strong>Manufacturing (NAICS 31-33): <span style="color:red">&minus;5.82% (&minus;3,100 jobs)</span></strong><br>
-                    <em>BLS Supersector: Manufacturing (standalone).</em><br>
-                    Manufacturing has been in long-term structural decline in NYC, driven by automation, offshoring of production, and the city's transition to a service-oriented economy.</li>
+                <p>The steepest percentage declines were in <span style="color:red">Manufacturing (&minus;5.82%, &minus;3,100 jobs)</span> and <span style="color:red">Mining/Construction (&minus;4.82%, &minus;6,600 jobs)</span>. But in absolute terms, the largest single-year loss came from <span style="color:red">Education &amp; Health (&minus;21,400 jobs)</span>, despite having added 260,100 over the prior five years. The sector that drove more recovery employment growth than any other is now contracting.</p>
 
-                    <li><strong>Mining/Construction (NAICS 21+23): <span style="color:red">&minus;4.82% (&minus;6,600 jobs)</span></strong><br>
-                    <em>BLS Supersector: Mining, Logging &amp; Construction &mdash; provided as a single combined series for NYC.</em><br>
-                    Higher interest rates throughout 2025 may have suppressed new housing starts and commercial development, and the completion of several major infrastructure projects could have reduced construction demand.</li>
+                <p>The seven contracting sectors fall into three groups based on what the data shows. Manufacturing and Mining/Construction declined over both the one-year and five-year horizons &mdash; they are the only two supersectors where employment was lower in February 2026 than in February 2021. <span style="color:red">Education &amp; Health (&minus;1.62%)</span> and <span style="color:red">Leisure &amp; Hospitality (&minus;2.28%)</span> reversed direction: together they gained 457,500 jobs over five years but lost 31,400 in the past year alone. The remaining three &mdash; <span style="color:red">Trade/Transportation (&minus;1.22%)</span>, <span style="color:red">Professional &amp; Business Services (&minus;0.82%)</span>, and <span style="color:red">Other Services (&minus;2.77%)</span> &mdash; all grew over five years but show modest year-over-year declines.</p>
 
-                    <li><strong>Other Services (NAICS 81): <span style="color:red">&minus;2.77% (&minus;4,900 jobs)</span></strong><br>
-                    <em>BLS Supersector: Other Services (standalone).</em><br>
-                    Includes repair services, personal care, and civic organizations. Inflation may be reducing consumer discretionary spending on non-essential services.</li>
-
-                    <li><strong>Leisure &amp; Hospitality (NAICS 71,72): <span style="color:red">&minus;2.28% (&minus;10,000 jobs)</span></strong><br>
-                    <em>Composition: Arts, Entertainment &amp; Recreation (71) + Accommodation &amp; Food Services (72).</em><br>
-                    The recovery in tourism, dining, and entertainment may have peaked, with consumers reallocating spending toward essentials.</li>
-
-                    <li><strong>Education &amp; Health (NAICS 61,62): <span style="color:red">&minus;1.62% (&minus;21,400 jobs)</span></strong><br>
-                    <em>Composition: Private Educational Services (61) + Health Care &amp; Social Assistance (62).</em><br>
-                    The largest absolute YoY decline of any supersector. This reversal may reflect normalization after several years of strong growth in healthcare demand.</li>
-
-                    <li><strong>Trade/Trans/Util (NAICS 22,42-49): <span style="color:red">&minus;1.22% (&minus;7,100 jobs)</span></strong><br>
-                    <em>Composition: Utilities (22) + Wholesale Trade (42) + Retail Trade (44-45) + Transportation &amp; Warehousing (48-49).</em><br>
-                    Broad-based but modest declines across retail, wholesale, and transportation may reflect softening consumer demand and ongoing e-commerce shifts.</li>
-
-                    <li><strong>Prof &amp; Business (NAICS 54-56): <span style="color:red">&minus;0.82% (&minus;6,500 jobs)</span></strong><br>
-                    <em>Composition: Professional/Scientific/Technical (54) + Management of Companies (55) + Admin/Waste Management (56).</em><br>
-                    A modest decline that may reflect corporate cost-cutting and reduced demand for administrative and temp staffing services.</li>
-                </ul>
-
-                <h3 style="color:green">Growers</h3>
-                <ul style="margin: 8px 0 12px 20px;">
-                    <li><strong>Information (NAICS 51): <span style="color:green">+1.93% (+4,200 jobs)</span></strong><br>
-                    <em>BLS Supersector: Information (standalone).</em><br>
-                    Growth may be driven by media streaming, digital content, and AI-related services expanding in NYC.</li>
-
-                    <li><strong>Government (NAICS 92): <span style="color:green">+1.58% (+9,500 jobs)</span></strong><br>
-                    <em>BLS Supersector: Government (standalone).</em><br>
-                    Local government hiring has continued, with the 1-year and 5-year growth rates similar, indicating steady expansion rather than recovery-driven gains.</li>
-
-                    <li><strong>Financial Activities (NAICS 52,53): <span style="color:green">+1.27% (+6,500 jobs)</span></strong><br>
-                    <em>Composition: Finance &amp; Insurance (52) + Real Estate &amp; Rental/Leasing (53).</em><br>
-                    Steady expansion reflecting NYC's role as a global financial center.</li>
-                </ul>
+                <p>Three sectors grew. <span style="color:green">Information (+1.93%)</span> led all supersectors. <span style="color:green">Government (+1.58%, +9,500 jobs)</span> added the most absolute positions. <span style="color:green">Financial Activities (+1.27%)</span> continued its expansion. All three also grew over five years, suggesting growth that is not dependent on recovery from the February 2021 employment lows.</p>
 
                 <div class="takeaway"><strong>1-Year Takeaway:</strong> NYC Total Nonfarm fell by <span style="color:red">39,400 jobs (&minus;0.82%)</span> YoY to 4,791,000. Only 3 of 10 supersectors grew. Seven supersectors contracted, led by Manufacturing (<span style="color:red">&minus;5.82%</span>) and Mining/Construction (<span style="color:red">&minus;4.82%</span>). Information (<span style="color:green">+1.93%</span>) was the strongest grower.</div>
 """
@@ -251,51 +211,9 @@ def build_q1a_answer():
 # Build Q1b answer section
 # ---------------------------------------------------------------------------
 Q1B_NARRATIVE = """
-                <h3 style="color:green">Growers</h3>
-                <ul style="margin: 8px 0 12px 20px;">
-                    <li><strong>Leisure &amp; Hospitality (NAICS 71,72): <span style="color:green">+85.05% (+197,400 jobs)</span></strong><br>
-                    <em>Composition: Arts, Entertainment &amp; Recreation (71) + Accommodation &amp; Food Services (72).</em><br>
-                    Feb 2021 employment was just 232,100. The large 5-year gain reflects recovery from that low base, though the sector has now begun to contract again YoY.</li>
+                <p>The five-year comparison is dominated by recovery effects because February 2021 employment was well below pre-pandemic levels across most sectors. Eight of ten supersectors grew over five years, led by <span style="color:green">Leisure &amp; Hospitality (+85.05%)</span> and <span style="color:green">Education &amp; Health (+25.07%)</span>. Those two sectors alone accounted for 457,500 of the 690,200 total jobs gained citywide. Over the past year, seven of ten contracted. The sectors that drove the five-year gains are now leading the one-year losses, which suggests the recovery-driven hiring surge has largely run its course.</p>
 
-                    <li><strong>Education &amp; Health (NAICS 61,62): <span style="color:green">+25.07% (+260,100 jobs)</span></strong><br>
-                    <em>Composition: Private Educational Services (61) + Health Care &amp; Social Assistance (62).</em><br>
-                    The largest absolute 5-year gain of any supersector, driven by both recovery from Feb 2021 lows and structural demand growth in healthcare.</li>
-
-                    <li><strong>Prof &amp; Business (NAICS 54-56): <span style="color:green">+12.75% (+89,200 jobs)</span></strong><br>
-                    <em>Composition: Professional/Scientific/Technical (54) + Management of Companies (55) + Admin/Waste Management (56).</em><br>
-                    Strong 5-year growth despite a modest YoY decline, suggesting the sector expanded during the recovery and is now consolidating.</li>
-
-                    <li><strong>Financial Activities (NAICS 52,53): <span style="color:green">+12.13% (+55,900 jobs)</span></strong><br>
-                    <em>Composition: Finance &amp; Insurance (52) + Real Estate &amp; Rental/Leasing (53).</em><br>
-                    Steady 5-year expansion across both finance and real estate, reflecting NYC's continued role as a global financial center.</li>
-
-                    <li><strong>Trade/Trans/Util (NAICS 22,42-49): <span style="color:green">+7.86% (+41,800 jobs)</span></strong><br>
-                    <em>Composition: Utilities (22) + Wholesale Trade (42) + Retail Trade (44-45) + Transportation &amp; Warehousing (48-49).</em><br>
-                    Growth was broad-based across the supersector, driven by recovery in retail and transportation from Feb 2021 lows.</li>
-
-                    <li><strong>Other Services (NAICS 81): <span style="color:green">+6.37% (+10,300 jobs)</span></strong><br>
-                    <em>BLS Supersector: Other Services (standalone).</em><br>
-                    Modest growth in repair services, personal care, and civic organizations as consumer spending patterns normalized.</li>
-
-                    <li><strong>Government (NAICS 92): <span style="color:green">+5.47% (+31,700 jobs)</span></strong><br>
-                    <em>BLS Supersector: Government (standalone).</em><br>
-                    Steady hiring across local government agencies, with similar 1-year and 5-year rates indicating consistent expansion.</li>
-
-                    <li><strong>Information (NAICS 51): <span style="color:green">+5.23% (+11,000 jobs)</span></strong><br>
-                    <em>BLS Supersector: Information (standalone).</em><br>
-                    Growth in media streaming, digital content, and technology services, though the sector experienced a dip in 2024-2025 before rebounding.</li>
-                </ul>
-
-                <h3 style="color:red">Decliners</h3>
-                <ul style="margin: 8px 0 12px 20px;">
-                    <li><strong>Mining/Construction (NAICS 21+23): <span style="color:red">&minus;3.91% (&minus;5,300 jobs)</span></strong><br>
-                    <em>BLS Supersector: Mining, Logging &amp; Construction &mdash; provided as a single combined series for NYC.</em><br>
-                    Construction employment in Feb 2021 was still relatively elevated compared to other sectors, leaving less recovery upside. The 5-year decline combined with the YoY decline suggests a sustained downturn in the sector.</li>
-
-                    <li><strong>Manufacturing (NAICS 31-33): <span style="color:red">&minus;3.65% (&minus;1,900 jobs)</span></strong><br>
-                    <em>BLS Supersector: Manufacturing (standalone).</em><br>
-                    The only sector besides Mining/Construction to decline over both 1-year and 5-year horizons, confirming a decades-long structural decline that has persisted regardless of broader economic conditions.</li>
-                </ul>
+                <p>Two sectors declined over both horizons: <span style="color:red">Manufacturing (&minus;3.65% over 5yr)</span> and <span style="color:red">Mining/Construction (&minus;3.91% over 5yr)</span>. No other sector shows this pattern. Meanwhile, <span style="color:green">Financial Activities</span> grew at +12.13% over five years and +1.27% over one year, and <span style="color:green">Government</span> grew at +5.47% and +1.58% respectively. The similarity between their one-year and five-year rates suggests steady expansion rather than a bounce off a depressed baseline. The five-year numbers capture a recovery that has already started to reverse. The one-year numbers are a better indicator of where NYC employment is currently headed.</p>
 
                 <div class="takeaway"><strong>5-Year Takeaway:</strong> NYC Total Nonfarm grew by <span style="color:green">690,200 jobs (+16.83%)</span> over five years to 4,791,000. Eight of ten supersectors grew, led by Leisure &amp; Hospitality (<span style="color:green">+85.05%</span>) and Education &amp; Health (<span style="color:green">+25.07%</span>). Only Manufacturing (<span style="color:red">&minus;3.65%</span>) and Mining/Construction (<span style="color:red">&minus;3.91%</span>) declined over both 1-year and 5-year horizons.</div>
 """
