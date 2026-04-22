@@ -155,16 +155,16 @@ trends_chart_html = make_plotly_chart_unique(next(html for ci, html in q1_charts
 
 # Narrative is hardcoded in Q1A_NARRATIVE and Q1B_NARRATIVE below
 
-# Q2: cell 7 = complaint table, cell 13 = borough table, cell 19 = borough-type table
-q2_complaint_table_html = next(html for ci, html in q2_tables if ci == 7)
-q2_borough_table_html = next(html for ci, html in q2_tables if ci == 13)
+# Q2: cell 9 = complaint table, cell 15 = borough table, cell 21 = regression table
+q2_complaint_table_html = next(html for ci, html in q2_tables if ci == 9)
+q2_borough_table_html = next(html for ci, html in q2_tables if ci == 15)
 
-# Q2: cell 9 = complaint bar chart, cell 11 = weekly trend chart, cell 15 = borough map, cell 17 = pie charts, cell 19 = regression scatter
-q2_complaint_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 9))
-q2_weekly_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 11))
-q2_borough_map_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 15))
-q2_pie_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 17))
-q2_reg_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 19))
+# Q2: cell 11 = complaint bar chart, cell 13 = weekly trend chart, cell 17 = borough map, cell 19 = pie charts, cell 21 = regression scatter
+q2_complaint_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 11))
+q2_weekly_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 13))
+q2_borough_map_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 17))
+q2_pie_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 19))
+q2_reg_chart_html = make_plotly_chart_unique(next(html for ci, html in q2_charts if ci == 21))
 
 
 # ---------------------------------------------------------------------------
